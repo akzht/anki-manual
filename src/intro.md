@@ -1,22 +1,18 @@
-# Introduction
+# 介紹 Introduction
 
-## Quickstart
+## 快速上手 Quickstart
 
-In a hurry? Jump straight to [Getting Started](getting-started.md).
+趕時間嗎？請前往〈[新手入門](getting-started.md)〉。
 
-## Getting Help
+## 取得協助 Getting Help
 
-Looking for help? Please see [Getting Help](./getting-help.md).
+需要幫助？請參閱[取得協助](./getting-help.md)。
 
-## Translations
+## 翻譯 Translations
 
-Volunteers have contributed translations of this manual. The
-translations may not always be up to date.
+志願者將此手冊翻譯成了不同語言。翻譯版本可能過時，以原英文手冊為準。
 
-- [Bahasa Indonesia](https://apps.ankiweb.net/docs/manual.id.html)
 - [Deutsch](https://web.archive.org/web/20240413080739/https://www.dennisproksch.de/anki)
-- [Español](https://apps.ankiweb.net/docs/manual.es.html)
-- [Français](https://apps.ankiweb.net/docs/manual.fr.html)
 - [Italiano](https://web.archive.org/web/20160423223801/http://192.167.9.6/Anki_ITA/Manual_ITA.htm)
 - [Polski](https://platynowy.github.io/anki-manual/)
 - [Português Brasileiro](https://mizerablebr.github.io/anki-manual/)
@@ -27,5 +23,4 @@ translations may not always be up to date.
 - [日本語](http://wikiwiki.jp/rage2050/)
 - [简体中文](https://open-spaced-repetition.github.io/anki-manual-zh-CN/)
 
-If you would like to help translate the manual into a different language,
-please see the [translation docs](https://translating.ankiweb.net/anki/manual.html).
+若要參與翻譯手冊，請見[翻譯文檔](https://translating.ankiweb.net/anki/manual.html)。

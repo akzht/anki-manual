@@ -1,26 +1,13 @@
-# Add-ons
+# 附加元件 [Add-ons <span style="font-size:18px;">(英文)</span>](https://docs.ankiweb.net/addons.html)
 
-Anki's capabilities can be extended with add-ons. Add-ons can provide
-features like extra support for specific languages, extra control over
-scheduling, and so on.
+你可以為 Anki 安裝附加元件來加入更多功能，如更多語言支援、進階排程控制等。
 
-To browse the list of available add-ons, select `Tools` → `Add-ons`, then click on `Get Add-ons`.
-Alternatively, open [ankiweb.net/shared/addons](https://ankiweb.net/shared/addons) in a web browser.
+要檢視可用的附加元件清單，請前往「工具」>「附加元件」，然後按一下「取得附加元件」。或者你也可以直接在瀏覽器中打開 [ankiweb.net/shared/addons](https://ankiweb.net/shared/addons)。
 
-If you have downloaded an add-on that is not working properly, or if you
-accidentally made a mistake when editing an add-on, you can use the
-"Delete" option in the menu to remove it.
+如果下載的附加元件無法正常運作，或者附加元件設定有誤，你可以按一下選單中的「刪除」按鈕來移除附加元件。
 
-Add-ons use and modify arbitrary parts of Anki’s codebase, so in some
-cases, updating Anki can break the compatibility with older add-ons. If
-one of your add-ons stops working after updating Anki, please consider
-reporting the issue to the add-on author. If you rely on this add-on,
-you will need to keep using an older Anki version until the add-on gets
-an update.
+附加元件使用且修改了任意 Anki 程式碼，因此 Anki 更新後有時會出現相容性問題。當有附加元件在 Anki 更新後無法正常運作時，請考慮向附加元件作者回報錯誤。若你依賴的附加元件發生錯誤，請先使用舊版 Anki，待附加元件更新後再升級。
 
-There is a "Contact Author" button on most add-ons pages on AnkiWeb,
-and many authors include their email address in the add-on, so if you
-need to get in touch with the author, editing the add-on and looking at
-the top of the file may help.
+要聯絡附加元件作者，你可以在 AnkiWeb 上的大多數附加元件頁面下找到一個「Contact Author」按鈕。
 
-To learn how to write your own add-ons, please see the [add-on writing guide](https://addon-docs.ankiweb.net).
+要自己開發附加元件，請參閱《[附加元件編寫指南](https://addon-docs.ankiweb.net)》。

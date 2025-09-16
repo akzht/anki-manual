@@ -178,7 +178,7 @@ and the desired retention in the deck preset.
 
 ## Steps & Returning
 
-Please see the section on [learning](studying.md#learningrelearning-cards) as a reminder of how
+Please see the section on [learning](studying.md#學習重新學習-learningrelearning-cards) as a reminder of how
 steps work.
 
 By default, Anki will use the steps of a card’s home deck. If a new card

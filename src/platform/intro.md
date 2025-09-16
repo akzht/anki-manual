@@ -1,9 +1,9 @@
-# Platform Notes
+# 平台說明 [Platform Notes <span style="font-size:18px;">(英文)</span>](https://docs.ankiweb.net/platform/intro.html)
 
-This section explains the way Anki is installed, and the possible problems you may encounter, depending on your OS:
+此章節介紹了各作業系統的 Anki 安裝方法及可能出現的問題：
 
 - [Windows](./windows/intro.md)
 - [macOS](./mac/intro.md)
 - [Linux](./linux/intro.md)
 
-If you have already installed Anki, you can skip to the [Getting Started](../getting-started.md) section.
+如已安裝 Anki，請前往〈[新手入門](../getting-started.md)〉章節。

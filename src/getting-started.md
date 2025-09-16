@@ -1,334 +1,188 @@
-# Getting Started
+# 新手入門 [Getting Started <span style="font-size:18px;">(英文)</span>](https://docs.ankiweb.net/getting-started.html)
 
 <!-- toc -->
 
-## Installing & Upgrading
+## 安裝 & 升級 Installing & Upgrading
 
-Please see the instructions for your computer:
+請前往對應系統的安裝指示：
 
 - [Windows](./platform/windows/installing.md)
 - [Mac](./platform/mac/installing.md)
 - [Linux](./platform/linux/installing.md)
 
-## Videos
+## 影片教學 Videos
 
-For a quick way to dive into Anki, please have a look at these intro
-videos. Some were made with a previous Anki version, but the concepts
-are the same.
+以下影片可能使用舊版 Anki 演示，但概念是一樣的。
 
-- [Shared Decks and Review Basics](http://www.youtube.com/watch?v=QS2G-k2hQyg&yt:cc=on)
+- [共享牌組和複習簡介](http://www.youtube.com/watch?v=QS2G-k2hQyg&yt:cc=on)（英文）
 
-- [Syncing](https://www.youtube.com/watch?v=YkiM4DPzSVc&list=PLGgmaKOIHykFoomqkBJAyGiDQ2kyiuTao&yt:cc=on)
+- [同步](https://www.youtube.com/watch?v=YkiM4DPzSVc&list=PLGgmaKOIHykFoomqkBJAyGiDQ2kyiuTao&yt:cc=on)（英文）
 
-- [Switching Card Order](http://www.youtube.com/watch?v=DnbKwHEQ1mA&yt:cc=on)
+- [切換卡片順序](http://www.youtube.com/watch?v=DnbKwHEQ1mA&yt:cc=on)（英文）
 
-- [Styling Cards](http://www.youtube.com/watch?v=F1j1Zx0mXME&yt:cc=on)
+- [設計卡片](http://www.youtube.com/watch?v=F1j1Zx0mXME&yt:cc=on)（英文）
 
-- [Typing in the Answer](http://www.youtube.com/watch?v=5tYObQ3ocrw&yt:cc=on)
+- [輸入答案](http://www.youtube.com/watch?v=5tYObQ3ocrw&yt:cc=on)（英文）
 
-If YouTube is unavailable in your country, you can [download the videos](https://apps.ankiweb.net/downloads/archive/screencasts/2.0/)
-instead.
+- [阿姨我決定要繼續努力了！使用卡片軟體 Anki 學會任何東西 + 輕鬆應付考試！](https://www.youtube.com/watch?v=rMlk97ecKUw:cc=on) - PAPAYA 電腦教室（中文）
 
-## Key Concepts
+## 主要概念 Key Concepts
 
-### Cards
+### 卡片 Cards
 
-A question and answer pair is called a 'card'. This is based on a paper
-flashcard with a question on one side and the answer on the back. In
-Anki a card doesn’t actually look like a physical card, and when you
-show the answer the question remains visible by default. For example, if
-you’re studying basic chemistry, you might see a question like:
+跟紙製字卡一樣，一張「卡片」包括一組問題和答案。與紙製字卡不同的是，Anki 中的卡片可以在答案面上同時顯示問題。假設你在學習基礎化學，有一張卡片的問題面為：
 
-    Q: Chemical symbol for oxygen?
+    Q: 氧氣的化學符號是什麼？
 
-After thinking about it, and deciding the answer is O, you click the
-show answer button, and Anki shows you:
+經過思考，你得出的答案是 O，此時按下「顯示回答」按鈕，Anki 將顯示：
 
-    Q: Chemical symbol for oxygen?
+    Q: 氧氣的化學符號是什麼？
     A: O
 
-After confirming that you are correct, you can tell Anki how well you
-remembered, and Anki will choose a next time to show you again.
+確定你答對之後，你可以評價自己的記憶如何，Anki 將會選擇你下一次複習這張卡片的時機。
 
-#### Types of Cards
+#### 卡片種類
 
-- **New:** A new card is one that you have downloaded or entered in, but have never studied before.
+- **新卡片**：下載或建立後從未學習過的卡片。
 
-- **Learning:** Cards that were seen for the first time recently, and are still being learnt.
+- **學習中**：近期初次學習，但還未學完的卡片。
 
-- **Review:** Cards that were previously learnt, and now need to be reviewed so you don’t forget them.
-  There are two types of review cards:
-    - **Young:** A young card is one that has an interval of less than 21 days, but is
-   not in learning.
-    - **Mature:** A mature card is one that has an interval of 21 days or greater.
+- **複習卡**：學完過後，現在需要複習來保持記憶的卡片。複習卡有兩種類型：
+  - **未熟練**：學完後間隔小於 21 天的卡片。
+  - **熟練**：間隔大於 21 天的卡片。
 
-- **Relearn:** A relearning card is a card that you have failed in review mode, thus
-  returning it to learning mode to be relearned.
+- **重新學習**：複習失敗並因此重新回到學習模式的卡片。
 
-### Decks
+### 牌組 Decks
 
-A 'deck' is a group of cards. You can place cards in different decks to
-study parts of your card collection instead of studying everything at
-once. Each deck can have different settings, such as how many new cards
-to show each day, or how long to wait until cards are shown again.
+一個「牌組」由一組卡片組成。你可以把卡片分類放進不同的牌組中，這樣你就不用每次都學習全部卡片。你還可以對每個牌組分別進行設定，例如調整每天要學習的新卡片數量，或是卡片需要下次出現的時間。
 
-Decks can contain other decks, which allows you to organize decks into a
-tree. Anki uses “::” to show different levels. A deck called
-“Chinese::Hanzi” refers to a “Hanzi” deck, which is part of a “Chinese”
-deck. If you select “Hanzi” then only the Hanzi cards will be shown; if
-you select “Chinese” then all Chinese cards, including Hanzi cards, will
-be shown.
+牌組中可以包含其他牌組，所以你可以分層整理牌組。Anki 使用兩個冒號「::」來表示層級。「日文::漢字」表示「漢字」牌組，它是「日文」牌組的一部分。如果你選取了「漢字」牌組，那就只有漢字卡片會出現；如果你選取了「日文」牌組，那所有的日文卡片，包括漢字卡片在內都會出現。
 
-To place decks into a tree, you can either name them with “::” between
-each level, or drag and drop them from the deck list. Decks that have
-been nested under another deck (that is, that have at least one “::” in
-their names) are often called 'subdecks', and top-level decks are
-sometimes called 'superdecks' or 'parent decks'.
+要分層置放牌組，你可以在牌組層級的名字之間輸入「::」，或者在牌組列表中拖放牌組。在其他牌組下層的牌組（即名字中包含至少一個「::」的牌組）常稱作「下層牌組」或「子牌組」，上層的牌組則有時稱為「上層牌組」或「父牌組」。
 
-Anki starts with a deck called “default”; any cards which have somehow
-become separated from other decks will go here. Anki will hide the
-default deck if it contains no cards and you have added other decks.
-Alternatively, you may rename this deck and use it for other cards.
+Anki 一開始會為你建立一個 「預設」牌組；任何不包含於其他牌組的卡片都將被放入預設牌組中。若預設牌組中沒有卡片，同時你建立了其他的牌組，則預設牌組會被隱藏。你也可以對它重新命名，當作普通的牌組使用。
 
-Decks are displayed in the deck list alphabetically. This can result in
-a surprising order if your decks contain numbers - for example, "My Deck 10"
-will come before "My Deck 9", as 1 comes before 9. If you wish to number your
-decks, you can add a "0" in front of single-digit numbers, e.g. "Deck 01",
-"Deck 02" .. "Deck 10".
+在牌組清單中，牌組依字母順序顯示。因此，當你的牌組包含數字時，順序可能不盡人意。例如，「我的牌組 10」會排在「我的牌組 9」前，因為 1 會排在 9 前面。若要給牌組編號，可以在個位數字前加上一個「0」，如「牌組 01」、「牌組 02」...「牌組 10」。
 
-Decks are best used to hold broad categories of cards, rather than
-specific topics such as “food verbs” or “lesson 1”. For more info on
-this, please see the [using decks appropriately](editing.md#using-decks-appropriately) section.
+牌組的理想使用方式是用來較為廣泛地分類卡片，不適合用來細分成「食物動詞」、「第一課」等課題。請參閱〈[恰當運用牌組](editing.md#恰當運用牌組-using-decks-appropriately)〉章節來進一步了解。
 
-For information on how decks affect the order cards are displayed in,
-please see the [display order](studying.md#display-order) section.
+關於牌組對卡片顯示順序的影響，請參閱〈[顯示順序](studying.md#顯示順序-display-order)〉章節。
 
-### Notes & Fields
+### 筆記 & 欄位 Notes & Fields
 
-When making flashcards, it’s often desirable to make more than one card
-that relates to some information. For example, if you’re learning
-French, and you learn that the word “bonjour” means “hello”, you may
-wish to create one card that shows you “bonjour” and asks you to
-remember “hello”, and another card that shows you “hello” and asks you
-to remember “bonjour”. One card is testing your ability to recognize the
-foreign word, and the other card is testing your ability to produce it.
+做字卡時，一則資訊經常需要製作多張卡片。例如，在學習日文時，你學到「こんにちは」意為「你好」，想要建立一張卡片顯示「こんにちは」，提問它的意思「你好」，然後再建立一張卡片顯示「你好」，提問它的日文「こんにちは」。兩張卡片分別考驗你的認知和輸出能力。
 
-When using paper flashcards, your only option in this case is to write
-out the information twice, once for each card. Some computer flashcard
-programs make life easier by providing a feature to flip the front and
-back sides. This is an improvement over the paper situation, but there
-are two major downsides:
+使用紙製閃卡時，即使它們包含的資訊相同，你還是只能分別做兩張卡片。有一些電腦閃卡程式可以調換正背面，雖然比起紙製要節省時間，但這些程式有兩大缺點：
 
-- Because such programs don’t track your performance of recognition
-  and production separately, cards will tend not to be shown to you at
-  the optimum time, meaning you forget more than you’d like, or you
-  study more than is necessary.
+- 這些程式無法分開記錄你的認知和輸出能力的表現，卡片無法在最恰當的時機出現，這會導致你遺忘更多內容，或是多花不必要的時間來學習。
 
-- Reversing the question and answer only works when you want exactly
-  the same content on each side. This means it’s not possible to
-  display extra info on the back of each card for example.
+- 調換正背面的作法只適用於兩遍內容完全一致的情形。因此你沒有辦法為每張卡片的背面各自加入更多資訊。
 
-Anki solves these problems by allowing you to split the content of your
-cards up into separate pieces of information. You can then tell Anki
-which pieces of information you want on each card, and Anki will take
-care of creating the cards for you and updating them if you make any
-edits in the future.
+這些問題在 Anki 得以解決——你可以把卡片的內容細分為小塊的資訊。然後你可以指定要在每張卡片中各自顯示哪部分資訊，Anki就會為你建立卡片，並且你將來做出的任何修改都會自動更新到卡片中。
 
-Imagine we want to study French vocabulary, and we want to include the
-page number on the back of each card. We want our cards to look like
-this:
+假設我們要學習日文字彙，想在每張卡片的背面加入頁碼，就像這樣：
 
-    Q: Bonjour
-    A: Hello
-       Page #12
+    Q: こんにちは
+    A: 你好
+       第 12 頁
 
-And:
+和這樣：
 
-    Q: Hello
-    A: Bonjour
-       Page #12
+    Q: 你好
+    A: こんにちは
+       第 12 頁
 
-In this example, we have three pieces of related information: a French
-word, an English meaning, and a page number. If we put them together,
-they’d look like this:
+這裡，我們有三則相關的資訊：日文單字、中文意思和頁碼。把它們放到一起，像這樣：
 
-    French: Bonjour
-    English: Hello
-    Page: 12
+    日文：こんにちは
+    中文：你好
+    頁碼：12
 
-In Anki, this related information is called a 'note', and each piece of
-information is called a 'field'. So we can say that this type of note
-has three fields: French, English, and Page.
+在 Anki 中把這樣相關的資訊集中到一起，就叫做一則「筆記」，每則資訊叫做一個「欄位」。所以，這一個筆記類型中有三個欄位：日文、中文和頁碼。
 
-To add and edit fields, click the “Fields…​” button while adding or
-editing notes. For more information on fields, please see the
-[Customizing Fields](editing.md#customizing-fields) section.
+要加入及編輯欄位，請在新增或編輯筆記時按一下「欄位…」按鈕。請參閱〈[自訂欄位](editing.md#自訂欄位-customizing-fields)〉章節來進一步了解欄位。
 
-### Card Types
+### 卡片類型 Card Types
 
-In order for Anki to create cards based on our notes, we need to give it
-a blueprint that says which fields should be displayed on the front or
-back of each card. This blueprint is called a 'card type'. Each type of
-note can have one or more card types; when you add a note, Anki will
-create one card for each card type.
+要讓 Anki 依照筆記內容來建立卡片，我們需要提供一張藍圖：每張卡片的正面和背面分別應該顯示的欄位。這張藍圖叫做一個「卡片類型」。每個類型的筆記都可以包含一或更多個卡片類型；新增筆記時，Anki 會依每個卡片類型分別建立一張卡片。
 
-Each card type has two 'templates', one for the question and one for the
-answer. In the above French example, we wanted the recognition card to
-look like this:
+每個卡片類型都有兩個「模板」，分別為問題面和答案面。在上面日文單字的例子中，我們要建立像這樣的認知測試卡片：
 
-    Q: Bonjour
-    A: Hello
-       Page #12
+    Q: こんにちは
+    A: 你好
+       第 12 頁
 
-To do this, we can set the question and answer templates to:
+要得到這樣的效果，我們可以將問題面和答案面的模板設定成這樣：
 
-    Q: {{French}}
-    A: {{English}}<br>
-       Page #{{Page}}
+    Q: {{日文}}
+    A: {{中文}}<br>
+       第 {{Page}} 頁
 
-By surrounding a field name in double curly brackets, we tell Anki to
-replace that section with the actual information in the field. Anything
-not surrounded by curly brackets remains the same on each card. (For
-instance, we don’t have to type “Page \#” into the Page field when
-adding material – it’s added automatically to every card.) &lt;br&gt; is
-a special code that tells Anki to move to the next line; more details
-are available in the [templates](templates/intro.md) section.
+只要用雙花括號包住欄位名稱，Anki 就會把它取代為欄位中的實際內容。而沒有包在雙花括號裡的內容則會保留原樣。（例如，頁碼欄位中的「第 頁」不用每次都手動輸入，它會被自動加入每張卡片。）若要換行，請輸入特殊代碼 &lt;br&gt;；請參閱〈[模板](templates/intro.md)〉以取得更多資訊。
 
-The production card templates work in a similar way:
+輸出測試卡片的模板也類似：
 
-    Q: {{English}}
-    A: {{French}}<br>
-       Page #{{Page}}
+    Q: {{中文}}
+    A: {{日文}}<br>
+       第 {{Page}} 頁
 
-Once a card type has been created, every time you add a new note, a card
-will be created based on that card type. Card types make it easy to keep
-the formatting of your cards consistent and can greatly reduce the
-amount of effort involved in adding information. They also mean Anki can
-ensure related cards don’t appear too close to each other, and they
-allow you to fix a typing mistake or factual error once and have all the
-related cards updated at once.
+建立卡片類型後，每次新增筆記時，就會同時依照卡片類型來建立卡片。卡片類型使得每張卡片的格式一致，更為輕鬆地加入資訊。而且還能讓 Anki 安排拉大關聯的卡片出現的間隔，當你發現內容有誤時只要修改一次就能更新到所有關聯的卡片上。
 
-To add and edit card types, click the “Cards…​” button while adding or
-editing notes. For more information on card types, please see the [Cards and Templates](templates/intro.md) section.
+要新增及編輯卡片類型，請在新增或編輯筆記時按一下「卡片…」按鈕。請參閱〈[卡片和模板](templates/intro.md)〉來進一步了解卡片類型。
 
-### Note Types
+### 筆記類型 Note Types
 
-Anki allows you to create different types of notes for different
-material. Each type of note has its own set of fields and card types.
-It’s a good idea to create a separate note type for each broad topic
-you’re studying. In the above French example, we might create a note
-type called “French” for that. If we wanted to learn capital cities, we
-could create a separate note type for that as well, with fields such as
-“Country” and “Capital City”.
+你可以在 Anki 中為不同的材料建立不同的筆記類型。每種筆記類型都有各自的欄位和卡片類型。在新增筆記前，不妨為各類課題各自建立相應的筆記類型。在上面日文單字的例子中，我們可以建立名為「日文」的筆記類型。若要記憶各國首都，可以再另外建立一個筆記類型，加入「國家」和「首都」欄位。
 
-When Anki checks for duplicates, it only compares other notes of the
-same type. Thus if you add a capital city called “Orange” using the
-capital city note type, you won’t see a duplicate message when it comes
-time to learn how to say “orange” in French.
+檢查重複項目時，Anki 只會在同一種筆記類型中比較。因此，如果你已經有了「雪梨」的日文字卡，當你用首都筆記類型加入名為「雪梨」的首都時，也不會提示有重複項目。
 
-When you create a new collection, Anki automatically adds some standard
-note types to it. These note types are provided to make Anki easier for
-new users, but in the long run it’s recommended you define your own note
-types for the content you are learning. The standard note types are as
-follows:
+Anki 會在你建立新集合時自動加入一些基本的筆記類型。這些筆記類型降低了新手入門的門檻，但為長遠打算，建議根據自己學習的內容來建立筆記類型。基礎筆記類型有以下幾種：
 
-- **Basic**\
-  Has Front and Back fields, and will create one card. Text you enter in
-  Front will appear on the front of the card, and text you enter in Back
-  will appear on the back of the card.
+- **基本型** 
+  有「正面」、「背面」兩個欄位，建立一張卡片。「正面」欄位的內容會顯示在卡片正面，「背面」欄位的內容會顯示在卡片背面。
 
-- **Basic (and reversed card)**\
-  Like Basic, but creates two cards for the text you enter: one from
-  front→back and one from back→front.
+- **基本型（含反向卡片）**  
+  在基本型的基礎上增加了一張方向相反的卡片，即建立兩張卡片：正面→背面，背面→正面。
 
-- **Basic (optional reversed card)**\
-  This is a front→back card, and optionally a back→front card. To do this,
-  it has a third field called “Add Reverse.” If you enter any text into
-  that field, a reverse card will be created. More information about this
-  is available in the [Cards and Templates](templates/intro.md) section.
+- **基本型（選擇性反向卡片）** 
+  建立一張「正面→背面」卡片，並可選擇是否建立「背面→正面」卡片。只要在筆記類型的第三個欄位「加入反向卡片」中輸入任意文字，便會建立一張反向卡片。請參閱〈[卡片和模板](templates/intro.md)〉來進一步了解。
 
-- **Basic (type in the answer)**\
-  This is essentially Basic, with an extra text box on the front where you
-  can type your answer in, after flipping to the back your input would be
-  checked and compared with the answer. More information is available in the
-  [Checking Your Answer](templates/fields.md#checking-your-answer) section.
+- **基本型（輸入答案）** 
+  在基本型的基礎上，在卡片正面增加了一個文字框，輸入答案後，當你將卡片翻到背面，Anki 就會自動檢查你輸入的答案是否正確。請參閱〈[檢查答案](templates/fields.md#檢查答案-checking-your-answer)〉章節來進一步了解。
 
-- **Cloze**\
-  A note type which makes it easy to select text and turn it into a cloze
-  deletion (e.g., “Man landed on the moon in \[…​\]” → “Man landed on the
-  moon in 1969”). More information is available in the [cloze deletion](editing.md#cloze-deletion) section.
+- **克漏字**  
+  使用這個筆記類型，可以輕鬆選取文字並將其轉換為一個填空題空格（如「人類在 \[…​\] 年首次登月」→「人類在 1969 年首次登月」）。請參閱〈[克漏字空格](editing.md#克漏字空格-cloze-deletion)〉章節來進一步了解。
 
-- **Image Occlusion**\
-  Like the cloze notetype, but it works with images instead of text,
-  which is especially useful when studying material that heavily relies on images,
-  such as anatomy, geography, and more. For details, please see the [Image Occlusion](editing.md#image-occlusion)
-  section of the manual. 
+- **影像遮擋**
+  可看作是用在影像上的克漏字，對有大量圖片需求的學習內容很有幫助，譬如解剖學、地理等學科。請參閱〈[影像遮擋](editing.md#影像遮擋-image-occlusion)〉章節來進一步了解。
 
-To add your own note types and modify existing ones, you can use Tools →
-Manage Note Types from the main Anki window.
+要新增自己的筆記類型及修改現有筆記類型，請在 Anki 主視窗選擇「工具」>「管理筆記類型」。
 
-Notes and note types are common to your whole collection rather than
-limited to an individual deck. This means you can use many different
-types of notes in a particular deck, or have different cards generated
-from a particular note in different decks. When you add notes using the
-Add window, you can select what note type to use and what deck to use,
-and these choices are completely independent of each other. You can also
-change the note type of some notes [after you’ve already created them](browsing.md).
+筆記和筆記類型通用於整個集合，不受限於單個牌組。你可以在同一個牌組中使用多種不同的筆記類型，也可以把同一則筆記建立的多張卡片分別放入不同的牌組中。使用「新增」視窗時，你可以自由選取要使用的筆記類型和牌組。另外，[筆記被建立之後](browsing.md)你仍然可以更改其筆記類型。
 
-### Collection
+### 集合 Collection
 
-Your 'collection' is all the material stored in Anki – your cards,
-notes, decks, note types, deck options, and so on.
+「集合」指儲存在 Anki 中的所有資料——包括你的卡片、筆記、牌組、筆記類型、牌組選項等。
 
-## Shared Decks
+## 共享牌組 Shared Decks
 
-You can watch [a video about Shared Decks and Review
-Basics](http://www.youtube.com/watch?v=QS2G-k2hQyg&yt:cc=on) on YouTube.
+開始使用 Anki 最簡單的方式就是下載別人分享的牌組：
 
-The easiest way to get started with Anki is to download a deck of cards
-someone has shared:
+1. 按一下牌組下方的「取得共享牌組」按鈕。
 
-1. Click the “Get Shared” button at the bottom of the deck list.
+2. 找到心儀的牌組後，按一下「Download」按鈕來下載牌組檔。
 
-2. When you’ve found a deck you’re interested in, click the “Download”
-   button to download a deck package.
+3. 下載完成後，按兩下下載好的牌組檔以將其載入 Anki，或者在 Anki 中選擇「檔案」→「匯入…」。
 
-3. Double-click on the downloaded package to load it into Anki, or
-   File→Import it.
+建立自己的牌組能使你更好地學習較為複雜的學科。像是語言、科學這種沒有辦法單靠死記硬背來理解的學科——只有提供了解釋和上下文時才能高效學習。而且，輸入內容時你需要判斷哪些是關鍵點，在這過程中你將能更透徹地理解內容。
 
-Please note that it’s not currently possible to add shared decks
-directly to your AnkiWeb account. You need to import them with the
-desktop program, then synchronize to upload them to AnkiWeb.
+如果你在學習一門語言，你可能會想要下載像是「必背 7000 單字」這樣一大堆帶有翻譯的單字卡，但用這種方式學習的效率無異於單靠背誦公式來學物理。要學好語言，你需要教材、老師、多接觸真實對話。
 
-Creating your own deck is the most effective way to learn a complex
-subject. Subjects like languages and the sciences can’t be understood
-simply by memorizing facts — they require explanation and context to
-learn effectively. Furthermore, inputting the information yourself
-forces you to decide what the key points are, leading to a better
-understanding.
-
-If you are a language learner, you may be tempted to download a long
-list of words and their translations, but this won’t teach you a
-language any more than memorizing scientific equations will teach you
-astrophysics. To learn properly, you need textbooks, teachers, or
-exposure to real-world sentences.
-
+    不要學習未理解的內容。
     Do not learn if you do not understand.
     --SuperMemo
 
-Most shared decks are created by people who are learning material
-outside of Anki – from textbooks, classes, TV, etc. They select the
-interesting points from what they learn and put them into Anki. They
-make no effort to add background information or explanations to the
-cards, because they already understand the material. So when someone
-else downloads their deck and tries to use it, they’ll find it very
-difficult as the background information and explanations are missing.
+大多數共享牌組的建立者都是在 Anki 之外——透過教材、課堂、看電視劇等途徑學習後，再把學到的內容加入到 Anki 中。由於已經對材料有了一定了解，他們不會費心加入卡片的背景或解釋。如果你下載了這些牌組，缺少了背景和解釋，單純學習這些卡片將很吃力。
 
-That is not to say shared decks are useless – simply that for complex
-subjects, they should be used as a 'supplement' to external material,
-not as a 'replacement' for it. If you’re studying textbook ABC and
-someone has shared a deck of ideas from ABC, that’s a great way to save
-some time. And for simple subjects that are basically a list of facts,
-such as capital city names or pub quiz trivia, you probably don’t need
-external material. But if you attempt to study complex subjects without
-external material, you will probably meet with disappointing results.
+但共享牌組也並非一無是處——學習複雜學科時，雖然不能完全取代外部材料，但你可以對其加以補充。如果你正在使用教材《ABC》，下載別人共享的《ABC》牌組可以為你節省不少時間。而在學習簡單的內容時，像是首都名稱這種一一對應的事實，單靠共享牌組也足以應對。但使用 Anki 學習複雜學科時，若不使用外部材料，效果將不盡如人意。

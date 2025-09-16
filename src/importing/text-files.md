@@ -112,7 +112,7 @@ include angle brackets or ampersands, you may use the following replacements:
 | &gt;      | `&gt;`      |
 | &amp;     | `&amp;`     |
 
-## Importing Media
+## 匯入媒體檔 Importing Media
 
 If you want to include audio and pictures from a text file import, copy
 the files into the [collection.media folder](../files.md). **Do not put

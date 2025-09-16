@@ -1,33 +1,19 @@
-# Profiles
+# 設定檔 [Profiles <span style="font-size:18px;">(英文)</span>](https://docs.ankiweb.net/profiles.html)
 
-If more than one person wants to use Anki on your computer, you can set
-up a separate profile for each user. Each user profile has their own
-collection, and own program settings. Add-ons are shared across profiles.
-Profiles are configured by going to the File menu and choosing "Switch Profile".
+如果有多人要在同一台電腦上使用 Anki，各個使用者可以自己建立一個設定檔。各設定檔的集合和程式設定互不影響，但會共用安裝的附加元件。你可以在「檔案」選單中選擇「切換設定檔」來管理設定檔。
 
-**Only a single profile can be synced to an AnkiWeb account.**
-If you have different users on your computer, each user will
-need to set up a separate AnkiWeb account for their profile. If you attempt
-to link two or more profiles to the same AnkiWeb account, you will overwrite
-the data from one profile with the data from the other.
+**一個 AnkiWeb 帳號只能同步一個設定檔**
+當電腦上有多個設定檔時，每位使用者需要自己建立一個 AnkiWeb 帳號。若試圖同步多個設定檔至同一 AnkiWeb 帳號，其中一個設定檔的資料將被另一個設定檔覆寫。
 
-Profiles are primarily intended to be used by different people, and are not
-recommended for splitting up your own content.
-If you have created multiple profiles for yourself, the best option is to
-merge them into a single profile. You can do so by exporting one deck from
-profile A, and then importing it into profile B, repeating for any other decks
-in profile A, until everything is in profile B.
+設定檔主要用於有多位使用者的情況，不建議自己一個人使用多個設定檔。如果你已經這麼做了，建議透過匯出/匯入選項來合併設定檔。
 
-AnkiDroid does not support profiles.
+AnkiDroid 不支援使用設定檔。
 
-## Profiles window
+## 設定檔視窗 Profiles window
 
-From the Profiles window (accessible via File>Switch Profile from the main window), you can:
+在設定檔視窗裡 (主視窗中點選「檔案」>「切換設定檔」)，你可以：
 
-- Open / Add / Rename / Delete user profiles.
-- Quit the program.
-- Restore an [automatic backup.](./backups.md)
-- Downgrade your collection, which is necessary if you want to open it with
-  an earlier Anki release. If you skip this step, you may get an error message
-  when opening your collection in an older Anki version, and you will need to
-  return to this version, downgrade, then try again.
+- 打開/新增/重新命名/刪除設定檔。
+- 退出程式。
+- 使用[自動備份](./backups.md)來回復內容。
+- 為集合降級，降級後方可在較舊的 Anki 版本中打開。若未降級就安裝了舊版 Anki，在打開集合時可能會出現錯誤訊息，此時你將需要重新安裝原來的 Anki 版本，為集合降級，然後再試一次。

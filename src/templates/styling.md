@@ -1,52 +1,31 @@
-# Styling & HTML
+# 樣式與 HTML [Styling & HTML](https://docs.ankiweb.net/templates/styling.html)
 
 <!-- toc -->
 
-## Card Styling
+## 卡片樣式 Card Styling
 
-You can watch [a video about styling cards](http://www.youtube.com/watch?v=F1j1Zx0mXME&yt:cc=on) on YouTube.
-The video shows Anki 2.0’s interface, but the concepts are largely the
-same.
+要存取樣式表，請按下「背面模板」按鈕旁的「樣式」按鈕。在樣式表中，你可以改變卡片的背景顏色、預設字型、文字對齊等等。
 
-The styling section of the Cards screen can be accessed by clicking the
-"Styling" button next to the "Back Template" button. In that section,
-you can change the background color of the card, the default font, the
-text alignment, and so on.
-
-The standard options available to you are:
+可用的標準選項有：
 
 **font-family**\
-The name of the font to use on the card. If your font has spaces in it
-like "MS Unicode", then you need to surround the font name in double
-quotes as in this sentence. It is also possible to use multiple fonts on
-one card; for information on that, please see below.
+卡片顯示字型的名稱。如果字型名稱有空格，比如「Microsoft JhengHei」，則需要包含在英文半形雙引號中：`"Microsoft JhengHei"`。 你也可以同時加入多個字型，請參閱下文。
 
 **font-size**\
-The size of the font in pixels. When changing it, make sure you leave px
-at the end.
+字型的大小。請確保在數字後加入單位，如加入 `px` 來以像素作為單位。
 
 **text-align**\
-Whether the text should be aligned in the center, left, or right.
+文字對齊。如 `center` 置中、`left` 左對齊或 `right` 右對齊。
 
 **color**\
-The color of the text. Simple color names like 'blue', 'lightyellow',
-and so on will work, or you can use HTML color codes to select arbitrary
-colors. Please see [this webpage](https://htmlcolorcodes.com/) for more
-information.
+文字的顏色。基本的顏色可以直接使用英文單字表示，如 `blue` 或 `red`。你也可以使用 HTML 色碼來使用更多顏色。要進一步了解，請前往 [HTML 顏色代碼](https://htmlcolorcodes.com/zh/)網站。
 
 **background-color**\
-The color of the card background.
+卡片的背景顏色。
 
-Any CSS can be placed in the styling section – advanced users may wish
-to do things like add a background image or gradient, for example. If
-you’re wondering how to get some particular formatting, please search
-the web for information about how to do it in CSS, as there is a great
-deal of documentation available.
+樣式表中可以加入任意 CSS 程式碼。例如，進階使用者可以為卡片背景加入圖片或漸變色。如果你想修改卡片上某一區域的樣式但不知道從何下手，可以透過網路上的資源來自學 CSS 程式碼。
 
-The styling is shared between all cards, which means that when you make
-an adjustment it will affect all cards for that note type. It is also
-possible to specify card-specific styling, however. The following
-example will use a yellow background on all cards except the first one:
+所有卡片共用同一樣式表。因此當你做出更動時，同一筆記類型的所有卡片都會被影響。不過，你可以在樣式表中加入限定卡片的程式碼。例如，要讓第一張卡片顯示為藍色背景，其他卡片全部為黃色，你可以這樣設定：
 
 ```css
 .card {
@@ -57,11 +36,9 @@ example will use a yellow background on all cards except the first one:
 }
 ```
 
-## Image Resizing
+## 調整影像大小 Image Resizing
 
-Anki shrinks images to fit the screen by default. You can change this by adding
-the following to the bottom of your styling section (outside of the default
-`.card { ... }`):
+Anki 預設會將影像縮放至符合螢幕大小。要停用這一功能，你可以在樣式表底部（預設的 `.card { ... }` 外面）加入以下程式碼：
 
 ```css
 img {
@@ -70,11 +47,7 @@ img {
 }
 ```
 
-AnkiDroid sometimes has [trouble scaling images to fit the
-screen](https://github.com/ankidroid/Anki-Android/issues/3612). Setting maximum
-image dimensions using css should fix this, but seems to be ignored as of
-AnkiDroid 2.9. A fix is to append `!important` to each style directive, for
-example:
+AnkiDroid 有時會[無法符合螢幕大小](https://github.com/ankidroid/Anki-Android/issues/3612)。使用 CSS 設定影像最大長寬本應解決這一問題，但 AnkiDroid 2.9 及較舊版本中會無視這一設定。你可以在行末加入 `!important` 來解決：
 
 ```css
 img {
@@ -83,9 +56,7 @@ img {
 }
 ```
 
-If you try to change the style for images and find that the star that
-appears on marked cards is affected (for instance, it becomes way too
-large), you can target it with the following:
+若在調整影像大小後，標記的卡片上的星星也受到影響（比如圖片放大後星星過大），你可以加入以下程式碼來指定星星的樣式：
 
 ```css
 img#star {
@@ -93,56 +64,45 @@ img#star {
 }
 ```
 
-You can explore the styling of cards interactively by using Chrome:
+你可以透過 Chrome 來以互動方式探索卡片樣式：
 
 <https://addon-docs.ankiweb.net/porting2.0.html#webview-changes>
 
-Anki 2.1.50+ supports image resizing within the editor natively.
+Anki 2.1.50 及以上版本支援在編輯器中調整影像大小。
 
-## Field Styling
+## 欄位樣式 Field Styling
 
-The default styling applies to the whole card. You can also make certain
-fields or part of the card use a different font, color, and so on. This
-is particularly important when studying foreign languages, as Anki will
-sometimes be unable to correctly display characters unless an
-appropriate font has been chosen.
+預設的樣式會套用於整張卡片。你也可以為欄位單獨設定不同字型、顏色或其他。這在學習外文時很重要，比如在學習日文時，如果使用的是中文字型，有些日文寫法不一樣的漢字可能無法正確顯示。
 
-Say you have an “Expression” field, and you want to give it the OSX Thai
-font “Ayuthaya”. Imagine your template already reads:
+假設你的卡片中有欄位「短語」，並要在欄位中使用 Windows 的「MS Gothic」字體。假設這是你當前的模板：
 
-    What is {{Expression}}?
+    {{短語}}是甚麼意思？
 
-    {{Notes}}
+    {{備註}}
 
-What we need to do is wrap the text we want to style in some HTML. We
-will put the following in front of the text:
+你需要把要修改樣式的文字包含在 HTML 程式碼內。例如在文字前加入以下程式碼：
 
     <div class=mystyle1>
 
-And the following behind it:
+然後在文字後加入：
 
     </div>
 
-By wrapping the text like the above, we tell Anki to style the wrapped
-text with a custom style called “mystyle1”, which we will create later.
+以上程式碼表示，包含的文字要使用自訂樣式 `mystyle1`，我們稍後再來建立該樣式。
 
-Thus if we wanted the entire “What is …​?” expression to use the Thai
-font, we would use:
+修改後的模板如下：
 
-    <div class=mystyle1>What is {{Expression}}?</div>
+    <div class=mystyle1>{{短語}}是甚麼意思？</div>
 
-    {{Notes}}
+    {{備註}}
 
-And if we wanted only the expression field itself to use the Thai font,
-we’d use:
+但是這樣，中文的部分也會使用日文字體，所以你可以只包含「短語」欄位：
 
-    What is <div class=mystyle1>{{Expression}}</div>?
+    <div class=mystyle1>{{短語}}</div>是甚麼意思？
 
-    {{Notes}}
+    {{備註}}
 
-After we’ve edited the template, we now need to move to the Styling
-section between the templates. Before editing it, it should look
-something like:
+編輯模板後，前往樣式表。未做更動的樣式表應如下：
 
 ```css
 .card {
@@ -154,7 +114,7 @@ something like:
 }
 ```
 
-Add your new style to the bottom, so it looks like:
+你可以把新的樣式放在最下方：
 
 ```css
 .card {
@@ -166,35 +126,28 @@ Add your new style to the bottom, so it looks like:
 }
 
 .mystyle1 {
-  font-family: ayuthaya;
+  font-family: "MS Gothic";
 }
 ```
 
-You can include any styling you want in the style. If you wanted to
-increase the font size too, you’d change the mystyle1 section to look
-like:
+花括號中可以加入任意樣式。要讓字型變大，你可以把樣式修改為這樣：
 
 ```css
 .mystyle1 {
-  font-family: ayuthaya;
+  font-family: "MS Gothic";
   font-size: 30px;
 }
 ```
 
-It’s also possible to bundle custom fonts with your deck, so you don’t
-need to install them on your computer or mobile device. Please see the
-[installing fonts](#installing-fonts) section for more info.
+你也可以在牌組中加入自訂字型檔案，這樣你就不需要在電腦或手機上安裝只想要在 Anki 中使用的字型。請參閱〈[安裝字型](#安裝字型-installing-fonts)〉章節來進一步了解。
 
-## Audio Replay Buttons
+## 音訊播放按鈕 Audio Replay Buttons
 
-When audio or text to speech is included on your cards, Anki will show
-buttons you can click on to replay the audio.
+當卡片中有音訊或 TTS 時，Anki 會顯示一個播放按鈕。
 
-If you prefer not to see the buttons, you can hide them in the
-preferences screen.
+若不需要這個按鈕，你可以在偏好設定中停用。
 
-You can customize their appearance in your card styling, for example, to
-make them smaller and colored, you could use the following:
+你可以在卡片樣式表中自訂按鈕外觀。如果你要縮小按鈕並加上顏色，可以加入程式碼：
 
 ```css
 .replay-button svg {
@@ -210,10 +163,9 @@ make them smaller and colored, you could use the following:
 }
 ```
 
-## Text Direction
+## 文字方向 Text Direction
 
-If you use a language that is written right-to-left, such as Arabic or Hebrew,
-you can add the CSS `direction` property to the .card section for correct display during review:
+如果你使用阿拉伯文或希伯來文等由右至左書寫的文字，你可以在 `.card` 中加入 `direction` 屬性：
 
 ```css
 .card {
@@ -221,117 +173,87 @@ you can add the CSS `direction` property to the .card section for correct displa
 }
 ```
 
-This will change the direction of the entire card. You can change the direction
-of only certain fields by wrapping their references in some HTML:
+這會更改整張卡片的書寫方向。你也可以使用 HTML 標籤來修改單個欄位：
 
-    <div dir="rtl">{{Front}}</div>
+    <div dir="rtl">{{正面}}</div>
 
-To change the direction of fields in the editor, please see
-the [editing](../editing.md#customizing-fields) section.
+要修改編輯器中的欄位書寫方向，請參閱〈[自訂欄位](../editing.md#自訂欄位-customizing-fields)〉章節。
 
-## Other HTML
+## 其他 HTML Other HTML
 
-Your templates can contain arbitrary HTML, which means that all the
-layout possibilities used on internet web pages can also be used on your
-cards. Things like tables, lists, images, links to external pages and so
-on are all supported. With tables for example, you could change the
-layout so that the front and back of a card appear on the left and right
-instead of the top and bottom.
+模板可以包含任意 HTML 程式碼，因此一般網頁中使用的各種佈局都能被加入卡片中。例如表格、清單、影像、外部連結等。例如你可以使用表格 `table` 來使卡片正背面分別顯示在左半邊和右半邊。
 
-Covering all of HTML’s features is outside the scope of this manual, but
-there are plenty of good introductory guides to HTML available on the
-web if you’d like to learn more.
+因 HTML 功能之多，此使用手冊無法一一涵蓋所有功能，請在網路上自行尋找 HTML 入門教學來進一步了解。
 
-## Browser Appearance
+## 瀏覽器預覽樣式 Browser Appearance
 
-If your card templates are complex, it may be difficult to read the
-question and answer columns (called "Front" and "Back") in the [card list](../browsing.md#cardnote-table). The "browser appearance" option allows you to define a
-custom template to be used only in the browser, so you can include only
-the important fields and change the order if you desire. The syntax is
-the same as in standard card templates.
+如果你的卡片模板過於複雜，[卡片清單](../browsing.md#卡片/筆記表格-cardnote-table)中的問題欄（正面）和答案欄（背面）可能難以閱讀。透過「瀏覽器預覽樣式」，你可以自訂一個僅限瀏覽器中顯示的模板，比如只顯示重要的欄位或者改變顯示順序。「瀏覽器預覽樣式」使用與普通卡片模板相同的語法。
 
-When using this option, if the text in the question column is repeated at the beginning of the answer column, Anki will display the text only in the question column. For example, if the question column text is "People in Ladakh speak", and the answer is "People in Ladakh speak Ladakhi", the answer column will only display "Ladakhi", omitting the rest.
+使用這個選項時，當問題面文字包含在答案面開頭時，答案欄中不會顯示問題。假如問題是「日本在」、答案是「日本在東亞」，則答案欄僅會顯示「東亞」。
 
-## Platform-Specific CSS
+## 平台特定 CSS Platform-Specific CSS
 
-Anki defines some special CSS classes that allow you to define different
-styling for different platforms. The example below shows how to vary the
-font depending on where you’re reviewing:
+Anki 定義了一些特殊的 CSS class，可為不同平台設定不同的樣式。例如，你可以像這樣在不同平台上顯示不同的字型：
 
 ```css
 /* Windows */
 .win .example {
-  font-family: "Example1";
+  font-family: "字型 1";
 }
 /* macOS */
 .mac .example {
-  font-family: "Example2";
+  font-family: "字型 2";
 }
-/* Linux desktops */
+/* Linux 電腦 */
 .linux:not(.android) .example {
-  font-family: "Example3";
+  font-family: "字型 3";
 }
-/* both Linux desktops, and Android devices */
+/* Linux 電腦和 Android 裝置 */
 .linux .example {
-  font-family: "Example4";
+  font-family: "字型 4";
 }
-/* both Android and iOS */
+/* Android 和 iOS */
 .mobile .example {
-  font-family: "Example5";
+  font-family: "字型 5";
 }
 /* iOS */
 .iphone .example,
 .ipad .example {
-  font-family: "Example6";
+  font-family: "字型 6";
 }
 /* Android */
 .android .example {
-  font-family: "Example7";
+  font-family: "字型 7";
 }
 ```
 
-And in the template:
+然後這樣設定模板：
 
 ```html
-<div class="example">{{Field}}</div>
+<div class="example">{{欄位}}</div>
 ```
 
-You can also use properties like .gecko, .opera, and .ie to select
-particular browsers when using AnkiWeb. Please see
-<http://rafael.adm.br/css_browser_selector/> for a full list of options.
+如果你使用 AnkiWeb 複習卡片，你還可以使用 `.chrome`、`.gecko` 和 `.opera` 等 class 來在不同的瀏覽器中使用不同樣式。要檢視所有可用的 class，請參閱 <http://rafael.adm.br/css_browser_selector/>。
 
-## Installing Fonts
+## 安裝字型 Installing Fonts
 
-If you’re using Anki on a work or school computer where you don’t have
-permission to install new fonts, or you’re using Anki on a mobile
-device, it’s possible to add fonts directly to Anki.
+如果你在公司/學校電腦上使用 Anki，沒有權限安裝字型，或是使用行動裝置，不便安裝字型，你可以在 Anki 中加入字型檔。
 
-To add a font to Anki, it must be in the TrueType format. TrueType fonts
-have a filename ending in .ttf, such as "Arial.ttf". Once you’ve located
-a TrueType font, we’ll need to add it to the media folder:
+Anki 僅支援加入 TrueType 格式的字型。TrueType 字型的副檔名為 `.ttf`，如 `Arial.ttf`。找到想要的字型檔後，請新增至 Anki 媒體檔資料夾：
 
-1. Rename the file, adding an underscore at the start, so it becomes
-   like "\_arial.ttf". Adding an underscore will tell Anki that this
-   file will be used on a template, and should not be deleted when
-   checking for unused media.
+1. 重新命名檔案，在開頭加上一條底線，如 `_arial.ttf`。檔名開頭的底線表示檔案用於模板中，這樣在 Anki 中執行「檢查媒體檔」時就不會被刪除。
 
-2. In your computer’s file browser, go to your [Anki Folder](../files.md),
-   and then a folder called "User 1" (or your profile name if you’ve
-   renamed/added profiles).
+2. 打開電腦上的檔案瀏覽器，並前往 [Anki 資料夾](../files.md)，打開你的設定檔資料夾（預設名稱為「使用者 1」）。
 
-3. Inside the folder, you should see a folder called collection.media.
-   Drag the renamed file to that folder.
+3. 將已重新命名的字型檔放入「collection.media」資料夾中。
 
-After that, we need to update the template:
+加入後，模板需要被更新：
 
-1. Click **Add** at the top of the main screen, and then select the
-   note type you want to change with the top left button.
+1. 在主畫面上方，按一下「**新增**」按鈕，然後使用左上方的按鈕來選取要修改的筆記類型。
 
-2. Click **Cards**.
+2. 按一下「**卡片**」按鈕.
 
-3. In the styling section, add the following text to the bottom (after
-   the last "}" character), replacing "\_arial.ttf" with the name of
-   the file you copied into your media folder:
+3. 在樣式表底部（原有的最後一個花括號 `}` 外），加入以下程式碼，並將 `_arial.ttf` 取代為你剛才加入的字型檔案名稱：
 
 ```css
 @font-face {
@@ -340,25 +262,17 @@ After that, we need to update the template:
 }
 ```
 
-Only change the "arial" part, not the "myfont" part.
+`_arial.ttf` 是字型檔案的名稱，而 `myfont` 是要在當前樣式表中使用的字體名稱。
 
-After that, you can either change the font for the entire card, or for
-individual fields. To change the font for the entire card, simply locate
-the font-family: line in the .card section and change the font to
-"myfont". To change the font for only certain fields, please see the
-[Field Styling](#field-styling) instructions above.
+使用上面的程式碼匯入字型後，要讓整張卡片使用新的字型，你可以在 `.card` 部分中的 `font-family:` 裡把字型改為 `myfont` 或你自己設定的名稱。要為欄位單獨自訂字型，請參閱上文中的〈[欄位樣式](#欄位樣式-field-styling)〉章節。
 
-Please make sure the filenames match exactly. If the file is called
-arial.TTF and you write arial.ttf in your card templates, it will not
-work.
+注意，字型檔名必須完全一致，如果檔名為 `arial.TTF`，而你在卡片模板中輸入了 `arial.ttf`，則將無法正常運作。
 
-## Night Mode
+## 夜間模式 Night Mode
 
-You can customize the way templates appear when night mode is enabled in
-the preferences screen.
+你可以為夜間模式下的卡片自訂不同樣式。
 
-If you wanted a lighter grey background, you could use
-something like:
+要讓夜間模式下的卡片背景為淺灰色，你可以這麼設定：
 
 ```css
 .card.nightMode {
@@ -366,8 +280,7 @@ something like:
 }
 ```
 
-If you have a 'myclass' style, the following would show the text in
-yellow when night mode is enabled:
+如果你有文字使用了 `.myclass` 樣式，加入以下程式碼可以讓這些文字僅在夜間模式下顯示為黃色：
 
 ```css
 .nightMode .myclass {
@@ -375,50 +288,16 @@ yellow when night mode is enabled:
 }
 ```
 
-## Fading and Scrolling
+## 捲動 Scrolling
 
-Anki will automatically scroll to the answer by default. It looks for an
-HTML element with id=answer, and scrolls to that. You can place the id
-on a different element to adjust the scrolling position, or remove the
-id=answer to turn off scrolling.
+根據預設，Anki 會透過 `id=answer` 來找到包含答案的 HTML 元素，並在卡片背面自動捲動到這個元素。你可以把 `id=answer` 移動至其他 HTML 元素上來改變自動捲動的終點，或移除 `id=answer` 以停用自動捲動。
 
-The question side of a card fades in by default. If you wish to adjust
-this delay, you can place the following at the top of your front card
-template:
+## JavaScript
 
-```html
-<script>
-  qFade = 100;
-  if (typeof anki !== "undefined") anki.qFade = qFade;
-</script>
-```
+因為 Anki 卡片本質上就是網頁，所以你也可以透過模板來在卡片上嵌入 JavaScript。請參閱[此論壇貼文](https://forums.ankiweb.net/t/card-templates-user-input-101-buttons-keyboard-shortcuts-etc-guide/13756)來進一步了解。
 
-100 (milliseconds) is the default; set to 0 to disable fading.
+JavaScript 是一項進階功能，容易出現錯誤，因此 **Anki 不為 JavaScript 功能提供支援**。我們無法協助你編寫 JavaScript 程式碼，也無法保證當前可用的程式碼在未來不會失效。若無法自行解決相關問題，建議不要使用 JavaScript。
 
-## Javascript
+不同 Anki 用戶端上的卡片顯示效果可能不一，因此你需要在不同平台上進行測試。多數用戶端的卡片是顯示在一個持續動態更新內容的網頁上，所以你的 JavaScript 程式碼需要使用 `document.getElementById()` 等方法來更新文件內容，而不是類似 `document.write()` 的方法。
 
-As Anki cards are treated like webpages, it is possible to embed some
-Javascript on your cards via the card template. For a good reference
-please read [this post](https://forums.ankiweb.net/t/card-templates-user-input-101-buttons-keyboard-shortcuts-etc-guide/13756)
-in the forums.
-
-Because Javascript is an advanced feature and so many things can go
-wrong, **Javascript functionality is provided without any support or
-warranty**. We can not provide any assistance with writing Javascript,
-and can not guarantee any code you have written will continue to work
-without modification in future Anki updates. If you are not comfortable
-addressing any issues you encounter on your own, then please avoid using
-Javascript.
-
-Each Anki client may implement card display differently, so you will
-need to test the behaviour across platforms. A number of clients are
-implemented by keeping a long running webpage and dynamically updating
-parts of it as cards are reviewed, so your Javascript will need to
-update sections of the document using things like
-document.getElementById() rather than doing things like
-document.write().
-
-Functions like window.alert may not be available. Anki will write
-javascript errors to the terminal, so you'll need to [view the console](https://addon-docs.ankiweb.net/console-output.html#console-output) to
-see them. To debug issues with JavaScript, you can use Chrome's
-[inspector](https://addon-docs.ankiweb.net/debugging.html#webviews).
+`window.alert` 這樣的函式可能不可用。Anki 會在終端機寫入 JavaScript 錯誤，你需要在[控制台](https://addon-docs.ankiweb.net/console-output.html#console-output)中檢視錯誤訊息。你可以使用 Chrome 的「[檢查元素](https://addon-docs.ankiweb.net/debugging.html#webviews)」功能來為 JavaScript 程式碼偵錯。

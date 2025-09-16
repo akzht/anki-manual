@@ -1,12 +1,10 @@
-# Card Info, Graphs and Statistics
+# 卡片資訊、圖表和統計 Card Info, Graphs and Statistics
 
 <!-- toc -->
 
-## Card Info
+## 卡片資訊 Card Info
 
-You can display information about a card by using the Cards&gt;Info menu item,
-by right-clicking on the card and then selecting **Info**, or by pressing
-<kbd>I</kbd> on the review screen.
+要檢視卡片資訊，你可以右鍵按一下卡片，在選單中選取「卡片資訊」，或在複習畫面按下 <kbd>I</kbd> 鍵。
 
 ![Card Info](media/card_info.png)
 
@@ -128,7 +126,7 @@ This graph counts the number of card reviews you have done. The bars may
 correspond to days, weeks, or months, depending on the time period
 you’ve selected at the bottom of the screen. The differently colored
 blocks show how many of the cards you answered on each day were
-[mature](getting-started.md#types-of-cards), young, relearning, or learning cards.
+[mature](getting-started.md#卡片種類), young, relearning, or learning cards.
 There is also a separate group for cards answered in a filtered/cram
 deck while they were not due. The line and the right axis shows the
 cumulative total for each type of review as time progresses across the
@@ -170,7 +168,7 @@ how significant the results are).
 **Answer Buttons**\
 This graph shows how many times you’ve chosen the Again, Hard, Good, or
 Easy button while studying learning/new, young, and
-[mature](getting-started.md#types-of-cards) cards. Anki also displays the percentage
+[mature](getting-started.md#卡片種類) cards. Anki also displays the percentage
 of correct reviews for each type of card.
 
 ## Manual Analysis

@@ -1,184 +1,130 @@
-# Card Generation
+# 產生卡片 [Card Generation](https://docs.ankiweb.net/templates/generation.html)
 
 <!-- toc -->
 
-## Reverse Cards
+## 反向卡片 Reverse Cards
 
-You can watch [a video about reversing cards](http://www.youtube.com/watch?v=DnbKwHEQ1mA&yt:cc=on) on YouTube.
+使用內建的「基本型（含反向卡片）」筆記類型，Anki 會建立兩張正背面相反的卡片（即「正面→背面」和「背面→正面」）。
 
-If you want to create cards that go in both directions (e.g., both
-“ookii”→“big” and “big”→“ookii”), you have several options. The simplest
-is to select the “Basic (and reversed card)” built-in note type. This
-will generate two cards, one in each direction.
+若僅部分筆記需要反向卡片，你可以使用「基本型（選擇性反向卡片）」筆記類型。若你僅在正面和背面欄位中輸入了文字，則 Anki 只會為你建立一張「正面→背面」卡片。需要反向卡片時，只要在「加入反向卡片」欄位中輸入任意文字（如「1」），Anki 就會再建立一張反向卡片。「加入反向卡片」欄位中的文字不會出現在卡片中。
 
-If you want to generate reverse cards for only some of your material
-(perhaps you only want to take the time to study reverses for the most
-important material, or some of your cards don’t make sense reversed),
-you can select the “Basic (optional reversed card)” note type. This note
-type generates a forward-only card when you fill in only the first two
-fields; if you additionally enter something in the “Add Reverse” field
-(like a 'y'), Anki will generate a reverse card as well. The contents of
-this field will never be displayed on a card.
+## 產生與刪除卡片 Card Generation & Deletion
 
-## Card Generation & Deletion
+當卡片正面沒有內容時，Anki 不會建立這些卡片。若有一則筆記的「我的欄位」欄位為空，且有一個卡片類型的正面模板僅為 `{{我的欄位}}`，則這則筆記不會產生這個類型的卡片。
 
-Anki will not create cards with empty front sides. Thus if “My Field”
-was empty, and one card’s front template included only that field, the
-card would not be created.
+編輯已有筆記時，若你新增的內容使部分卡片的正面不再是空白，則 Anki 會自動為你建立這些卡片。但反過來，如果你移除了一些內容後，有些卡片正面變成空白的，則 Anki 不會自動刪除這些卡片，以防因不小心刪除欄位內容而造成資料遺失。要移除空白卡片，請在主視窗中前往「工具」→「空白卡片」。若有空白卡片，則彈出的視窗中會列出所有空白卡片清單，並可選擇刪除。
 
-When you edit a previously added note, Anki will automatically create
-extra cards if they were previously blank but no longer are. If your
-edits have made some cards blank when they previously were not, however,
-Anki will not delete them immediately, as that could lead to accidental
-data loss. To remove the empty cards, go to Tools → Empty Cards in the
-main window. You will be shown a list of empty cards and be given the
-option to delete them.
+囿於卡片產生機制，你無法手動刪除單張卡片，否則每次編輯筆記時，刪掉的卡片都會被重新建立。要刪除不需要的卡片，你應該把卡片正面模板中的相關「條件式取代」欄位留空，然後執行「空白卡片」工具。
 
-Because of the way that card generation works, it is not possible to
-manually delete individual cards, as they would just end up being recreated
-the next time the note was edited. Instead, you should make the
-relevant conditional replacement fields empty and then use the Empty
-Cards option.
+Anki 判斷是否產生卡片時不會考慮特殊欄位和非欄位文字。因此雖然以下卡片「國家」欄位外有文字：
 
-Anki does not consider special fields or non-field text for the purposes
-of card generation. Thus if your front template looked like the
-following, no card would be generated if Country was empty:
+    {{國家}}在哪個洲？
 
-    Where is {{Country}} on the map?
+但只要「國家」為空就不會產生卡片。
 
-## Selective Card Generation
+## 選擇性產生卡片 Selective Card Generation
 
-Sometimes you may want to generate extra cards for only some of your
-material, such as testing your ability to recall the most important
-words of a set. You can accomplish this by adding an extra field to your
-note, and adding some text into it (such as "1") on the notes you want
-the extra card. Then in the card template, you can make the card’s
-creation depend on that field being non-empty. For more information on
-this, please see the conditional replacement section below.
+你可以使用「基本型（選擇性反向卡片）」筆記類型來為重點卡片多加一張卡片。要自己建立這樣的筆記類型，請先新增一個欄位。然後在卡片模板中，你可以設定依欄位有無內容來確定是否要建立卡片。請繼續閱讀〈條件式取代〉章節來進一步了解如何設定。
 
-## Conditional Replacement
+## 條件式取代 Conditional Replacement
 
-It is possible to include certain text, fields, or HTML on your cards
-only if a field is empty or not empty. An example:
+你可以依欄位有無內容為條件，決定要不要為卡片加入文字、欄位或 HTML 碼。例如：
 
-    This text is always shown.
+    這句話永遠會被顯示
 
-    {{#FieldName}}
-        This text is only shown if FieldName has text in it
-    {{/FieldName}}
+    {{#欄位名稱}}
+        這句話只有當「欄位名稱」中有文字時才會被顯示
+    {{/欄位名稱}}
 
-    {{^FieldName}}
-        This text is only shown if FieldName is empty
-    {{/FieldName}}
+    {{^欄位名稱}}
+        這句話只有當「欄位名稱」為空時才會被顯示
+    {{/欄位名稱}}
 
-A real life example is only showing a label if the field is not empty:
+以下實際案例只有當欄位不為空時才會顯示欄位前的文字（「標籤：」）：
 
     {{#Tags}}
-        Tags: {{Tags}}
+        標籤：{{Tags}}
     {{/Tags}}
 
-Or say you want to display a specific field in blue on the front of your
-card if there are extra notes on the back (perhaps the fact that there
-are notes serves as a reminder that you should spend more time thinking
-about the answer). You can style the field as follows:
+再舉例，假如你的筆記類型可以在較難的卡片背面附上備註，你可能想在複習時知道哪些筆記有備註，以便多花一點時間來耐心回答較難的卡片。要讓「目標欄位」僅當有備註時才顯示為藍色字型，請參照以下設定：
 
-    {{#Notes}}
+    {{#備註}}
         <span style="color:blue;">
-    {{/Notes}}
+    {{/備註}}
 
-    {{FieldToFormat}}
+    {{目標欄位}}
 
-    {{#Notes}}
+    {{#備註}}
         </span>
-    {{/Notes}}
+    {{/備註}}
 
-You can also use conditional replacement to control which cards are
-generated. This works since Anki will not generate
-cards which would have a blank front side. For
-example, consider a card with two fields on the front:
+利用 Anki 不會建立正面空白的卡片的特點，你還可以使用條件式取代來控制要不要產生卡片。假設你的卡片模板如下：
 
-    {{Expression}}
-    {{Notes}}
+    {{原文}}
+    {{備註}}
 
-Normally a card would be generated if either the expression or notes
-field had text in it. If you only wanted a card generated if expression
-was not empty, then you could change the template to this:
+正常情況下，只要「原文」和「備註」中有一個欄位不為空，就會產生卡片。要讓卡片僅在「原文」有內容時才產生，你可以將模板改成這樣：
 
-    {{#Expression}}
-        {{Expression}}
-        {{Notes}}
-    {{/Expression}}
+    {{#原文}}
+        {{原文}}
+        {{備註}}
+    {{/原文}}
 
-And if you wanted to require both fields, you could use two conditional
-replacements:
+要讓卡片僅在兩個欄位都有內容時才產生，你可以使用兩個條件式取代：
 
-    {{#Expression}}
-        {{#Notes}}
-            {{Expression}}
-            {{Notes}}
-        {{/Notes}}
-    {{/Expression}}
+    {{#原文}}
+        {{#備註}}
+            {{原文}}
+            {{備註}}
+        {{/備註}}
+    {{/原文}}
 
-Keep in mind that this only works when you place the
-conditional replacement code on the _front_ of the card; if you do this
-on the back, you will simply end up with cards with a blank back side.
-Similarly, since this works by checking if the front field would be
-empty, it is important to make sure you wrap the 'entire' front side in
-the conditional replacement; for instance, the following would not work
-as expected:
+注意，僅在卡片**正面**使用這樣的條件式取代才能控制卡片產生；放在背面則會產生背面空白的卡片。另外，因為這是利用了 Anki 不會建立正面空白的卡片的特點，如果你不把整個正面都放進條件式取代中，可能會達不到預期效果：
 
-    {{#Expression}}
-        {{Expression}}
-    {{/Expression}}
-    {{Notes}}
+    {{#原文}}
+        {{原文}}
+    {{/原文}}
+    {{備註}}
 
-## Blank Back Sides
+## 背面空白 Blank Back Sides
 
-Card generation only looks at the front side of the card. For example, if you have a
-front template:
+產生卡片時只會檢查卡面正面。假設你的卡片正面為：
 
-    {{Field 1}}
+    {{欄位一}}
 
-and a back template:
+背面模板為：
 
-    {{Field 2}}
+    {{欄位二}}
 
-Then a card will be generated if Field 1 is non-empty. If Field 2 is empty, the card
-will still be generated, and you will get a blank back side.
+只要「欄位一」不為空，卡片就會被產生。若「欄位二」為空，卡片仍會被產生，且卡片背面將為空白。
 
-If you wish to avoid a blank back side, you will need to place a required field
-on the front template as a conditional, like so:
+要避免產生背面空白的卡片，你需要在卡片正面模板加上條件式取代，像這樣：
 
-    {{#Field 2}}
-        {{Field 1}}
-    {{/Field 2}}
+    {{#欄位二}}
+        {{欄位一}}
+    {{/欄位二}}
 
-This will ensure the card is generated only if both Field 2 and Field 1 are non-empty.
+這樣，只有當「欄位一」和「欄位二」都不為空時，才會產生卡片。
 
-## Limitations in Older Anki Versions
+## Anki 較舊版本的限制 Limitations in Older Anki Versions
 
-The following limitations do not apply to Anki 2.1.28+ and AnkiMobile 2.0.64+.
+以下限制不套用於 Anki 2.1.28+ 和 AnkiMobile 2.0.64+ 版本。
 
-Older Anki versions cannot use negated conditionals for card generation.
-For example, on Anki 2.1.28, the following would add a card if a field
-called AddIfEmpty is empty, and Front is non-empty:
+在較舊的版本中，Anki 無法在產生卡片時使用否定條件式取代。例如，在 Anki 2.1.28 版本中，以下模板產生卡片的條件為，「空白時新增」欄位為空，且「正面」欄位不為空：
 
-    {{^AddIfEmpty}}
-        {{Front}}
-    {{/AddIfEmpty}}
+    {{^空白時新增}}
+        {{正面}}
+    {{/空白時新增}}
 
-On earlier Anki versions, the negated conditional is ignored, and card
-generation will depend only on Front being non-empty.
+但版本較舊的 Anki 會無視這條否定條件式，因此是否產生卡片僅取決於「正面」欄位是否為空。
 
-Mixing **AND** and **OR** conditions can also cause problems on older versions.
-For example, the following ("add the card if A **OR** B **OR** C is non-empty")
-is fine:
+在條件中混合使用邏輯**且 (AND)** 和**或 (OR)** 也會在較舊版本中造成問題。這是一個能正常運作的例子（若 A**或**B**或**C 不為空，則新增卡片）：
 
     {{A}}
     {{B}}
     {{C}}
 
-And the following ("add the card if A **AND** B **AND** C are non-empty") is fine:
+這是另一個能正常運作的例子（若 A**且**B**且**C 不為空，則新增卡片）：
 
     {{#A}}
         {{#B}}
@@ -188,7 +134,7 @@ And the following ("add the card if A **AND** B **AND** C are non-empty") is fin
         {{/B}}
     {{/A}}
 
-But the following ("add the card if A **OR** (B **AND** C) are non-empty") will not work properly:
+但以下混用了邏輯**且**和**或**的例子（若 A**或**(B**且**C) 不為空，則新增卡片）則無法正常運作：
 
     {{A}}
     {{#B}}
@@ -197,52 +143,36 @@ But the following ("add the card if A **OR** (B **AND** C) are non-empty") will 
         {{/C}}
     {{/B}}
 
-## Adding Empty Notes
+## 新增空白筆記 Adding Empty Notes
 
-When you add a new note in Anki 2.1.28+ and AnkiMobile 2.0.64+, if the card
-templates and note fields combine to produce no cards, a blank card will be
-created using the first template. This allows you to add material even if it's
-incomplete, and modify it or the template later to make it valid. If you don't
-wish to keep an empty note, you can remove it with the Empty Cards function.
+在 Anki 2.1.28+ 和 AnkiMobile 2.0.64+ 版本中，若新增筆記時沒有產生任何卡片，則 Anki 會使用第一個模板來建立一張空白卡片。這樣是為了在內容不完整時也能先新增筆記，等到日後完善筆記內容或修改模板後，方可使卡片生效。若不想要保留空白筆記，請執行「空白卡片」功能以移除。
 
-On older Anki versions, Anki refuses to add or import a note if no cards
-would be generated.
+在版本較舊的 Anki 中，當筆記不會產生卡片時，筆記將無法被新增/匯入。
 
-## Cloze Templates
+## 克漏字模板 Cloze Templates
 
-Please see the [cloze deletion](../editing.md#cloze-deletion) section for background info.
+請參閱〈[克漏字空格](../editing.md#克漏字空格-cloze-deletion)〉章節來了解背景資訊。
 
-The cloze note type functions differently from regular note types.
-Instead of a customizable number of card types, it has a single type
-which is shared by all cloze deletions on a note.
+普通的筆記類型可以自訂卡片類型的數量，但在克漏字筆記類型中，筆記中所有空格都共用同一個唯一的卡片類型。
 
-As mentioned in the card generation section above, generation of regular
-cards depends on one or more fields on the question being non-empty.
-Cloze deletion note types are generated differently:
+在上面的章節中，我們談到普通卡片產生的條件是問題面中指定的欄位不為空。但克漏字筆記類型的規則不同：
 
-- Anki looks on the front template for one or more cloze replacements,
-  like {{cloze:FieldName}}.
+- Anki 將首先檢查正面模板中的克漏字取代，如「{{cloze:欄位名稱}}」。
 
-- It then looks in the FieldName field for all cloze references, like
-  {{c1::text}}.
+- 然後，Anki 將檢查「欄位名稱」欄位中的所有克漏字引用，如「{{c1::文字}}」。
 
-- For each separate number, a card will be generated.
+- 最後，依空格序號將產生卡片，序號相同的空格將被包含在同一張卡片中。
 
-Because card generation functions differently for cloze deletion cards,
-{{cloze:…​}} tags can not be used with a regular note type - they
-will only function properly when used with a cloze note type.
+由於這一機制僅限於克漏字卡片，因此「{{cloze:…​}}」標籤無法用於普通筆記類型。
 
-Conditional generation provides a special field so you can check which
-card you are rendering. If you wanted to display the "hint1" field on
-the first cloze, and "hint2" field on the second cloze for example, you
-could use the following template:
+條件式取代可以用來自訂各空格序號所產生的卡片。若要在第一張克漏字卡片中顯示「提示一」欄位，在第二張克漏字卡片中顯示「提示二」欄位，請參照以下模板：
 
-    {{cloze:Text}}
+    {{cloze:文字}}
 
     {{#c1}}
-        {{Hint1}}
+        {{提示一}}
     {{/c1}}
 
     {{#c2}}
-        {{Hint2}}
+        {{提示二}}
     {{/c2}}

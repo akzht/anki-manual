@@ -1,57 +1,49 @@
-# Preferences
+# 偏好設定 [Preferences <span style="font-size:18px;">(英文)</span>](https://docs.ankiweb.net/preferences.html)
 
 <!-- toc -->
 
-The preferences are available from the Tools menu on Windows/Linux, or
-the Anki menu on a Mac.
+你可以在 Windows/Linux 版本中的「工具」選單或 Mac 上的「Anki」選單中找到偏好設定。
 
-## Appearance
+## 外觀 Appearance
 
-### General
+### 一般 General
 
-**Language**\
-Change your display language. You can help to improve translations [here](https://translating.ankiweb.net/)
+**語言**\
+更改顯示語言。要幫 Anki 改進翻譯，請前往 <https://translating.ankiweb.net/>
 
-### User Interface
+### 使用者介面User Interface
 
-**Theme**\
-Dark (night) mode will make Anki's interface dark, and will cause cards to be shown as white text on a
-black background. Some card templates may need to be modified to work
-properly with this option enabled - please see [night mode styling](templates/styling.md#night-mode) for more information.
+**佈景主題**\
+Anki 介面使用深色（夜間）模式時，卡片會變為黑底白字。你可能需要修改部分卡片模板才能使這個功能正確運作，請參閱〈[夜間模式](templates/styling.md#夜間模式-night-mode)〉章節來進一步了解。
 
-From 2.1.50+ there is an option to switch to day or night mode automatically.
+2.1.50 及以上版本還可以選擇跟隨系統設定來自動切換深色/淺色模式。
 
-**User interface size**\
-If you find that the interface elements are too small for you, you can
-try to increase this setting.
+**使用者介面大小**\
+若介面顯示元素過大或過小，可以嘗試調整這項設定。
 
-**Reset Windows Sizes**\
-This will reset all windows sizes and locations to the default settings.
+**重設視窗大小**\
+將視窗大小和位置重設為預設。
 
-**Video driver**\
-Anki's libraries need a video driver to draw content on the screen.
-Due to different hardware and software configurations, the driver that
-works best on your machine may vary. ANGLE and OpenGL will perform better
-than the software option, but they may not function correctly on some
-systems. On Macs, you will almost always want to use the OpenGL option.
+**視訊驅動程式**\
+Anki 的函式庫需要透過視訊驅動程式以繪製螢幕上的圖形。由於各種軟硬體的設定不盡相同，各個驅動程式在你的機器的運作效果可能不一。ANGLE 和 OpenGL 效能比軟體較佳，但在某些系統上可能無法正常運作。在 Mac 上，通常應使用 OpenGL 選項。
 
-Note: If you're using 2.1.50+ (Qt6), please, check [this page](./platform/windows/display-issues.md#qt6).
+注意：如果你正在使用 2.1.50+ (Qt6) 版本，請前往[這個頁面](./platform/windows/display-issues.md#qt6)。
 
-### Distractions
+### 減少干擾 Distractions
 
-These options allow you to remove some unnecessary elements from the screen during reviews. You can:
+這些選項可以移除複習時畫面中不必要的干擾：
 
-- Hide the top and bottom bar during reviews.
-- Enable the "minimalist" mode, making the interface more compact/less fancy.
-- Reduce motion, to disable some transitions/animations.
-- Switching between native styling and the Anki theme (only on Mac/Linux).
+- 複習時隱藏頂部列和底部列。
+- 極簡模式：使介面更加緊湊/簡約。
+- 減少動態效果：停用部分過場效果和動畫。
+- 切換本機樣式/Anki 佈景主題。（僅限 Mac/Linux）
 
-## Review
+## 複習 Review
 
-### Scheduler
+### 排程器 Scheduler
 
-**Next day starts at**\
-Controls when Anki should start showing the next day’s cards. The default
+**次日始於**\
+控制 Anki 從何時開始顯示下一天的卡片。使用預設的「4 時」時，在半夜 12 點左右學習時就不會跟第二天的卡片混到一起。如果你熬夜到很晚或者很早起床，你可以將這個選項設定在你平常的睡眠時間範圍內。Controls when Anki should start showing the next day’s cards. The default
 setting of 4AM ensures that if you’re studying around midnight, you won’t have
 two days' worth of cards shown to you in one session. If you stay up very late
 or wake up very early, you may want to adjust this to a time you’re usually

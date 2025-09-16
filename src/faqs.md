@@ -1,3 +1,3 @@
-# Frequently Asked Questions
+# 常見問題 Frequently Asked Questions
 
-Please see <https://faqs.ankiweb.net>
+請參閱 <https://faqs.ankiweb.net>

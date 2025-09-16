@@ -1,4 +1,4 @@
-# Deck Options
+# 牌組選項 Deck Options
 
 <!-- toc -->
 
@@ -160,15 +160,15 @@ The options are:
 - This deck: The limit is specific to this deck.
 - Today only: Make a temporary change to this deck's limit.
 
-## New Cards
+## 新卡片 New Cards
 
 The settings in this section only affect new cards and cards in initial
-[learning](studying.md#learningrelearning-cards) mode. Once a card
+[learning](studying.md#學習重新學習-learningrelearning-cards) mode. Once a card
 has graduated (i.e. there are no more learning steps for this card), it becomes a
-[review card](studying.md#review-cards), and the
+[review card](studying.md#複習-review-cards), and the
 settings in this section are no longer applicable.
 
-### Learning Steps
+### 學習階段 Learning Steps
 
 Controls the number of learning repetitions, and the delay
 between them. One or more delays, separated by spaces must be entered.
@@ -190,7 +190,7 @@ If there’s nothing else to study, Anki will show cards up to 20 minutes
 early by default. The amount of time to look ahead is configurable in
 the [preferences](preferences.md).
 
-Please see the [learning](studying.md#learningrelearning-cards) section for more info on how
+Please see the [learning](studying.md#學習重新學習-learningrelearning-cards) section for more info on how
 steps work.
 
 #### Day Boundaries
@@ -209,7 +209,7 @@ and seeing the card again as a review card. This means that it is the first inte
 after the learning card becomes a review card. Please see the example
 in the previous section.
 
-### Easy Interval
+### 「簡單」間隔 Easy Interval
 
 The delay between answering `Easy` on a learning
 card, and seeing it in review mode for the first time.
@@ -220,6 +220,7 @@ as long as the _graduating interval_, and typically a few days longer.
 
 ### Insertion Order
 
+控制要讓 Anki 隨機將新卡片放入牌組，還是按順序放入。
 Controls whether Anki should add new cards into the deck randomly, or in order.
 When you change this option, Anki will re-sort the decks using the current
 Option Group. Cards with a lower due number will be shown first when studying, by
@@ -242,7 +243,7 @@ some notes had all their cards introduced and other notes had only one
 or two. Please see the "bury related" and "display order" sections below
 for more info.
 
-## Lapses
+## 遺忘 Lapses
 
 When you forget a review card, it is said to have 'lapsed', and the card must be
 relearnt. The default behaviour for lapsed reviews is to reset the interval to
@@ -277,7 +278,7 @@ the deck of the currently displayed card.
 
 This section is only available when you have [the v3 scheduler](https://faqs.ankiweb.net/the-2021-scheduler.html) enabled.
 
-Some further information about display order is available in the [studying section](studying.md#display-order).
+Some further information about display order is available in the [studying section](studying.md#顯示順序-display-order).
 
 ### New Card Gather Order
 
@@ -334,7 +335,7 @@ shown before or after them. Because learning cards tend to be harder than
 reviews, some users prefer to see them at the end (getting the easy stuff done
 first), or at the start (allowing more time to review forgotten ones).
 
-### Review Sort Order
+### 牌組選項 Review Sort Order
 
 Controls how review cards are sorted while reviewing. The options are:
 
@@ -404,7 +405,7 @@ The options are:
 - Bury review siblings: whether other review cards of the same note will be delayed until the next day.
 - Bury interday learning siblings: whether other learning cards of the same note with intervals >= 1 day will be delayed until the next day.
 
-For more info about burying cards, please see [this section](./studying.md#siblings-and-burying) of the manual.
+For more info about burying cards, please see [this section](./studying.md#關聯卡片和推遲-siblings-and-burying) of the manual.
 
 ## Audio
 
@@ -415,7 +416,7 @@ audio until you press the replay audio key, `r` or `F5`.
 _Always include question side when replaying audio_ controls whether audio from
 the question side should be played when replaying the audio while an answer is
 shown. Please note that it does not control what happens when you show the
-answer; for that please see [this section](templates/fields.md#special-fields).
+answer; for that please see [this section](templates/fields.md#特殊欄位-special-fields).
 
 ## Advanced
 
@@ -594,7 +595,7 @@ will wait to reshow a card. The default is 100 years; you can decrease
 this to a smaller number if you’re willing to trade extra study time for
 higher retention.
 
-### Starting Ease
+### 起始輕鬆度 Starting Ease
 
 Controls the easiness that cards start out with. It is
 set when a card graduates from learning for the first time. It defaults
@@ -660,7 +661,7 @@ reviewing with the same interval forever. If your goal is to repeat a
 card once a day for multiple days, you can do that by setting more
 learning mode steps, instead of by adjusting this modifier.
 
-### Hard Interval
+### 「困難」間隔 Hard Interval
 
 The multiplier used when you use the `Hard` button. The percentage is relative
 to the previous interval: e.g. with a default of 1.20, a card with a 10-day interval
@@ -678,7 +679,8 @@ of their previous delay. For example, if a card had a 100 day interval, and you 
 the _New Interval_ to 0.20, the new interval would be 20 days.
 
 While preserving part of the interval may seem to make sense, SuperMemo has observed
-that preserving part of the delay can actually [be counter-productive](https://supermemo.guru/wiki/Post-lapse_stability). For this reason, we recommend you leave it on the default setting.
+<!-- that preserving part of the delay can actually [be counter-productive](https://supermemo.guru/wiki/Post-lapse_stability). For this reason, we recommend you leave it on the default setting. -->
+that preserving part of the delay can actually be counter-productive. For this reason, we recommend you leave it on the default setting.
 
 ## Custom Scheduling
 

@@ -15,7 +15,7 @@ For a quick introduction to syncing, please check out the
 ## Setup
 
 To start syncing your collection across devices, click the sync button
-(the top right one on the [main screen](studying.md#decks), or press 'y' on your keyboard.
+(the top right one on the [main screen](studying.md#牌組-decks), or press 'y' on your keyboard.
 You’ll be prompted for your AnkiWeb ID and password, which you created
 in the signup process.
 
@@ -52,7 +52,7 @@ and red when a full sync is required.
 Related video: <https://www.youtube.com/watch?v=phP9GGG-PxY>
 
 Anki will synchronize any sounds and images used by your notes. It will
-notice when media has been added, removed or replaced in your [media folder](files.md#file-locations), but
+notice when media has been added, removed or replaced in your [media folder](files.md#檔案位置-file-locations), but
 will not notice if you have made edits to existing files. To get your edits synced, you
 need to add, remove or replace a file as well.
 

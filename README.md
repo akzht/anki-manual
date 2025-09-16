@@ -1,4 +1,6 @@
-Best viewed on the website: https://docs.ankiweb.net
+建議前往網站查看： https://lghhz.github.io/anki-manual/
+
+Best viewed on the website: https://lghhz.github.io/anki-manual/
 
 This manual is licensed under the CC BY-SA 4 license:
 

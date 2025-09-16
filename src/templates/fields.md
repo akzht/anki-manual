@@ -1,424 +1,307 @@
-# Field Replacements
+# 欄位取代 [Field Replacements](https://docs.ankiweb.net/templates/fields.html)
 
 <!-- toc -->
 
-## Basic Replacements
+## 基本取代 Basic Replacements
 
-The most basic template looks something like this:
+最基本的模板長這樣：
 
-    {{Front}}
+    {{正面}}
 
-When you place text within curly brackets, Anki looks for a field by
-that name, and replaces the text with the actual content of the field.
+當你用花括號包住文字時，Anki 會尋找名為括號中文字的欄位，並取代上欄位中的實際內容。
 
-Field names are case sensitive. If you have a field named `Front`,
-writing `{{front}}` will not work properly.
+欄位名稱分大小寫。如果你的欄位名稱是 `Front`，模板中則不能寫作 `{{front}}`，否則將無法正常運作。
 
-Your templates are not limited to a list of fields. You can also include
-arbitrary text on your templates. For example, if you’re studying
-capital cities, and you’ve created a note type with a “Country” field,
-you might create a front template like this:
+除了欄位，你還可以在模板中加入普通文字。若你在背各國首都，並在筆記類型中建立了「國家」欄位，你可以把正面模板改成這樣：
 
-    What's the capital city of {{Country}}?
+    {{國家}}的首都是？
 
-The default back template will look something like this:
+這是預設的背面模板：
 
     {{FrontSide}}
 
     <hr id=answer>
 
-    {{Back}}
+    {{背面}}
 
-This means “show me the text that’s on the front side, then a divider
-line, and then the Back field”.
+這樣表示，顯示正面的內容，然後顯示一條分隔線，最後顯示「背面」欄位。
 
-The 'id=answer' part tells Anki where the divider is between the
-question and the answer. This allows Anki to automatically scroll to the
-spot where the answer starts when you press 'show answer' on a long card
-(especially useful on mobile devices with small screens). If you don’t
-want a horizontal line at the beginning of the answer, you can use
-another HTML element such as a paragraph or div instead.
+「id=answer」表示問題和答案的界線。當你在一張較長的卡片上點選「顯示答案」時，Anki 會自動滾動至答案部分（在螢幕較小的行動裝置上相當實用）。如無需答案前的橫線，可改用段落或 div 等其他 HTML 元素。
 
-## Newlines
+## 換行 Newlines
 
-Card templates are like web pages, which means a special command is required
-to create a new line. For example, if you wrote the following in the template:
+因為卡片模板跟網頁一樣，所以換行時需要使用特殊的指令。如果你的模板如下：
 
-    one
-    two
+    一
+    二
 
-In the preview, you’d actually see:
+在預覽時，你將看到：
+    一 二
 
-    one two
+要換行，請在行末加入代碼 &lt;br&gt;：
 
-To add a new line, you need to add a &lt;br&gt; code to the end of a
-line, like so:
+    一<br>
+    二
 
-    one<br>
-    two
+代碼「br」來自「換行」的英文「(line) br(eak)」。
 
-The br code stands for "(line) br(eak)".
+欄位間要換行也一樣，例如
 
-The same applies for fields. If you want to display two fields, one on
-each line, you would use
+    {{欄位 1}}<br>
+    {{欄位 2}}
 
-    {{Field 1}}<br>
-    {{Field 2}}
+## 欄位文字轉語音 Text to Speech for individual fields
 
-## Text to Speech for individual fields
+僅 Anki 2.1.20+、AnkiMobile 2.0.56+ 及 AnkiDroid 2.17+ 版本支援這個功能。
 
-This feature requires Anki 2.1.20, AnkiMobile 2.0.56 or AnkiDroid 2.17.
+要使用美國英語唸出「正面」欄位中的內容，你可以在卡片模板中寫出：
 
-To have Anki read the Front field in a US English voice, you can place
-the following in your card template:
+    {{tts en_US:正面}}
 
-    {{tts en_US:Front}}
+在 Windows、macOS 和 iOS 上，Anki 會使用系統內建的語音。Linux 上沒有內建語音，但你可使用附加元件來加入語音，像是這個[附加元件](https://ankiweb.net/shared/info/391644525)。
 
-On Windows, macOS, and iOS, Anki will use the OS’s built in voices. On
-Linux, no voices are built in, but voices can be provided by add-ons,
-such as [this one](https://ankiweb.net/shared/info/391644525).
-
-To see a list of all available languages/voices, place the following on
-your card template:
+要檢視所有可用的語言/語音，請在卡片模板中寫下：
 
     {{tts-voices:}}
 
-If there are multiple voices that support your chosen language, you can
-specify desired voices in a list, and Anki will choose the first
-available voice. For example:
+若所需語言有多種聲音可用，你可以將這些聲音列成清單，Anki 會使用清單中第一個可用的聲音。比如：
 
-    {{tts ja_JP voices=Apple_Otoya,Microsoft_Haruka:Field}}
+    {{tts ja_JP voices=Apple_Otoya,Microsoft_Haruka:欄位}}
 
-This would use Otoya when on an Apple device, and Haruka when on a
-Windows PC.
+這樣設定，則在 Apple 裝置上會使用 Otoya，在 Windows 裝置上會使用 Haruka。
 
-Specifying a different speed is possible in some TTS implementations:
+部分 TTS 聲音還能調整速度（speed=）：
 
-    {{tts fr_FR speed=0.8:SomeField}}
+    {{tts fr_FR speed=0.8:另一個欄位}}
 
-Both speed and voices are optional, but the language must be included.
+速度和聲音都可省略，但必須包含語言。
 
-On a Mac, you can customize the available voices:
+在 Mac 上，你可以自訂可用的聲音：
 
-- Open the System Preferences screen.
+- 開啟「系統設定」。
 
-- Click on Accessibility.
+- 按一下「輔助使用」。
 
-- Click on Speech.
+- 按一下「語音內容」
 
-- Click on the system voice dropdown, and choose Customize.
+- 按一下「系統聲音」，然後在下拉式選單中選擇「管理聲音」...
 
-Some voices sound better than others, so experiment to choose the one
-you prefer. Please note that the Siri voice can only be used by Apple
-apps. Once you’ve installed new voices, you’ll need to restart Anki for
-the new voices to become available.
+聲音的品質不一，建議多嘗試幾個聲音再做出選擇。只有 Apple 內建軟體才能使用 Siri 聲音，因此安裝後也不能在 Anki 中使用。安裝完成後，你需要重新啟動 Anki 才能選用新的聲音。
 
-On Windows, some voices like Cortana can not be selected, as Microsoft
-does not make those voices available to other applications.
+在 Windows 上，有些聲音也不能被其他應用程式使用，比如 Cortana。
 
-On a cloze note type, you can make Anki read only the elided sections
-using the `cloze-only` filter, like so:
+在克漏字筆記類型中，你可以加入 `cloze-only` 篩選器，這樣 TTS 就只會朗讀空格中的內容：
 
-    {{tts en_US:cloze-only:Text}}
+    {{tts en_US:cloze-only:文字}}
 
-The cloze-only filter is supported in Anki 2.1.29+, AnkiMobile 2.0.65+, and AnkiDroid 2.17+.
+僅 Anki 2.1.29+、AnkiMobile 2.0.65+ 及 AnkiDroid 2.17+ 版本支援「cloze-only」篩選器。
 
-## Text to Speech for multiple fields and static text
+## 靜態文字和多個欄位文字轉語音 Text to Speech for multiple fields and static text
 
-This feature requires Anki 2.1.50+, AnkiMobile 2.0.84+, or AnkiDroid 2.17+.
+僅 Anki 2.1.50+、AnkiMobile 2.0.84+ 及 AnkiDroid 2.17+ 版本支援這個功能。
 
-If you want TTS to read multiple fields or static text included in the template, you can use the following:
+要郎讀模板中的靜態文字或多個欄位，請輸入：
 
 ```
-[anki:tts lang=en_US] This text should be read. Here is {{Field1}} and {{Field2}}[/anki:tts]
+[anki:tts lang=zh_TW]朗讀這些文字。還有{{欄位 1}}和{{欄位2}}[/anki:tts]
 
-This is other text on the template. It is outside of the tags so it should not be read.
+模板上的其他文字。這行不在標籤內，所以不會被讀出來。
 ```
 
-## Special Fields
+## 特殊欄位 Special Fields
 
-There are some special fields you can include in your templates:
+你可以在模板中加入以下特殊欄位：
 
-    The note's tags: {{Tags}}
+    筆記標籤：{{Tags}}
 
-    The type of note: {{Type}}
+    筆記類型：{{Type}}
 
-    The card's deck: {{Deck}}
+    卡片所屬牌組：{{Deck}}
 
-    The card's subdeck: {{Subdeck}}
+    卡片所屬子牌組：{{Subdeck}}
 
-    The card's flag: {{CardFlag}}
+    卡片旗標：{{CardFlag}}
 
-    The type of card ("Forward", etc): {{Card}}
+    卡片類型（如「反向」）：{{Card}}
 
-    The content of the front template
-    (only valid in back template): {{FrontSide}}
+    正面模板內容（僅限背面模板使用）：{{FrontSide}}
 
-FrontSide will not automatically play any audio that was on the front side
-of the card. If you wish to have the same audio play automatically on both
-the front and back of the card, you’ll need to manually include the audio
-fields on the back as well.
+「FrontSide」中的音訊不會被自動播放。要在卡片正背面都自動播放音訊，你需要把音訊欄位單獨加入背面模板。
 
-As with other fields, special field names are case sensitive - you must use
-`{{Tags}}` rather than `{{tags}}` for example.
+跟普通欄位一樣，特殊欄位的名稱也區分大小寫——比如筆記標籤應為 `{{Tags}}`，不能輸入為 `{{tags}}`。
 
-## Hint Fields
+## 提示欄位 Hint Fields
 
-It’s possible to add a field to the front or back of a card, but make it
-hidden until you explicitly show it. We call this a 'hint field'. Before
-adding a hint, please bear in mind that the easier you make it to answer
-a question in Anki, the less likely you are to remember that question
-when you encounter it in real life. Please have a read about the
-'minimum information principle' on
-<https://super-memory.com/articles/20rules.htm> before proceeding.
+你可以隱藏卡片正面或背面上的欄位，且可在需要的時候選擇顯示。被隱藏的欄位叫做「提示欄位」。新增提示前，請注意，越容易回答的問題會越難記住。請前往 <https://super-memory.com/articles/20rules.htm> 了解「最少資訊原則 (minimum information principle)」。
 
-First, you’ll need to add a field to store the hint in if you have not
-already. Please see the [fields](../editing.md#customizing-fields) section if you’re not sure how
-to do this.
+首先，請先建立一個提示欄位。如果不知道怎麼新增欄位，請參閱〈[自訂欄位](../editing.md#自訂欄位-customizing-fields)〉章節。
 
-Assuming you’ve created a field called MyField, you can tell Anki to
-include it on the card but hide it by default by adding the following to
-your template:
+假設你建立了一個「我的欄位」，要把欄位加入模板時，依以下格式：
 
-    {{hint:MyField}}
+    {{hint:我的欄位}}
 
-This will show a link labeled “show hint”; when you click it, the
-content of the field will be displayed on the card. (If MyField is
-empty, nothing will be shown.)
+在卡片上，這會被取代成一個標著「hint」的連結；按一下連結，欄位中的內容就會出現。
 
-If you show the hint on the question and then reveal the answer, the
-hint will be hidden again. If you want to have the hint always revealed
-when the answer is shown, you will need to remove `{{FrontSide}}` from
-your back template and manually add the fields you wish to appear.
+在問題面顯示提示後，若按下顯示答案，則提示會再次隱藏。如果不想在答案面隱藏提示，請在背面模板移除 `{{FrontSide}}` 並手動加入欄位。
 
-It is not currently possible to use a hint field for audio — the audio
-will play regardless of whether you’ve clicked on the hint link.
+目前無法使用音訊作為提示——沒有按下「hint」連結也會照樣播放音訊。
 
-If you want to customize the appearance or behaviour, you’ll need to
-implement the hint field yourself. We can not provide any support for
-doing so, but the following code should get you started:
+要自訂提示的樣式或行為，你將需要自己建置一種提示欄位。我們無法幫你學習 HTML 和 CSS 語言，但你可以參考以下程式碼：
 
-    {{#Back}}
+    {{#背面}}
     ﻿<a class=hint href="#"
     onclick="this.style.display='none';document.getElementById('hint4753594160').style.display='inline-block';return false;">
-    Show Back</a><div id="hint4753594160" class=hint style="display: none">{{Back}}</div>
-    {{/Back}}
+    顯示背面</a><div id="hint4753594160" class=hint style="display: none">{{背面}}</div>
+    {{/背面}}
 
-## Dictionary Links
+## 辭典連結 Dictionary Links
 
-You can also use field replacement to create dictionary links. Imagine
-you’re studying a language and your favourite online dictionary allows
-you to search for text using a web URL like:
+你可以利用欄位取代來建立辭典連結。假設你在學習語言，你常用的線上辭典可使用 URL 進行搜尋：
 
-    http://example.com/search?q=myword
+    http://example.com/search?q=單字
 
-You could add an automatic link by doing the following in your template:
+你可以新增一個這樣的連結：
 
-    {{Expression}}
+    {{單字}}
 
-    <a href="http://example.com/search?q={{Expression}}">check in dictionary</a>
+    <a href="http://example.com/search?q={{單字}}">檢索辭典</a>
 
-The template above would allow you to search for each note’s expression
-by clicking on the link while reviewing. There is a caveat however, so
-please see the next section.
+複習使用這個模板的卡片時，只需按一下「檢索辭典」連結即可搜尋該卡片對應的單字。請繼續閱讀下一部分來了解潛在的問題。
 
-## HTML Stripping
+## 清除 HTML 標籤 HTML Stripping
 
-Like templates, fields are stored in HTML. In the dictionary link
-example above, if the expression contained the word "myword" without any
-formatting, then the HTML would be the same: "myword". But when you
-include formatting in your fields, extra HTML is included. If "myword"
-was bolded for example, the actual HTML would be
-"&lt;b&gt;myword&lt;/b&gt;".
+跟模板一樣，欄位也是使用 HTML 碼來儲存內容的。在上面的辭典連結中，若「單字」欄位內容為「word」且不包含格式，則 HTML 原始碼仍為「word」。但如果你加入了格式，則會同時加入 HTML 原始碼，若「word」加上了粗體，HTML 原始碼將會是「&lt;b&gt;myword&lt;/b&gt;」。
 
-This can present a problem for things like dictionary links. In the
-above example, the dictionary link would end up being:
+因此，在辭典連結或類似的情形中可能會出現問題。依上述例子，辭典連結可能會變成：
 
-    <a href="http://example.com/search?q=<b>myword</b>">check in dictionary</a>
+    <a href="http://example.com/search?q=<b>word</b>">檢索辭典</a>
 
-The extra characters in the link would likely confuse the dictionary
-site, and you’re likely not to get any matches.
+因為多出了「&lt;b&gt;」等無關字元，在辭典中很可能搜尋不到任何結果。
 
-To solve this, Anki provides the ability to strip formatting from fields
-when they are replaced. If you prefix a field name with text:, Anki will
-not include any formatting. So a dictionary link that worked even with
-formatted text would be:
+為了解決這一問題，Anki 提供了在取代時清除欄位格式的功能。只要在欄位名稱前輸入「text:」，Anki 就會清除所有格式。依以下格式設定連結，即便欄位文字存在格式也能正常搜尋：
 
-    <a href="http://example.com/search?q={{text:Expression}}">check in dictionary</a>
+    <a href="http://example.com/search?q={{text:單字}}">檢索辭典</a>
 
-## Right To Left Text
+## 從右至左書寫 Right To Left Text
 
-If you’re using a language that reads from right to left, you’ll need
-to adjust the template like so:
+如果你在學習的語言是從右至左書寫，你需要像這樣調整模板：
 
-    <div dir=rtl>{{FieldThatHasRTLTextInIt}}</div>
+    <div dir=rtl>{{有 RTL 文字的欄位}}</div>
 
-## Ruby Characters
+## 注音 Ruby Characters
 
-Some languages commonly use annotations above the text to display the
-pronunciation of characters. These annotations are known as
-[ruby characters](https://en.wikipedia.org/wiki/Ruby_character).
-In Japanese, these are known as [furigana](https://en.wikipedia.org/wiki/Furigana).
+要為[漢字注音](https://zh.wikipedia.org/zh-tw/漢字注音)（在日文中又稱[振假名](https://zh.wikipedia.org/wiki/振假名)），請依以下語法輸入文字：
 
-In Anki, you can display ruby characters by using the following syntax:
+    日本語[にほんご]
 
-    Text[Ruby]
+假設你在「單字」欄位中寫入了以上文字，如果模板上的欄位沒有加上篩選器，則 `{{單字}}` 會顯示為 `日本語[にほんご]`。你需要在模板名稱前加上 `furigana` 篩選器才能自動將注音放到字上方：
 
-Suppose the text above is written in MyField. By default, if you simply use
-`{{Myfield}}`, the field will be displayed as is. To properly position the
-ruby characters above the text, use the `furigana` filter in the templates
-like so:
+    {{furigana:單字}}
 
-    {{furigana:MyField}}
-
-Here are some examples:
+以下是一些範例：
 
 <!-- prettier-ignore -->
-| Raw Text            | Rendered Text                                                                             |
-| ------------------- | ----------------------------------------------------------------------------------------- |
-| `Text[Ruby]`        | <ruby><rb>Text</rb><rt>Ruby</rt></ruby>                                                   |
+| 原文                 | 顯示效果                                                                                 |
+| -------------------  | ---------------------------------------------------------------------------------------- |
 | `日本語[にほんご]`  | <ruby><rb>日本語</rb><rt>にほんご</rt></ruby>                                             |
+| `水 獺[ㄊㄚˋ]`      | 水<ruby><rb>獺</rb><rt>ㄊㄚˋ</rt></ruby>                                                  |
+| `水獺[ㄊㄚˋ]`       | <ruby><rb>水獺</rb><rt>ㄊㄚˋ</rt></ruby>（錯誤用法）                                      |
 | `世[よ]の 中[なか]` | <ruby><rb>世</rb><rt>よ</rt></ruby>の<ruby><rb>中</rb><rt>なか</rt></ruby>                |
-| `世[よ]の中[なか]`  | <ruby><rb>世</rb><rt>よ</rt></ruby><ruby><rb>の中</rb><rt>なか</rt></ruby> _(incorrect!)_ |
+| `世[よ]の中[なか]`  | <ruby><rb>世</rb><rt>よ</rt></ruby><ruby><rb>の中</rb><rt>なか</rt></ruby>（錯誤用法）    |
 
-Notice how the third example has a space before the 中 character. This is
-necessary to specify that the ruby text applies only to that character.
-If there was no space, the ruby text will be misplaced above the の character,
-as shown in the fourth example.
+注意第 2 個例子中的「獺」和第 4 個例子中的「中」前面都有一個半形空格。這是為了表示注音應顯示在空格後的文字上方。如未加入空格，則會像第 3 和第 5 個例子中那樣，「ㄊ」可能會跑到「水」上面，而「な」可能會顯示在「の」上面。
 
-### Additional Ruby Character Filters
+### 其他注音篩選器 Additional Ruby Character Filters
 
-In addition to the `furigana` filter, you can also only show certain parts
-of the ruby text, with the `kana` and `kanji` filters. The `kana` filter will
-only show the ruby text, while the `kanji` filter removes the ruby text
-entirely.
+除了振假名篩選器 `furigana`，你還可以選擇只顯示注音或原文。使用假名篩選器 `kana` 時將只顯示注音，使用漢字篩選器 `kanji` 則會移除注音。
 
 <!-- prettier-ignore -->
-| Raw Text           | Field Filter           | Rendered Text                                 |
-| ------------------ | ---------------------- | --------------------------------------------- |
-| `日本語[にほんご]` | `{{furigana:MyField}}` | <ruby><rb>日本語</rb><rt>にほんご</rt></ruby> |
-| `日本語[にほんご]` | `{{kana:MyField}}`     | にほんご                                      |
-| `日本語[にほんご]` | `{{kanji:MyField}}`    | 日本語                                        |
+| 原文             | 欄位篩選器               | 顯示效果                                       |
+| --------------- | ---------------------- | --------------------------------------------- |
+| `日本語[にほんご]` | `{{furigana:欄位名稱}}` | <ruby><rb>日本語</rb><rt>にほんご</rt></ruby>   |
+| `日本語[にほんご]` | `{{kana:欄位名稱}}`     | にほんご                                       |
+| `日本語[にほんご]` | `{{kanji:欄位名稱}}`    | 日本語                                         |
 
-These names are, again, borrowed from Japanese.
-The term [kana](https://en.wikipedia.org/wiki/Kana) represents the phonetic
-system used to describe how words are pronounced, whereas the term
-[kanji](https://en.wikipedia.org/wiki/Kanji) represents its Chinese characters.
+## 媒體檔與 LaTeX 方程式 Media & LaTeX
 
-## Media & LaTeX
+因執行速度所限，Anki 不會掃描模板有無引用媒體檔。因此在模板上直接加入媒體會導致一些後果。
 
-Anki does not scan templates for media references, because it is slow to
-do so. This has implications for including media on the template.
+### 靜態音檔/影像 Static Sounds/Images
 
-### Static Sounds/Images
+要在每張卡片上都加入同樣的音檔或影像：
 
-If you wish to include images or sounds on your cards that are the same
-for every card (eg, a company logo at the top of each card):
+1. 重新命名檔案，在開頭加上一個底線，如「\_logo.jpg」。底線表示檔案被模板引用，且應在共用牌組時被匯出。
 
-1. Rename the file so it starts with an underscore, e.g "\_logo.jpg".
-   The underscore tells Anki that the file is used by the template and
-   it should be exported when sharing the deck.
-
-2. Add a reference to the media on your front or back template, like:
+2. 在正面或背面模板中引用這個媒體檔：
 
 <!-- -->
 
     <img src="_logo.jpg">
 
-### Field References
+### 引用欄位 Field References
 
-Media references to fields are not supported. They may or may not display
-during review, and will not work when checking for unused media,
-importing/exporting, and so on. Examples that won’t work:
+媒體引用中不能包含欄位取代。問題有：複習時可能無法正常顯示、檢查未被使用的媒體檔無法被偵測到、無法正常匯出/匯入等。無法正常運作的例子：
 
-    <img src="{{Expression}}.jpg">
+    <img src="{{單字}}.jpg">
 
-    [sound:{{Word}}]
+    [sound:{{例句}}]
 
-    [latex]{{Field 1}}[/latex]
+    [latex]{{欄位一}}[/latex]
 
-Instead, you should include the media references in the field. Please
-see the [importing section](../importing/text-files.md#importing-media) for more information.
+請將媒體引用放入欄位內容。請參閱〈[匯入媒體檔](../importing/text-files.md#匯入媒體檔-importing-media)〉章節來進一步了解。
 
-## Checking Your Answer
+## 檢查答案 Checking Your Answer
 
-You can watch [a video about this feature](http://www.youtube.com/watch?v=5tYObQ3ocrw&yt:cc=on) on
-YouTube.
+要檢查你的答案，最簡單的方式是使用「基本型（輸入答案）」筆記類型。
 
-The easiest way to check your answer is to click "Basic" at the top
-left of the card adding screen, and select "Basic (type in the answer)".
+若要修改已有筆記類型，假設你的模板如下：
 
-If you have downloaded a shared deck and would like to type in the answer
-with it, you can modify its card template. If it has a template like:
-
-    {{Native Word}}
+    {{中文}}
 
     {{FrontSide}}
 
     <hr id=answer>
 
-    {{Foreign Word}}
+    {{英文}}
 
-To type in the foreign word and check if you are correct, you need to
-edit your front template so that it looks like this:
+要輸入英文並檢查答案，請修改卡片正面模板：
 
-    {{Native Word}}
-    {{type:Foreign Word}}
+    {{中文}}
+    {{type:英文}}
 
-Note that we have added `type:` in front of the field we want to
-compare. Since FrontSide is on the back of the card, the type answer box
-will appear on the back as well.
+在要檢查的欄位前加入 `type:`。因為背面模板有「FrontSide」欄位，所以無需再次加入 `{{type:英文}}`。
 
-When reviewing, Anki will display a text box where you can type in the
-answer, and upon hitting <kbd>Enter</kbd> or showing the answer, Anki will show you
-which parts you got right and which parts you got wrong. The text box’s
-font size will be the size you configured for that field (via the
-“Fields” button when editing).
+複習畫面中將會顯示一個文字框，輸入答案後按下 <kbd>Enter</kbd> 鍵或顯示答案按鈕後，Anki 會對比你給出的答案和正確答案。文字框的字型大小是你在「欄位」編輯畫面中設定的大小。
 
-This feature does not change how the cards are answered, so it’s still
-up to you to decide how well you remembered or not.
+答案檢查結果僅供參考，你可以依實際情況自由選擇評價按紐。
 
-Only one typing comparison can be used on a card. If you add the above
-text multiple times, it will not work. It also only supports a single
-line, so it is not useful for comparing against a field that is
-comprised of multiple lines.
+一張卡片只能加入一個文字對比。加入多個 `{{type:欄位}}` 將無法正常運作。文字框只能顯示為一行，因此不適合用於包含多行文字的欄位。
 
-Anki uses a monospaced font for the answer comparison so that the
-“provided” and “correct” sections line up. If you wish to override the
-font for the answer comparison, you can put the following at the bottom
-of your styling section:
+答案檢查結果使用等寬字型，這樣你輸入的答案和正確答案中的字母可以一一對齊。若要覆蓋使用的字型，請在樣式表底部加入：
 
-    code#typeans { font-family: "myfontname"; }
+    code#typeans { font-family: "字型名稱"; }
 
-Which will affect the following HTML for the answer comparison:
+加入的程式碼會影響答案檢查結果的 HTML 原始碼：
 
     <code id=typeans>...</code>
 
-Advanced users can override the default type-answer colors with the css
-classes 'typeGood', 'typeBad' and 'typeMissed'. AnkiMobile supports
-'typeGood' and 'typeBad', but not 'typeMissed'.
+進階使用者還可以使用 CSS class「typeGood」、「typeBad」和「typeMissed」來覆蓋預設的檢查結果文字顏色。AnkiMobile 支援「typeGood」和「typeBad」兩個 class，但不支援「typeMissed」。
 
-If you wish to override the size of the typing box and don’t want to
-change the font in the Fields dialog, you can override the default
-inline style using `!important`, like so:
+要覆蓋文字框的字型大小但不更改「欄位」對話框中的設定，你可以使用 `!important` 來覆蓋預設的行內 (inline) 樣式：
 
     #typeans { font-size: 50px !important; }
 
-It is also possible to type in the answer for cloze deletion cards. To
-do this, add `{{type:cloze:Text}}` to both the front and back
-template, so the back looks something like this:
+克漏字卡片也可以輸入答案。請在卡片正背面模板中都加入 `{{type:cloze:文字}}`，像這樣：
 
-    {{cloze:Text}}
-    {{type:cloze:Text}}
-    {{Extra}}
+    {{cloze:文字}}
+    {{type:cloze:文字}}
+    {{背面額外內容}}
 
-Note that since the cloze type does not use FrontSide, this must be
-added to both sides on a cloze note type.
+因為克漏字類型不使用「FrontSide」欄位，所以需要在正背兩面都加入。
 
-If there are multiple sections elided, you can separate the answers in
-the text box with a comma.
+若一張卡片中包含了多個克漏字空格，顯示正確答案時各空格內容將以半形逗號和空格「, 」隔開。
 
-Type answer boxes will not appear in the ["preview" dialog](intro.md) in the browser. When you review or look at
-the preview in the card types window, they will display.
 
-Type answer boxes will not be displayed when you review your cards on [ankiweb.net](../syncing.md).
+輸入答案文字框不會在[瀏覽器預覽](intro.md)中顯示，只會在複習畫面或卡片類型視窗中顯示。
+
+在 [ankiweb.net](../syncing.md) 上複習時也不會顯示輸入答案文字框。

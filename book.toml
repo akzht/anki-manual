@@ -1,10 +1,10 @@
 [book]
 authors = ["Ankitects Pty Ltd and contributors"]
-description = "Anki's user manual. Anki is a flashcard program that makes learning easier."
-language = "en"
+description = "Anki 使用手冊。Anki 是一個閃卡程式，是你學習時的好幫手。"
+language = "zh-tw"
 multilingual = false
 src = "src"
-title = "Anki Manual"
+title = "Anki 使用手冊"
 
 [build]
 create-missing = true
@@ -14,9 +14,9 @@ command = "mdbook-toc"
 renderer = ["html"]
 
 [output.html]
-git-repository-url = "https://github.com/ankitects/anki-manual/"
-cname = "docs.ankiweb.net"
-additional-css = ["css/misc.css", "css/kbd.css"]
+git-repository-url = "https://github.com/anki-manual-zh-tw/anki-manual/"
+cname = "lghhz.github.io/anki-manual"
+additional-css = ["css/kbd.css", "css/misc.css", "css/fonts.css"]
 
 [output.linkcheck]
 optional = true
@@ -35,3 +35,7 @@ exclude = [
 [output.html.fold]
 enable = true
 level = 0
+
+[output.html.font]
+enable = true
+woff = true

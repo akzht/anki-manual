@@ -1,549 +1,298 @@
-# Adding/Editing
+# 新增/編輯 [Adding/Editing <span style="font-size:18px;">(英文)</span>](https://docs.ankiweb.net/editing.html)
 
 <!-- toc -->
 
-## Adding Cards and Notes
+## 新增卡片和筆記 Adding Cards and Notes
 
-Recall from the [basics](getting-started.md) that in Anki we add notes rather than
-cards, and Anki creates cards for us. Click 'Add' in the [main window](studying.md#decks),
-and the Add Notes window will appear.
+回憶[基礎](getting-started.md)，我們在 Anki 中加入的是「筆記」，建立卡片的任務被交給了 Anki。在[主視窗](studying.md#牌組-decks)中按一下「新增」，就會出現新增筆記的視窗。
 
-![Add Screen](media/add_screen.png)
+![新增畫面](media/add_screen.png)
 
-The top left of the window shows us the current [note type](getting-started.md#note-types). If it does
-not say "Basic," then you may have added some note types when you
-downloaded a shared deck. The text below assumes that "Basic" is
-selected.
+視窗左上方顯示當前的「[筆記類型](getting-started.md#筆記類型-note-types)」。如果寫的不是「基本型（Basic）」，那可能是你下載了共享牌組，因而加入了其他筆記類型。以下說明以「基本型」為準。
 
-The top right of the window shows us the [deck](getting-started.md#decks) cards will be added to. If
-you would like to add cards to a new deck, you can click on the deck name
-button and then click "Add".
+視窗右上方顯示卡片將被放入的[牌組](getting-started.md#牌組-decks)。要將卡片放入新牌組，請按一下牌組名稱按鈕，然後點選「新增」。
 
-Below the note type, you'll see some buttons, and an area labelled
-"Front" and "Back". Front and Back are called [fields](getting-started.md#notes--fields), and you can add,
-remove, and rename them by clicking the "Fields…​" button above.
+筆記類型下方有一些按鈕，還有一個寫著「正面」和「背面」的區域，這兩個區域是筆記的「[欄位](getting-started.md#筆記--欄位-notes--fields)」，你可以使用上方的「欄位...」按鈕來新增、移除或重新命名各欄位。
 
-Below the fields is another area labelled "**tags**". Tags are labels that
-you can attach to your notes, to make organizing and finding notes
-easier. You can leave the tags blank if you wish, or add one or more of
-them. Tags are separated by a space. If the tags area says
+欄位下方還有一個寫著「**標籤**」的區域。加入標籤可方便整理及尋找筆記，如果不需要標籤則可以留空。標籤以半形空格分隔。如果標籤列寫著
 
     vocab check_with_tutor
 
-…​then the note you add would have two tags.
+則加入的筆記會有「vocab」和「check_with_tutor」兩個標籤。
 
-When you have entered text into the front and back, you can click the
-"Add" button or press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (<kbd>Command</kbd>+<kbd>Enter</kbd> on a Mac) to add the
-note to your collection. When you do so, a card will be created as well,
-and placed into the deck you chose. If you would like to edit a card you
-added, you can click the history button to search for a recently added
-card in the [browser](browsing.md).
+在「正面」和「背面」中輸入文字後，按下「新增」按鈕或 <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (Mac: <kbd>Command</kbd>+<kbd>Enter</kbd>) 來將筆記加入你的集合中。同時，卡片將被建立並放入你選取的牌組。若要編輯加入的卡片，請點選「歷程記錄」按鈕來使用[瀏覽器](browsing.md)檢視剛加入的卡片。
 
-For more information on the buttons between the note type and the
-fields, please see the [editor](editing.md) section.
+請參閱〈[編輯器](deck-options.md#牌組選項-review-sort-order)〉章節來進一步了解筆記類型下方/欄位區域上方的按鈕。
 
-### Duplicate Check
+### 檢查重複 Duplicate Check
 
-Anki checks the first field for uniqueness, so it will warn you if you
-enter two cards with a Front field of "apple" (for example). The
-uniqueness check is limited to the current note type, so if you're
-studying multiple languages, two cards with the same Front would not be
-listed as duplicates as long as you had a different note type for each
-language.
+Anki 會檢查第一個欄位是否唯一，如果有兩則筆記的「正面」欄位都寫著「apple」，你會看到一條警告。重複項目的檢查範圍是當前的筆記類型，因此若你在學習的兩種語言中恰好有兩個字的拼寫相同，你可以為兩種語言分別建立一個筆記類型，這樣「正面」欄位相同也不會提示重複。
 
-Anki does not check for duplicates in other fields automatically for
-efficiency reasons, but the browser has a "Find Duplicates" function,
-which you can run periodically.
+為效能所限，Anki 不會自動檢查其他欄位中的重複項目，你可以手動定期執行瀏覽器中的「尋找重複項目」功能。
 
-### Effective Learning
+### 高效學習 Effective Learning
 
-Different people like to review in different ways, but there are some
-general concepts to keep in mind. An excellent introduction is [this article](https://super-memory.com/articles/20rules.htm) on the SuperMemo
-site. In particular:
+每個人的複習方法都不一樣，但最好還是要知道一些基本的概念。建議參閱 SuperMemo 上的[這篇文章](https://super-memory.com/articles/20rules.htm)。特別注意：
 
-- **Keep it simple**: The shorter your cards, the easier they are to
-  review. You may be tempted to include lots of information "just in
-  case," but reviews will quickly become painful.
+- **保持簡單**：卡片越短就越容易複習。內容過於充實可能在最後複習時弊大於利。
 
-- **Don't memorize without understanding**: If you are studying a
-  language, try to avoid large lists of words. The best way to learn
-  languages is in context, which means seeing those words used in a
-  sentence. Likewise, imagine you're studying a computer course. If
-  you attempt to memorize the mountain of acronyms, you'll find it
-  very difficult to make progress. But if you take the time to
-  understand the concepts behind the acronyms, learning the acronyms
-  will become a lot easier.
+- **懂了再記**：如果你在學習語言，請儘量不要背「必考3000字」之類的單字表。學習外文應在「文」中理解，而不是背誦脫離了上下文語境的單字。
 
-## Adding a Note Type
+## 新增筆記類型 Adding a Note Type
 
-While basic note types are sufficient for simple cards with only a word
-or phrase on each side, as soon as you find yourself wanting to include
-more than one piece of information on the front or back, it's better to
-split that information up into more fields.
+雖然基本型足以應付一面一字這種較為簡單的卡片，但若要在正面或背面顯示多個要點，你應該把這些資訊分為多個欄位。
 
-You may find yourself thinking "but I only want one card, so why can't I
-just include the audio, a picture, a hint, and the translation in the
-Front field?" If you'd prefer to do that, that's fine. But the
-disadvantage of that approach is that all the information is stuck
-together. If you wanted to sort your cards by the hint, you wouldn't be
-able to do that as it is mixed in with the other content. You also
-wouldn't be able to do things such as moving the audio from the front to the
-back, except by laboriously copying and pasting it for every note. By
-keeping content in separate fields, you make it much easier to adjust
-the layout of your cards in the future.
+你可能會想，「如果我只需要一張卡片，為甚麼不能直接把音訊、圖片、提示和翻譯全部放到正面欄位中？」如果你想這麼做也沒關係。不過這樣，所有的內容將被混在一起。你將無法依提示或翻譯來排序，也沒有辦法直接把所有音訊移到另外一面上，只能一則一則筆記複製貼上來編輯。現在多分幾個欄位，未來修改卡片佈局時就不用大費手腳。
 
-To create a new type of note, choose Tools → Manage Note Types from the
-main Anki window. Then click "Add" to add a new type of note. You will now
-see another screen that gives you a choice of note types to base the new
-type on. "Add" means to base the newly created type on one that comes
-with Anki. "Clone" means to base the newly created type on one that is
-already in your collection. For instance, if you'd created a French
-vocab type already, you might want to clone that when creating a German
-vocab type.
+要建立新的筆記類型，請在 Anki 主視窗選取「工具」→「管理筆記類型」。然後按一下「新增」來新增筆記類型。在新的畫面中，你可以選取新筆記類型的基底。點選「新增」將使用 Anki 內建的筆記類型。「複製」則可讓你選取集合中已有的筆記類型。比如你可以在新增「日文」筆記類型時直接複製已有的「英文」類型。
 
-After choosing OK, you will be asked to name the new type. The subject
-material that you are studying is a good choice here – things like "Japanese",
-"Trivia", and so on. Once you have chosen a name, close the Note Types
-window, and you will return to the adding window.
+選擇「好」之後，你可以為你的新類型命名。命名後，關閉筆記類型視窗，回到新增視窗。
 
-## Customizing Fields
+## 自訂欄位 Customizing Fields
 
-To customize fields, click the "Fields…​" button when adding or editing
-a note, or while the note type is selected in the Manage Note Types
-window.
+若要自訂欄位，請在新增/編輯筆記畫面或「管理筆記類型」視窗中點選「欄位...」按鈕。
 
 ![Fields](media/fields.png)
 
-You can add, remove, or rename fields by clicking the appropriate
-buttons. To change the order in which the fields appear in this dialog
-and the add notes dialog, you can use the reposition button, which asks
-for the numerical position you want the field to have. So if you want to
-change a field to be the new first field, enter "1".
-
-Do not use 'Tags', 'Type', 'Deck', 'Card', or 'FrontSide' as field
-names, as they are [special fields](templates/fields.md#special-fields) and will not work
-properly.
-
-The options at the bottom of the screen allow you to edit various
-properties of the fields to be used when adding and editing the cards.
-This is _not_ where you customize what appears on your cards when
-reviewing; for that, please see [templates](templates/intro.md).
-
-- **Editing Font** allows you to customize the font and size used when
-  editing notes. This is useful if you want to make unimportant
-  information smaller, or increase the size of foreign characters which
-  are hard to read. The changes you make here do not affect how cards
-  appear when reviewing: to do that, please see the
-  [templates](templates/intro.md) section. If you have enabled the "type in the
-  answer" function, however, the text you type will use the font size
-  defined here. (For information about how to change the actual font face
-  when typing the answer, please see the [checking your answer](templates/fields.md#checking-your-answer) section.)
-
-- **Sort by this field…​** tells Anki to show this field in the Sort Field
-  column of the browser. You can use this to sort cards by that field.
-  Only one field can be the sort field at once.
-
-- **Reverse text direction** is useful if you are studying languages that
-  display text from right to left (RTL), such as Arabic or Hebrew. This
-  setting currently only controls editing; to make sure the text displays
-  correctly during review, you'll need to adjust your
-  [template](templates/styling.md#text-direction).
-
-- **Use HTML editor by default** is useful if you prefer to edit the fields
-  directly in HTML.
-
-- **Collapse by default**. Fields can be collapsed/expanded.
-  The animation can be disabled in the [preferences.](preferences.md)
-
-- **Exclude from unqualified searches (slower)** can be used if you want
-  the content of a certain field not to appear in unqualified [(not limited to a specific field)](searching.md#limiting-to-a-field)
-  searches.
-
-After you have added fields, you will probably want to add them to the front
-or back of your cards. For more information on that, please see the
-[templates](templates/intro.md) section.
-
-## Changing Deck / Note Type
-
-While adding, you can click on the top left button to change note type,
-and the top right button to change deck. The window that opens up will
-not only allow you to select a deck or note type, but also to add new
-decks or manage your note types.
-
-## Organizing Content
-
-### Using Decks Appropriately
-
-[Decks](getting-started.md#decks) are designed to divide your content up into
-broad categories that you wish to study separately, such as English, Geography,
-and so on. You may be tempted to create lots of little decks to keep your
-content organized, such as "my geography book chapter 1", or "food verbs", but
-this is not recommended, for the following reasons:
-
-- Lots of little decks may mean you end up seeing cards in a
-  recognizable order. On older scheduler versions, new cards can only
-  be introduced in deck order. And if you were planning to click on each deck
-  in turn (which is slow), you will end up seeing all the "chapter 1" or
-  "food verb" reviews together. This makes it easier to answer the
-  cards, as you can guess them from the context, which leads to weaker
-  memories. When you need to recall the word or phrase outside Anki,
-  you won't always have the luxury of being shown related content first!
-
-- While less of a problem than it was in earlier Anki versions,
-  adding hundreds of decks may cause slowdowns, and very large deck
-  trees with thousands of items can actually break the display of
-  the deck list in Anki versions before 2.1.50.
-
-### Using Tags
-
-Instead of creating lots of little decks, it's a better idea to use tags
-and/or fields to classify your content. Tags are a useful way to boost
-search results, find specific content, and keep your collection
-organized.
-There are many ways of using tags and flags effectively, and
-thinking in advance about how you want to use them will help you decide
-what will work best for you.
-
-Some people prefer using decks and subdecks to keep their cards organized,
-but using tags have a big advantage over decks for that: you can add several
-tags to a single note, but a single card can only belong to one deck, which
-makes tags a more powerful and flexible categorization system than
-decks in most cases. You can also organize tags in trees [in the same way as you can do for decks](getting-started.md#decks).
-
-For example, instead of creating a "food verbs" deck, you could add those
-cards to your main language study deck, and tag the cards with "food" and
-"verb". Since each card can have multiple tags, you can do things like
-[search](searching.md#tags-decks-cards-and-notes) for all verbs, or all
-food-related vocabulary, or all verbs that are related to food.
+你可以在欄位畫面中新增、移除或重新命名欄位。如需更改欄位在這裡和新增筆記畫面中的順序，請按「調整順序 (Reposition)」按鈕，並輸入數字序號。例如，要將欄位改為第一個欄位，則應輸入 「1」。
 
-You can add tags from the Edit window and from the [Browser](browsing.md), and you can also add,
-delete, rename, or organize tags there. Please note that
-tags work at [note](getting-started.md#notes--fields) level, which means that when you tag a card that has siblings,
-all the siblings will be tagged as well. If you need to tag a single card,
-but not its siblings, you should consider using flags instead.
+Anki 預留了一些[特殊欄位](templates/fields.md#特殊欄位-special-fields)，如「Tags」、「Type」、「Deck」、「Card」和「FrontSide」。因此請勿將欄位命名為這些名稱，否則欄位將無法正常運作。
 
-### Using Flags
+畫面底部的選項用於調整新增和編輯卡片時的欄位屬性。這些選項**不是**用來自訂學習時顯示的卡片樣式；請參閱〈[模板](templates/intro.md)〉來進一步了解卡片樣式自訂。
 
-Flags are similar to tags, but they will appear during study in the review
-window, showing a colored flag icon on the upper right area of the screen.
-You can also search for flagged cards in the Browse screen, rename flags
-from the browser and create filtered decks from flagged cards, but unlike tags,
-a single card can have only one flag at a time. Another important difference
-is that flags work at [card](getting-started.md#cards) level, so flagging a card that has siblings
-won't have any effect on the card's siblings.
+- **編輯器字型**：調整筆記編輯畫面的字型和大小，可以用來縮小沒那麼重要的欄位，或是放大較難看清的字母。這裡的更動不會影響卡片複習時的樣式，如需自訂卡片樣式，請參閱〈[模板](templates/intro.md)〉。不過，如果你啟用了「輸入答案」，輸入框中的文字將使用這項設定。（有關如何在輸入答案時變更實際字型的資訊，請參閱〈[檢查答案](templates/fields.md#檢查答案-checking-your-answer)〉章節來進一步了解如何更改答案實際輸入字型）。
 
-You can flag / unflag cards directly while in review mode (by pressing
-<kbd>CTRL</kbd> + <kbd>1-7</kbd> on Windows or <kbd>CMD</kbd> + <kbd>1-7</kbd> on Mac)
-and from the [Browser.](browsing.md)
+- **依此欄位在瀏覽器中排序​**：設定瀏覽器中顯示的排序欄位。一個筆記類型只能設定一個排序欄位。
 
-### The "Marked" Tag
+- **反轉文字方向為由右至左 (RTL)**：用於阿拉伯語、希伯來語等從右向左顯示文字的語言。這項設定目前僅在編輯時生效；若要確保在複習時也能正確顯示卡片，你將需要調整[模板](templates/intro.md)。
 
-Anki treats a tag called "marked" specially. There are options in the review
-screen and browse screen to add and remove the "marked" tag. The review screen
-will show a star when the current card's note has that tag. And cards are
-shown in a different color in the browse screen when their note is marked.
+- **預設使用 HTML 編輯器**：供比較喜歡編輯欄位的 HTML 原始碼的使用者使用。
 
-Note: Marking is mainly left around for compatibility with older Anki
-versions; most users will want to use [flags](editing.md#using-flags) instead.
+- **預設摺疊此欄位**：設定欄位預設狀態為摺疊或展開。另外，摺疊/展開的動畫可以在[偏好設定](preferences.md)中停用。
 
-### Using Fields
+- **若搜尋條件未指定欄位，則不搜尋此欄位的內容（較慢）**：可以在搜尋時排除某一欄位的內容，只有在[限制欄位](searching.md#限制欄位-limiting-to-a-field)（搜尋條件中指定了欄位）時才會出現在搜尋結果中。
 
-For those who like to stay very organized, you can add fields to your
-notes to classify your content, such as "book", "page", and so on. Anki
-supports searching in specific fields, which means you can do a search
-for `"book:my book" page:63` and immediately find what you're looking
-for.
+新增欄位後，你可能會想要把欄位的內容放到卡片正面或背面上。請參閱〈[模板](templates/intro.md)〉章節來進一步了解。
 
-### Custom Study and Filtered Decks
+## 更改牌組/筆記類型 Changing Deck / Note Type
 
-Using [custom study and filtered deck](filtered-decks.md) you can create
-temporary decks out of search
-terms. This allows you to review your content mixed together in a single
-deck most of the time (for optimum memory), but also create temporary
-decks when you need to focus on particular material, such as before a
-test. The general rule is that if you always want to be able to study
-some content separately, it should be in a normal deck; if you only
-occasionally need to be able to study it separately (for a test, when
-under a backlog, etc.), then filtered decks created from tags, flags,
-marks or fields are better.
+新增筆記時，你可以按一下左上方的按鈕來更改筆記類型，或按一下右上方的按鈕來更改牌組。你可以在開啟的視窗中選取已有的牌組和筆記類型，或是新增牌組和管理筆記類型。
 
-## Editing Features
+## 整理 Organizing Content
 
-The editor is shown when [adding notes](editing.md), [editing a note](studying.md#editing-and-more) during reviews, or [browsing](browsing.md).
+### 恰當運用牌組 Using Decks Appropriately
 
-![Editor icons](media/editor_icons.png)
+使用[牌組](getting-started.md#牌組-decks)可以讓你把內容分類，以便分別學習「英文」、「地理」等不同學科。但不建議分類過細，分成「有機化學第二章」、「食物字彙」這樣的牌組，原因是：
 
-On the top left are two buttons, which open the [fields](editing.md#customizing-fields) and
-[cards](templates/intro.md) windows.
+- 過多細分牌組會使卡片以你知道的順序出現。使用較舊的排程器版本時，新卡片只會依牌組順序出現。此外，若你打算分別學習每一個牌組（而且一個一個牌組來按會很慢），則「第二章」中的所有卡片都會排到一起複習。這樣會有損你的記憶，因為同類的卡片可能會幫你想起答案，從而導致你沒有完全憑自身記憶來作答。因而，當你在考試時，因為沒有其他卡片來幫你，你可能會完全回想不出一張卡片的內容。
 
-On the right are buttons that control formatting. Bold, italic and
-underline work like they do in a word processing program. The next two
-buttons allow you to subscript or superscript text, which is useful for
-chemical compounds like H<sub>2</sub>O or simple mathematical equations like
-x<sup>2</sup>. Then, there are two buttons to allow you to change text colour.
+- 雖然較新的 Anki 版本中可能較少出現，但一大堆牌組可能會導致運作緩慢。在 2.1.50 及較舊的版本中，上千個牌組和層級還會導致牌組清單無法正常顯示。
 
-The rubber eraser button clears any formatting in the currently selected text — including the colour
-of the text, whether the selected text is bold, etc. The next three buttons allow creating lists, text alignment and text indent.
+### 使用標籤 Using Tags
 
-You can use the paper-clip button to select audio, images, and videos from
-your computer's hard drive and attach them to your notes. Alternatively, you
-can copy the media onto your computer's clipboard (for instance, by
-right-clicking an image on the web and choosing 'Copy Image') and paste
-it into the field that you want to place it in. For more information
-about media, please see the [media](media.md) section.
+雖然不建議細分牌組，但我們可以使用標籤或欄位來達成類似的目的。標籤可以幫你更精準地搜尋，並保持集合井然有序。你可以自由使用標籤和旗標，建議提前規劃好使用方法，這樣將更容易找出最適合你的方案。
 
-The microphone icon allows you to record from your computer's microphone
-and attach the recording to the note.
+有些人可能喜歡用牌組和子牌組來整理卡片，但你可以給一則筆記加上多個標籤，而一張卡片只能放在一個牌組中。在大多數情況下，標籤可以更好地進行分類整理。你也可以[跟牌組一樣](getting-started.md#牌組-decks)，分上下層級來建立父標籤/子標籤。
 
-The Fx button shows shortcuts to add MathJax or
-[LaTeX](math.md) to your notes.
+譬如，比起建立「食物動詞」牌組，更好的辦法是把卡片放入學習語言的主牌組，然後為卡片加上「食物」和「動詞」標籤。得益於多標籤，你可以[搜尋](searching.md#標籤、牌組、卡片和筆記-tags-decks-cards-and-notes)所有動詞，所有食物字彙，或所有與食物有關的動詞。
 
-The \[…​\] buttons are visible when a cloze note type is selected.
-![Cloze icons](media/cloze_icons.png)
+你可以在編輯視窗和[瀏覽器](browsing.md)中加入標籤，在瀏覽器中還可以新增、刪除、重新命名或整理標籤。請注意，標籤是套用於[筆記](getting-started.md#筆記--欄位-notes--fields)上，因此當你為一張卡片加上標籤時，關聯的卡片也會被加上標籤。若僅需為一張卡片加上標籤，而不影響同一則筆記的其他卡片，請選擇使用旗標。
 
-The `</>` button allows editing the underlying HTML of a field.
-![HTML icon](media/html_icon.png)
+### 使用旗標 Using Flags
 
-Anki 2.1.45+ supports adjusting sticky fields directly from the editing screen.
-If you click on the pin icon on the right of a field, Anki will not clear out
-the field's content after a note is added. If you find yourself entering the
-same content into multiple notes, you may find this useful. On previous Anki
-versions, sticky fields were toggled from the Fields screen.
+旗標跟標籤類似，但旗標會在學習時出現在畫面右上方。你也可以搜尋帶旗標的卡片、在瀏覽器中重新命名旗標，或是建立僅限某一旗標的篩選牌組。但與標籤不同，一張卡片只能有一個旗標。另外，旗標套用於[卡片](getting-started.md#卡片-cards)自身，因此不會影響關聯卡片。
 
-![Pin icon](media/Pin_icon.png)
+你可以在複習畫面中為卡片加上/移除旗標（Windows: <kbd>CTRL</kbd> + <kbd>1-7</kbd>，Mac: <kbd>CMD</kbd> + <kbd>1-7</kbd>），或在[瀏覽器](browsing.md)中編輯。
 
-Most of the buttons have shortcut keys. You can hover the mouse cursor
-over a button to see its shortcut.
+### 標記「Marked」標籤 The "Marked" Tag
 
-When pasting text, Anki will keep most formatting by default. If you
-hold down the <kbd>Shift</kbd> key while pasting, Anki will strip most of the
-formatting. Under Preferences, you can toggle "Paste without shift
-key strips formatting" to modify the default behaviour.
+「marked」是一個特殊標籤。你可以透過複習畫面和瀏覽器中的標記選項來加上/移除「marked」標籤。標記了筆記後，複習時卡片上會顯示一顆星，且卡片在瀏覽器中會顯示為不同顏色。
 
-## Cloze Deletion
+注意：因顧及新舊版本間的相容性，Anki 仍保留「標記」功能。現建議使用[旗標](editing.md#使用旗標-using-flags)。
 
-'Cloze deletion' is the process of hiding one or more words in a
-sentence. For example, if you have the sentence:
+### 使用欄位 Using Fields
 
-    Canberra was founded in 1913.
+你還可以新增一些專門用於分類的欄位，比如「冊數」、「頁碼」等。Anki 支援搜尋特定欄位中的內容，所以當你需要英文第一冊第63頁的卡片時，搜尋 `"冊數:英文 第一冊" 頁碼:63` 就能找到這些卡片。
 
-…​and you create a cloze deletion on "1913", then the sentence would
-become:
+### 自訂學習和篩選牌組 Custom Study and Filtered Decks
 
-    Canberra was founded in [...].
+平常學習時，卡片應儘量集於一處，以維持最佳記憶效果。但在考前需要挑重點來複習時，你可以透過[自訂學習和篩選牌組](filtered-decks.md)功能來建立臨時牌組。經常需要單獨學習的內容建議單獨放入普通牌組；偶爾需要單獨學習的內容（如考前需複習或積壓的卡片）則建議依實際情況，透過標籤、旗標、標記或欄位等搜尋條件來建立篩選牌組。
 
-Sometimes sections that have been removed in this fashion are said to be
-'occluded'.
+## 編輯功能 Editing Features
 
-For more information on why you might want to use cloze deletion, see
-Rule 5 [here](https://super-memory.com/articles/20rules.htm).
+[新增筆記](editing.md)、複習時[編輯筆記](studying.md#「編輯」和「其他」-editing-and-more)和[瀏覽器](browsing.md)中會顯示編輯器。
 
-Anki provides a special cloze deletion type of note, to make creating
-clozes easy. To create a cloze deletion note, select the Cloze note
-type, and type some text into the "Text" field. Then drag the mouse over
-the text you want to hide to select it, and click the \[…​\] button.
-Anki will replace the text with:
+![編輯器圖示](media/editor_icons.png)
 
-    Canberra was founded in {{c1::1913}}.
+點選左上方的兩個按鈕來打開[欄位](editing.md#自訂欄位-customizing-fields)和[卡片](templates/intro.md)視窗。
 
-The "c1" part means that you have created one cloze deletion on the
-sentence. You can create more than one deletion if you'd like. For
-example, if you select Canberra and click \[…​\] again, the text will
-now look like:
+右邊是格式控制按鈕。粗體、斜體和底線用法與一般文書處理軟體一樣。緊接在後的是上標和下標，可用於化學符號 H<sub>2</sub>O 或簡單的數學方程式 x<sup>2</sup>。後面兩個按鈕可讓你更改文字顏色。
 
-    {{c2::Canberra}} was founded in {{c1::1913}}.
+點選橡皮擦按鈕將清除所選文字的所有格式——包括顏色、粗斜體等。後面三個按鈕用於建立清單、調整文字對齊和增加/減少縮排。
 
-When you add the above note, Anki will create two cards. The first card
-will show:
+點選迴紋針按鈕後，你可以從電腦硬碟中選取音訊、圖片和影片來加入筆記。你也可以直接複製媒體檔（如在瀏覽器中右鍵選擇「複製圖片」），然後在需要的欄位貼上。請參閱〈[媒體檔](media.md)〉章節來進一步了解媒體檔。
 
-    Canberra was founded in [...].
+點選麥克風圖示將使用電腦麥克風錄製音訊，錄製結束後音檔將被加入筆記。
 
-…​on the question, with the full sentence on the answer. The other card
-will have the following on the question:
+點選 Fx 按鈕可以快速新增 MathJax 或 [LaTeX](math.md) 方程式到筆記中。
 
-    [...] was founded in 1913.
+使用克漏字筆記類型時，還會顯示 \[…​\] 按鈕。
+![克漏字圖示](media/cloze_icons.png)
 
-You can also elide multiple sections on the same card. In the above
-example, if you change c2 to c1, only one card would be created, with
-both Canberra and 1913 hidden. If you hold down <kbd>Alt</kbd> (<kbd>Option</kbd> on a Mac)
-while creating a cloze, Anki will automatically use the same number
-instead of incrementing it.
+使用 `</>` 按鈕可以編輯欄位的 HTML 原始碼。
+![HTML 圖示](media/html_icon.png)
 
-Cloze deletions don't need to fall on word boundaries, so if you select
-"anberra" rather than "Canberra" in the above example, the question
-would appear as "C\[…​\] was founded in 1913", giving you a hint.
+Anki 2.1.45+ 支援在編輯畫面調整欄位凍結。點選欄位右上方的釘選圖示後，每次新增筆記後 Anki 都不會清除這個欄位中的內容。如果你準備新增的筆記中有多則筆記含有相同的欄位，則可將這個欄位凍結。在較舊的 Anki 版本中，切換欄位凍結的設定在欄位畫面中。
 
-You can also give yourself hints that don't match the text. If you
-replace the original sentence with:
+![釘選圖示](media/Pin_icon.png)
 
-    Canberra::city was founded in 1913
+大多數按鈕都有快速鍵。將滑鼠游標懸停在按鈕上即可檢視其快速鍵。
 
-…​and then press \[…​\] after selecting "Canberra::city", Anki will
-treat the text after the two colons as a hint, changing the text into:
+根據預設，在 Anki 中貼上文字時大部分格式都將被保留。若在貼上的同時按住 <kbd>Shift</kbd> 鍵，則 Anki 會清除大部分格式。如需預設清除格式，請在偏好設定中切換「自動清除文字格式（貼上時無需按住 shift 鍵）」選項。
 
-    {{c1::Canberra::city}} was founded in 1913
+## 克漏字空格 Cloze Deletion
 
-When the card comes up for review, it will appear as:
+「克漏字空格」可以用來隱藏句子中的字詞。比如：
 
-    [city] was founded in 1913.
+    臺北縣2010年升格為新北市。
 
-For information on testing your ability to type in a cloze deletion
-correctly, please see the section on [typing answers](templates/fields.md#checking-your-answer).
+你可以把這句話中的「2010」設為空格：
 
-From version 2.1.56, nested cloze deletions are supported. For example, the following is valid:
+    臺北縣[...]年升格為新北市。
 
-    {{c1::Canberra was {{c2::founded}}}} in 1913
+要進一步了解使用克漏字的優點，請參閱 [Rule 5](https://super-memory.com/articles/20rules.htm)（英文）。
 
-The inner cloze is entirely nested within the outer. There is no support for partial overlaps, such as:
+要在 Anki 中建立克漏字，選取克漏字筆記類型，並在「文字」欄位中輸入文字。選取要隱藏的文字，然後點選 \[…​\] 按鈕。Anki 會取代所選文字：
 
-    [...] founded in 1913 -> Canberra was
-    Canberra [...] in 1913 -> was founded
+    臺北縣{{c1::2010}}年升格為新北市。
 
-with the word "was" appearing in both deletions.
+「c1」表示建立的第一個空格。你可以繼續建立空格，選取「新北市」，然後點選 \[…​\]：
 
-Prior to version 2.1.56, if you need to create clozes from overlapping text, add another Text
-field to your cloze, add it to the [template](templates/intro.md), and then when
-creating notes, paste the text into two separate fields, like so:
+    臺北縣{{c1::2010}}年升格為{{c2::新北市}}。
 
-    Text1 field: {{c1::Canberra was founded}} in 1913
+此時，新增筆記後，Anki 將會為你建立兩張卡片。第一張卡片的問題面如下：
 
-    Text2 field: {{c2::Canberra}} was founded in 1913
+    臺北縣[...]年升格為新北市。
 
-The default cloze note type has a second field called Extra, that is
-shown on the answer side of each card. It can be used for adding some
-usage notes or extra information.
+而答案面將會顯示完整的句子。第二張卡片的問題面如下：
 
-The cloze note type is treated specially by Anki, and cannot be created
-based on a regular note type. If you wish to customize it, please make
-sure to clone the existing Cloze type instead of another type of note.
-Things like formatting can be customized, but it is not possible to add
-extra card templates to the cloze note type.
+    臺北縣2010年升格為[...]。
 
-## Image Occlusion
+你還可以將多個空格合併為一張卡片。在上面的例子中，如果你把「c2」改為「c1」，則 Anki 只會建立一張卡片，問題面上「2010」和「新北市」都會被隱藏。在建立空格時，按住 <kbd>Alt</kbd> 鍵（Mac: <kbd>Option</kbd> 鍵）則 Anki 會自動使用相同的空格序號。
 
-Anki 23.10+ supports Image Occlusion cards natively. An Image
-Occlusion (IO) note is a special case of cloze deletion based on images
-instead of text, and allows you to create cards that hide some parts
-of an image, testing your knowledge of that hidden information.
+你可以在任意位置建立空格，例如你可以在「Canberra」一字中只選取「anberra」建立空格，這樣在卡片問題面上會顯示為「C\[…​\]」，留下首字母作為提示。
 
-![Image Occlusion](media/io.jpg)
+你也可以加入不在原文中的提示。你可以這樣寫：
 
-### Adding an image
+    Canberra::市名 was founded in 1913
 
-To add IO cards to your collection, open the Add screen, click on "Type"
-and choose "Image Occlusion" from the list of built-in note types.
-Then, click on "Select Image" to load an image file saved on your
-computer's hard drive, or on "Paste image from clipboard"
-if you have an image copied to the clipboard.
+選取「Canberra::市名」，然後按\[…​\]以建立空格，兩個半形逗號「::」後面的文字將成為提示：
 
-### Adding IO cards
+    {{c1::Canberra::市名}} was founded in 1913
 
-After loading an image, the IO editor will open. Click on the
-icons on the left to add as many areas to your image as you want.
-There are three basic shapes to choose from:
+在複習時，卡片顯示效果如下：
 
-- Rectangle
-- Ellipse
-- Polygon
+    [市名] was founded in 1913
 
-You can also choose between two different IO modes for each note:
+如需了解如何在克漏字卡片中輸入答案，請參閱〈[檢查答案](templates/fields.md#檢查答案-checking-your-answer)〉章節。
 
-- **Hide All, Guess One**: All areas are hidden and only one
-  area at a time is revealed while learning.
-- **Hide One, Guess One**: Only one area at a time is hidden
-  and will be revealed during learning. The other areas will be visible.
+在 2.1.56 及以上版本中，你可以在克漏字空格中內嵌空格。比如：
 
-![Image Occlusion Modes](media/io_modes.jpg)
+    {{c1::臺北縣{{c2::2010年}}}}升格為新北市。
 
-Once you're done, click on the "Add" button, at the bottom of the screen.
-Anki will add a card for each shape or group of shapes you added in the previous step,
-and you can start reviewing them normally.
+內嵌空格必須完全包含於外部的空格。也就是說不能像這樣只重疊一部分：
 
-## Editing IO notes
+    [...]升格為新北市 -> 臺北縣2010年
+    臺北縣[...]新北市 -> 2010年升格為
 
-You can edit your IO notes by clicking on "Edit" while reviewing,
-or directly from the browser. There are several tools that you
-can use. Of note:
+「2010年」無法同時存在於兩個空格中。
 
-- Select: It allows you selecting one or more shapes to move,
-  resize, delete or group them.
-- Zoom: You can freely move the image and zoom in or out using the mouse wheel.
-- Shapes (Rectangle, Ellipse or Polygon): Use them to add new shapes / cards.
-- Text: It adds text areas to your image. These text areas can be moved,
-  resized or deleted, but no card will be created when you use this tool.
-- Undo / Redo.
-- Zoom In / Out - Reset zoom.
-- Toggle Translucency: Use this tool to temporarily view the hidden areas.
-- Delete: Use this tool to delete selected shapes and text areas. Please
-  note that deleting a shape won't delete its associated card automatically;
-  you will need to use Tools>Empty Cards afterwards, the same as
-  with regular cloze deletions.
-- Duplicate.
-- Group selection: Use this tool to create a cluster of shapes, which will
-  allow you to move, resize or delete them simultaneously. Please note that
-  two or more single shapes will create only one card once grouped.
-- Ungroup selection: Select a group and then click this button to make each shape independent again.
-- Alignment: This tool can be used to align your shapes / text areas as desired.
+在 2.1.56 之前的版本中，要建立有文字重疊的克漏字，你需要額外新增一個文字欄位，把欄位加入[模板](templates/intro.md)，然後在兩個文字欄位中都貼上原文：
 
-While reviewing IO Cards a "Toggle Masks" button will appear just below the image.
-This button will temporary clear all shapes of the note when using "Hide All, Guess One" mode.
+    文字欄位 1：{{c1::臺北縣2010年}}升格為新北市。
 
-## Inputting Foreign Characters and Accents
+    文字欄位 2：{{c1::臺北縣}}2010年升格為新北市。
 
-All modern computers have built-in support for typing accents and
-foreign characters, and multiple ways to go about it. The method we
-recommend is by using a keyboard layout for the language you want to learn.
+預設的克漏字筆記類型還有一個「背面額外內容」欄位，這個欄位只會在卡片答案面出現，可以用來補充額外的資訊。
 
-Languages with a separate script like Japanese, Chinese, Thai, and so on,
-have their own layouts specific to that language.
+克漏字是一種特殊的筆記類型，無法以普通的筆記類型為基底來建立。如需自訂克漏字類型，請確保複製的是克漏字類型。你可以自訂克漏字筆記類型的卡片樣式，但不能新增卡片模板。
 
-European languages that use accents may have their own layout, but can
-often be typed on a generic "international keyboard" layout. These work
-by typing the accent, then the character you want accented - e.g. an
-apostrophe (') then the letter a (a) gives á.
+## 影像遮擋 Image Occlusion
 
-To add the international keyboard on Windows machines, please see
-<https://thegeekpage.com/how-to-add-us-international-keyboard-in-windows-10/>
+Anki 23.10 及以上版本支援影像遮擋（Image Occlusion），無須安裝附加元件。影像遮擋類似克漏字，但隱藏的不是文字，而是圖片中的一部分。
 
-To add it on Macs, please see
-<http://www.macworld.com/article/1147039/os-x/accentinput.html>
+![影像遮擋](media/io.jpg)
 
-Keyboards for a specific language are added in a similar way, but we can
-not cover them all here. For more information, please try searching
-Google for "input Japanese on a mac", "type Chinese on Windows 10", and
-so on.
+### 加入圖片 Adding an image
 
-If you are learning a right-to-left language, there are lots of other
-things to consider. Please see [this page](http://dotancohen.com/howto/rtl_right_to_left.html) for more
-information.
+要新增影像遮擋卡片，請在新增畫面上點選筆記類型，並選擇內建的「影像遮擋」筆記類型。然後按一下「選取影像」來選取硬碟上的圖檔，或者按一下「貼上剪切版影像」來貼上你複製的圖片。
 
-The toolkit on which Anki is built has trouble dealing with a few input
-methods, such as holding down keys to select accented characters on macOS,
-and typing characters by holding down the <kbd>Alt</kbd> key and typing a
-numeric code on Windows.
+### 新增遮擋卡 Adding IO cards
 
-## Unicode Normalization
+載入影像後，影像遮擋編輯器將出現。你可以使用左邊的按鈕來選定區域，可選三種形狀：
 
-Text like `á` can be represented in multiple ways on a computer, such as
-using a specific code for that symbol, or by using a standard `a` and then
-another code for the accent on top. This causes problems when mixing input
-from different sources, or using different computers - if your computer
-handles keyboard input in one form, but the content is stored in a different
-form, it will not match when searching, even though the end result appears
-identical.
+- 矩形
+- 橢圓形
+- 多邊形
 
-To ensure content can easily be found in searches, Anki normalizes the text
-to a standard form. For most users this process is transparent, but if you
-are studying certain material like archaic Japanese symbols, the normalization
-process can end up converting them to a more modern equivalent.
+筆記可選兩種影像遮擋模式：
 
-If you want character variants preserved, the following in the [debug console](./misc.md)
-will turn off normalization:
+- **全部遮住，猜測一個 Hide All, Guess One**：隱藏所有區域，答案面只會揭露當前學習的區域。
+- **遮住一個，猜測一個 Hide One, Guess One**：只會隱藏/揭露當前學習的區域，其他區域不會被隱藏。
+
+![影像遮擋模式](media/io_modes.jpg)
+
+編輯完成後，點選下方的「新增」按鈕。Anki 將為你加入的每個/組形狀都建立一張卡片。
+
+## 編輯遮擋筆記 Editing IO notes
+
+你可以在複習時按一下「編輯」或直接在瀏覽器中來編輯遮擋筆記。可用的編輯工具：
+
+- 選取：選取一或多個形狀來移動、調整大小、刪除或群組/解散群組。
+- 縮放：你可以使用滑鼠滾輪來移動、縮放影像。
+- 形狀（矩形/橢圓形/多邊形）：新增形狀/卡片。
+- 文字：加入文字框。文字框可被移動、調整大小或刪除。新增文字框時不會建立卡片。
+- 復原/重做
+- 縮小/放大/重置縮放
+- 切換半透明：可在編輯時檢視被隱藏的區域。
+- 刪除：刪除選取的形狀和文字框。跟刪除克漏字空格一樣，刪除形狀後相應的卡片不會被自動刪除，請手動執行「空白卡片」工具。
+- 複製
+- 群組：將所選形狀組成群組，可以同時移動、調整大小或刪除多個形狀。注意，多個形狀組成群組後只會建立一張卡片。
+- 取消群組：將所選群組解散為獨立的形狀。
+- 對齊：用來對齊形狀或文字框。
+
+複習遮擋卡時，圖片下方會顯示一個「切換遮罩」按鈕。學習使用「全部遮住，猜測一個」模式的卡片時可按下這個按鈕來暫時揭露所有區域。
+
+## 輸入外文字元和變音符號 Inputting Foreign Characters and Accents
+
+現在的電腦都支援使用多種方式來輸入外文字元和變音符號。我們建議使用目標語言的鍵盤佈局。
+
+中文、日文、泰文等使用非拉丁文字的語言都各自使用不同的鍵盤佈局。
+
+有些歐洲語言使用變音符號，所以也有不同的佈局，但一般都可使用一個通用的「國際 (International)」鍵盤佈局來輸入。使用這個佈局時，只需先按下變音符號，再按下字母就能打出帶變音符號的字元——例如，先按「'」，再按「a」就能打出「á」。
+
+要在 Windows 上加入國際鍵盤佈局，請參閱：
+<https://support.microsoft.com/zh-tw/topic/如何在-windows-7-windows-vista-和-windows-xp-中使用-united-states-international-鍵盤配置-e05ce3ed-11f0-8fc2-498e-a214fa6b898f>
+
+要在 Mac 上新增輸入方式，請參閱：
+<https://support.apple.com/zh-tw/guide/mac-help/mchlp1406/mac>
+
+若對其他語言的輸入法有疑惑，建議 Google 搜尋相關問題。
+
+如果你在學習從右至左書寫的語言，還需要考慮其他問題。請參閱[這個頁面](http://dotancohen.com/howto/rtl_right_to_left.html)來進一步了解。
+
+建置 Anki 使用的工具與一些輸入方式可能衝突，比如在 macOS 上按住按鍵來選取變音符號、在 Windows 上按住 <kbd>Alt</kbd> 鍵並輸入數字等方式。
+
+## Unicode 正規化 Unicode Normalization
+
+`á` 這樣的文字在電腦中有多種表示方法，比如使用一段程式碼來代表一個字母，或是在一個普通的 `a` 後面再附上一段程式碼來代表字母上的變音符號。當你從多個來源蒐集內容，或是使用不同電腦時，這會造成一些問題，比如搜尋時可能看起來是同一個字元，但卻找不到結果。
+
+因此，Anki 會將文字統一。大部分使用者應對這一過程無感，不過在少數情況下部分字元可能會在正規化時被轉換成其他字元。
+
+若要保留多種儲存字元的方式，請在[除錯控制台](./misc.md)執行以下指令來停用正規化：
 
 ```python
 mw.col.conf["normalize_note_text"] = False
 ```
 
-Any content added after that will remain untouched. The trade-off is that you may
-find it difficult to search for the content if you're switching between operating
-systems, or pasting content from mixed sources.
+指令執行成功後，新增的內容都不會被正規化。但未來若更換作業系統，或將不同來源蒐集到 Anki 貼上，則可能無法直接搜尋到結果。

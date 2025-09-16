@@ -1,56 +1,27 @@
-# Card Templates
+# 卡片模板 [Card Templates](https://docs.ankiweb.net/templates/intro.html)
 
-Card templates tell Anki which fields should appear on the front and back of your card,
-and control which cards will be generated when certain fields have text in them.
-By adjusting your card templates, you can alter the design and styling of many of your
-cards at once.
+模板就像卡片的藍圖，讓 Anki 知道卡片的正背面應該顯示哪些欄位，並可使卡片僅在相應欄位中有內容時才會被產生。你可以透過調整卡片模板來輕鬆修改大量卡片的樣式。
 
-Card templates are covered in some of the intro videos:
+以下是有關卡片模板的影片：
 
-- [Switching Card Order](http://www.youtube.com/watch?v=DnbKwHEQ1mA&yt:cc=on)
+- [切換卡片順序](http://www.youtube.com/watch?v=DnbKwHEQ1mA&yt:cc=on)
 
-- [Styling Cards](http://www.youtube.com/watch?v=F1j1Zx0mXME&yt:cc=on)
+- [調整卡片樣式](http://www.youtube.com/watch?v=F1j1Zx0mXME&yt:cc=on)
 
-- [Typing in the Answer](http://www.youtube.com/watch?v=5tYObQ3ocrw&yt:cc=on)
+- [輸入答案](http://www.youtube.com/watch?v=5tYObQ3ocrw&yt:cc=on)
 
-## The Templates Screen
+## 模板畫面 The Templates Screen
 
-You can modify card templates by clicking the "Cards..." button inside the
-editing screen.
+在編輯畫面中按下「卡片...」按鈕即可開始修改卡片模板。
 
-For older Anki versions, on the top left is the front template, on the bottom left is the back
-template, and in between them is the card styling section. For Anki versions
-2.1.28+ the front, back, and styling are no longer shown at the same time.
-You can switch between them with <kbd>Ctrl</kbd>+<kbd>1</kbd>, <kbd>Ctrl</kbd>+<kbd>2</kbd>, and <kbd>Ctrl</kbd>+<kbd>3</kbd>.
+在較舊的 Anki 版本中，左上方是正面模板，左下方是背面模板，中間是樣式表。在 2.1.28+ 版本中，正面、背面和樣式表不會同時顯示，你可以使用快速鍵 <kbd>Ctrl</kbd>+<kbd>1</kbd>、<kbd>Ctrl</kbd>+<kbd>2</kbd>、<kbd>Ctrl</kbd>+<kbd>3</kbd> 來切換各選項。
 
-In Anki, templates are written in HTML, which is the language that web
-pages are written in. The styling section is CSS, which is the language
-used for styling web pages.
+模板跟一般的網頁一樣，使用 HTML 語言編寫。樣式表也同樣使用編寫網頁樣式的 CSS 語言。
 
-On the right is a preview of the front and back of the currently
-selected card. If you opened the window while adding notes, the preview
-will be based on the text you had typed into the Add Notes window. If
-you opened the window while editing a note, the preview will be based on
-the content of that note. If you opened the window from Tools → Manage
-Note Types, Anki will display each field’s name in parentheses in place
-of content.
+右邊顯示的是當前所選卡片的正背面預覽。若在新增筆記時打開了卡片模板視窗，則預覽中會顯示你剛輸入的內容。若在「工具」→「管理筆記類型」中打開，則會顯示「(欄位名稱)」。
 
-At the top right of the window is an Options button that gives you
-options to rename or reorder the cards, as well as the following two
-options:
+你可以在視窗右上方的「選項」中選擇重新命名卡片或調整卡片順序，以及以下兩個選項：
 
-- The 'Deck Override' option allows you to change the deck that cards
-  generated from the current card type will be placed into. By
-  default, cards are placed into the deck you provide in the Add Notes
-  window. If you set a deck here, that card type will be placed into
-  the deck you specified, instead of the deck listed in the Add Notes
-  window. This can be useful if you want to separate cards into
-  different decks (for instance, when studying a language, to put
-  production cards in one deck and recognition cards in another). You
-  can check which deck the cards are currently going to by choosing
-  Deck Override again.
+- 覆蓋牌組：將使用當前卡片類型產生的卡片放入所選牌組。根據預設，卡片會被放入新增筆記時選取的牌組。若在這裡設定要放入的牌組，即可將指定的卡片類型放入不同的牌組（如可為「單字→意思」和「發音→意思」卡片類型分別建立牌組）。
 
-- The 'Browser Appearance' option allows you to set different (perhaps
-  simplified) templates for display in the Question and Answer columns
-  of the browser; see [browser appearance](styling.md#browser-appearance) for more
-  information.
+- 瀏覽器預覽樣式：另外設定一個用於瀏覽器「問題」和「答案」欄中的（簡化）模板。請參閱〈[瀏覽器預覽樣式](styling.md#瀏覽器預覽樣式-browser-appearance)〉來進一步了解。
