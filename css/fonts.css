@@ -1,0 +1,12 @@
+/* roboto condensed */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+html {
+    font-family: "Arial Nova Condensed", "Arial Nova Cond", "Arial Narrow", "Roboto Condensed", Arial, Helvetica, "Source Han Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif !important;
+}
+
+/* source-han-serif-tc - traditional-chinese */
+@font-face {
+font-family: "Source Han Sans TC";
+src: url('../fonts/SourceHanSerifTW-VF.ttf.woff2') format('woff2');
+}

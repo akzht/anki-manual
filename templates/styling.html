@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light sidebar-visible" dir="ltr">
+<html lang="zh-tw" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Styling &amp; HTML - Anki Manual</title>
+        <title>樣式與 HTML Styling &amp; HTML - Anki 使用手冊</title>
 
 
         <!-- Custom HTML head -->
-
-        <meta name="description" content="Anki&#x27;s user manual. Anki is a flashcard program that makes learning easier.">
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Anki 使用手冊。Anki 是一個閃卡程式，是你學習時的好幫手。">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff">
+        <meta name="theme-color" content="#ffffff" />
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -24,44 +25,28 @@
         <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../css/kbd.css">
         <link rel="stylesheet" href="../css/misc.css">
-        <link rel="stylesheet" href="../css/mdbook-admonish.css">
+        <link rel="stylesheet" href="../css/fonts.css">
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-        <!-- Provide site root and default themes to javascript -->
-        <script>
-            const path_to_root = "../";
-            const default_light_theme = "light";
-            const default_dark_theme = "navy";
-        </script>
-        <!-- Start loading toc.js asap -->
-        <script src="../toc.js"></script>
     </head>
     <body>
-    <div id="mdbook-help-container">
-        <div id="mdbook-help-popup">
-            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
-            <div>
-                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
-                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
-                <p>Press <kbd>?</kbd> to show this help</p>
-                <p>Press <kbd>Esc</kbd> to hide this help</p>
-            </div>
-        </div>
-    </div>
-    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script>
+        <script type="text/javascript">
             try {
-                let theme = localStorage.getItem('mdbook-theme');
-                let sidebar = localStorage.getItem('mdbook-sidebar');
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -74,77 +59,67 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script>
-            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
-            let theme;
+        <script type="text/javascript">
+            var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            const html = document.documentElement;
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add("js");
+            html.classList.add('js');
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
-
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script>
-            let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
-            } else {
-                sidebar = 'hidden';
             }
-            sidebar_toggle.checked = sidebar === 'visible';
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <!-- populated by js -->
-            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
-            <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
-            </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
-                <div class="sidebar-resize-indicator"></div>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../intro.html">介紹 Introduction</a></li><li class="chapter-item "><a href="../background.html"><strong aria-hidden="true">1.</strong> Background</a></li><li class="chapter-item "><a href="../platform/intro.html"><strong aria-hidden="true">2.</strong> 平台說明 Platform Notes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/windows/intro.html"><strong aria-hidden="true">2.1.</strong> Windows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/windows/installing.html"><strong aria-hidden="true">2.1.1.</strong> Install & Upgrade</a></li><li class="chapter-item "><a href="../platform/windows/installation-issues.html"><strong aria-hidden="true">2.1.2.</strong> Installation Issues</a></li><li class="chapter-item "><a href="../platform/windows/startup-issues.html"><strong aria-hidden="true">2.1.3.</strong> Startup Issues</a></li><li class="chapter-item "><a href="../platform/windows/display-issues.html"><strong aria-hidden="true">2.1.4.</strong> Display Issues</a></li><li class="chapter-item "><a href="../platform/windows/copy-and-paste.html"><strong aria-hidden="true">2.1.5.</strong> 複製/貼上發生問題 Copy and Paste Issues</a></li><li class="chapter-item "><a href="../platform/windows/text-size.html"><strong aria-hidden="true">2.1.6.</strong> Text Size</a></li><li class="chapter-item "><a href="../platform/windows/permission-problems.html"><strong aria-hidden="true">2.1.7.</strong> Permission Problems</a></li></ol></li><li class="chapter-item "><a href="../platform/mac/intro.html"><strong aria-hidden="true">2.2.</strong> macOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/mac/installing.html"><strong aria-hidden="true">2.2.1.</strong> Install & Upgrade</a></li><li class="chapter-item "><a href="../platform/mac/display-issues.html"><strong aria-hidden="true">2.2.2.</strong> Display Issues</a></li></ol></li><li class="chapter-item "><a href="../platform/linux/intro.html"><strong aria-hidden="true">2.3.</strong> Linux</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../platform/linux/installing.html"><strong aria-hidden="true">2.3.1.</strong> Install & Upgrade</a></li><li class="chapter-item "><a href="../platform/linux/missing-libraries.html"><strong aria-hidden="true">2.3.2.</strong> Missing Libraries</a></li><li class="chapter-item "><a href="../platform/linux/display-issues.html"><strong aria-hidden="true">2.3.3.</strong> Display Issues</a></li><li class="chapter-item "><a href="../platform/linux/blank-window.html"><strong aria-hidden="true">2.3.4.</strong> Blank Main Window</a></li><li class="chapter-item "><a href="../platform/linux/distro-packages.html"><strong aria-hidden="true">2.3.5.</strong> Linux Distro Packages</a></li><li class="chapter-item "><a href="../platform/linux/gtk-theme.html"><strong aria-hidden="true">2.3.6.</strong> Incorrect GTK Theme</a></li><li class="chapter-item "><a href="../platform/linux/wayland.html"><strong aria-hidden="true">2.3.7.</strong> Wayland</a></li><li class="chapter-item "><a href="../platform/linux/input-methods.html"><strong aria-hidden="true">2.3.8.</strong> Input Methods</a></li></ol></li></ol></li><li class="chapter-item "><a href="../getting-started.html"><strong aria-hidden="true">3.</strong> 新手入門 Getting Started</a></li><li class="chapter-item "><a href="../getting-help.html"><strong aria-hidden="true">4.</strong> 取得協助 Getting Help</a></li><li class="chapter-item "><a href="../studying.html"><strong aria-hidden="true">5.</strong> 學習 Studying</a></li><li class="chapter-item "><a href="../editing.html"><strong aria-hidden="true">6.</strong> 新增/編輯 Adding/Editing</a></li><li class="chapter-item expanded "><a href="../templates/intro.html"><strong aria-hidden="true">7.</strong> 卡片模板 Card Templates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../templates/fields.html"><strong aria-hidden="true">7.1.</strong> 欄位取代 Field Replacements</a></li><li class="chapter-item "><a href="../templates/generation.html"><strong aria-hidden="true">7.2.</strong> 產生卡片 Card Generation</a></li><li class="chapter-item expanded "><a href="../templates/styling.html" class="active"><strong aria-hidden="true">7.3.</strong> 樣式與 HTML Styling & HTML</a></li><li class="chapter-item "><a href="../templates/errors.html"><strong aria-hidden="true">7.4.</strong> Checks and Errors</a></li></ol></li><li class="chapter-item "><a href="../preferences.html"><strong aria-hidden="true">8.</strong> Preferences</a></li><li class="chapter-item "><a href="../deck-options.html"><strong aria-hidden="true">9.</strong> Deck Options</a></li><li class="chapter-item "><a href="../syncing.html"><strong aria-hidden="true">10.</strong> Syncing with AnkiWeb</a></li><li class="chapter-item "><a href="../profiles.html"><strong aria-hidden="true">11.</strong> 設定檔 Profiles</a></li><li class="chapter-item "><a href="../browsing.html"><strong aria-hidden="true">12.</strong> Browsing</a></li><li class="chapter-item "><a href="../filtered-decks.html"><strong aria-hidden="true">13.</strong> Filtered Decks</a></li><li class="chapter-item "><a href="../searching.html"><strong aria-hidden="true">14.</strong> Searching</a></li><li class="chapter-item "><a href="../importing/intro.html"><strong aria-hidden="true">15.</strong> Importing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../importing/text-files.html"><strong aria-hidden="true">15.1.</strong> Text Files</a></li><li class="chapter-item "><a href="../importing/packaged-decks.html"><strong aria-hidden="true">15.2.</strong> Packaged Decks</a></li></ol></li><li class="chapter-item "><a href="../exporting.html"><strong aria-hidden="true">16.</strong> Exporting</a></li><li class="chapter-item "><a href="../backups.html"><strong aria-hidden="true">17.</strong> Backups</a></li><li class="chapter-item "><a href="../files.html"><strong aria-hidden="true">18.</strong> Managing Files</a></li><li class="chapter-item "><a href="../stats.html"><strong aria-hidden="true">19.</strong> Statistics</a></li><li class="chapter-item "><a href="../media.html"><strong aria-hidden="true">20.</strong> Media</a></li><li class="chapter-item "><a href="../math.html"><strong aria-hidden="true">21.</strong> Math & Symbols</a></li><li class="chapter-item "><a href="../leeches.html"><strong aria-hidden="true">22.</strong> Leeches</a></li><li class="chapter-item "><a href="../addons.html"><strong aria-hidden="true">23.</strong> 附加元件 Add-ons</a></li><li class="chapter-item "><a href="../troubleshooting.html"><strong aria-hidden="true">24.</strong> Troubleshooting</a></li><li class="chapter-item "><a href="../sync-server.html"><strong aria-hidden="true">25.</strong> Sync Server</a></li><li class="chapter-item "><a href="../misc.html"><strong aria-hidden="true">26.</strong> Miscellaneous</a></li><li class="chapter-item "><a href="../glossary.html"><strong aria-hidden="true">27.</strong> 詞彙對照表 Glossary</a></li><li class="chapter-item affix "><a href="../contrib.html">Contributing</a></li><li class="chapter-item affix "><a href="../faqs.html">常見問題 FAQs</a></li><li class="chapter-item affix "><a href="../resources.html">Resources</a></li></ol>
             </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </label>
+                        </button>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Anki Manual</h1>
+                    <h1 class="menu-title">Anki 使用手冊</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/ankitects/anki-manual/" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/anki-manual-zh-tw/anki-manual/" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -163,7 +138,7 @@
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script>
+                <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -173,61 +148,36 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="styling--html"><a class="header" href="#styling--html">Styling &amp; HTML</a></h1>
+                        <h1 id="樣式與-html-styling--html"><a class="header" href="#樣式與-html-styling--html">樣式與 HTML <a href="https://docs.ankiweb.net/templates/styling.html">Styling &amp; HTML</a></a></h1>
 <ul>
-<li><a href="#card-styling">Card Styling</a></li>
-<li><a href="#image-resizing">Image Resizing</a></li>
-<li><a href="#field-styling">Field Styling</a></li>
-<li><a href="#audio-replay-buttons">Audio Replay Buttons</a></li>
-<li><a href="#text-direction">Text Direction</a></li>
-<li><a href="#other-html">Other HTML</a></li>
-<li><a href="#browser-appearance">Browser Appearance</a></li>
-<li><a href="#platform-specific-css">Platform-Specific CSS</a></li>
-<li><a href="#installing-fonts">Installing Fonts</a>
-<ul>
-<li><a href="#add-font-to-media-folder">Add Font to Media Folder</a></li>
-<li><a href="#update-template-to-use-that-font">Update Template to Use That Font</a></li>
+<li><a href="#%E5%8D%A1%E7%89%87%E6%A8%A3%E5%BC%8F-card-styling">卡片樣式 Card Styling</a></li>
+<li><a href="#%E8%AA%BF%E6%95%B4%E5%BD%B1%E5%83%8F%E5%A4%A7%E5%B0%8F-image-resizing">調整影像大小 Image Resizing</a></li>
+<li><a href="#%E6%AC%84%E4%BD%8D%E6%A8%A3%E5%BC%8F-field-styling">欄位樣式 Field Styling</a></li>
+<li><a href="#%E9%9F%B3%E8%A8%8A%E6%92%AD%E6%94%BE%E6%8C%89%E9%88%95-audio-replay-buttons">音訊播放按鈕 Audio Replay Buttons</a></li>
+<li><a href="#%E6%96%87%E5%AD%97%E6%96%B9%E5%90%91-text-direction">文字方向 Text Direction</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96-html-other-html">其他 HTML Other HTML</a></li>
+<li><a href="#%E7%80%8F%E8%A6%BD%E5%99%A8%E9%A0%90%E8%A6%BD%E6%A8%A3%E5%BC%8F-browser-appearance">瀏覽器預覽樣式 Browser Appearance</a></li>
+<li><a href="#%E5%B9%B3%E5%8F%B0%E7%89%B9%E5%AE%9A-css-platform-specific-css">平台特定 CSS Platform-Specific CSS</a></li>
+<li><a href="#%E5%AE%89%E8%A3%9D%E5%AD%97%E5%9E%8B-installing-fonts">安裝字型 Installing Fonts</a></li>
+<li><a href="#%E5%A4%9C%E9%96%93%E6%A8%A1%E5%BC%8F-night-mode">夜間模式 Night Mode</a></li>
+<li><a href="#%E6%8D%B2%E5%8B%95-scrolling">捲動 Scrolling</a></li>
+<li><a href="#javascript">JavaScript</a></li>
 </ul>
-</li>
-<li><a href="#night-mode">Night Mode</a></li>
-<li><a href="#fading-and-scrolling">Fading and Scrolling</a></li>
-<li><a href="#javascript">Javascript</a></li>
-</ul>
-<h2 id="card-styling"><a class="header" href="#card-styling">Card Styling</a></h2>
-<p>You can watch <a href="http://www.youtube.com/watch?v=F1j1Zx0mXME&amp;yt:cc=on">a video about styling cards</a> on YouTube.
-The video shows Anki 2.0’s interface, but the concepts are largely the
-same.</p>
-<p>The styling section of the Cards screen can be accessed by clicking the
-“Styling” button next to the “Back Template” button. In that section,
-you can change the background color of the card, the default font, the
-text alignment, and so on.</p>
-<p>The standard options available to you are:</p>
+<h2 id="卡片樣式-card-styling"><a class="header" href="#卡片樣式-card-styling">卡片樣式 Card Styling</a></h2>
+<p>要存取樣式表，請按下「背面模板」按鈕旁的「樣式」按鈕。在樣式表中，你可以改變卡片的背景顏色、預設字型、文字對齊等等。</p>
+<p>可用的標準選項有：</p>
 <p><strong>font-family</strong><br />
-The name of the font to use on the card. If your font has spaces in it
-like “MS Unicode”, then you need to surround the font name in double
-quotes as in this sentence. It is also possible to use multiple fonts on
-one card; for information on that, please see below.</p>
+卡片顯示字型的名稱。如果字型名稱有空格，比如「Microsoft JhengHei」，則需要包含在英文半形雙引號中：<code>&quot;Microsoft JhengHei&quot;</code>。 你也可以同時加入多個字型，請參閱下文。</p>
 <p><strong>font-size</strong><br />
-The size of the font in pixels. When changing it, make sure you leave px
-at the end.</p>
+字型的大小。請確保在數字後加入單位，如加入 <code>px</code> 來以像素作為單位。</p>
 <p><strong>text-align</strong><br />
-Whether the text should be aligned in the center, left, or right.</p>
+文字對齊。如 <code>center</code> 置中、<code>left</code> 左對齊或 <code>right</code> 右對齊。</p>
 <p><strong>color</strong><br />
-The color of the text. Simple color names like “blue”, “lightyellow”,
-and so on will work, or you can use HTML color codes to select arbitrary
-colors. Please see <a href="https://htmlcolorcodes.com/">this webpage</a> for more
-information.</p>
+文字的顏色。基本的顏色可以直接使用英文單字表示，如 <code>blue</code> 或 <code>red</code>。你也可以使用 HTML 色碼來使用更多顏色。要進一步了解，請前往 <a href="https://htmlcolorcodes.com/zh/">HTML 顏色代碼</a>網站。</p>
 <p><strong>background-color</strong><br />
-The color of the card background.</p>
-<p>Any CSS can be placed in the styling section – advanced users may wish
-to do things like add a background image or gradient, for example. If
-you’re wondering how to get some particular formatting, please search
-the web for information about how to do it in CSS, as there is a great
-deal of documentation available.</p>
-<p>The styling is shared between all cards, which means that when you make
-an adjustment it will affect all cards for that note type. It is also
-possible to specify card-specific styling, however. The following
-example will use a yellow background on all cards except the first one:</p>
+卡片的背景顏色。</p>
+<p>樣式表中可以加入任意 CSS 程式碼。例如，進階使用者可以為卡片背景加入圖片或漸變色。如果你想修改卡片上某一區域的樣式但不知道從何下手，可以透過網路上的資源來自學 CSS 程式碼。</p>
+<p>所有卡片共用同一樣式表。因此當你做出更動時，同一筆記類型的所有卡片都會被影響。不過，你可以在樣式表中加入限定卡片的程式碼。例如，要讓第一張卡片顯示為藍色背景，其他卡片全部為黃色，你可以這樣設定：</p>
 <pre><code class="language-css">.card {
   background-color: yellow;
 }
@@ -235,71 +185,52 @@ example will use a yellow background on all cards except the first one:</p>
   background-color: blue;
 }
 </code></pre>
-<h2 id="image-resizing"><a class="header" href="#image-resizing">Image Resizing</a></h2>
-<p>Anki shrinks images to fit the screen by default. You can change this by adding
-the following to the bottom of your styling section (outside of the default
-<code>.card { ... }</code>):</p>
+<h2 id="調整影像大小-image-resizing"><a class="header" href="#調整影像大小-image-resizing">調整影像大小 Image Resizing</a></h2>
+<p>Anki 預設會將影像縮放至符合螢幕大小。要停用這一功能，你可以在樣式表底部（預設的 <code>.card { ... }</code> 外面）加入以下程式碼：</p>
 <pre><code class="language-css">img {
   max-width: none;
   max-height: none;
 }
 </code></pre>
-<p>AnkiDroid sometimes has <a href="https://github.com/ankidroid/Anki-Android/issues/3612">trouble scaling images to fit the
-screen</a>. Setting maximum
-image dimensions using css should fix this, but seems to be ignored as of
-AnkiDroid 2.9. A fix is to append <code>!important</code> to each style directive, for
-example:</p>
+<p>AnkiDroid 有時會<a href="https://github.com/ankidroid/Anki-Android/issues/3612">無法符合螢幕大小</a>。使用 CSS 設定影像最大長寬本應解決這一問題，但 AnkiDroid 2.9 及較舊版本中會無視這一設定。你可以在行末加入 <code>!important</code> 來解決：</p>
 <pre><code class="language-css">img {
   max-width: 300px !important;
   max-height: 300px !important;
 }
 </code></pre>
-<p>If you try to change the style for images and find that the star that
-appears on marked cards is affected (for instance, it becomes way too
-large), you can target it with the following:</p>
+<p>若在調整影像大小後，標記的卡片上的星星也受到影響（比如圖片放大後星星過大），你可以加入以下程式碼來指定星星的樣式：</p>
 <pre><code class="language-css">img#star {
   ...;
 }
 </code></pre>
-<p>You can explore the styling of cards interactively by using Chrome:</p>
+<p>你可以透過 Chrome 來以互動方式探索卡片樣式：</p>
 <p><a href="https://addon-docs.ankiweb.net/porting2.0.html#webview-changes">https://addon-docs.ankiweb.net/porting2.0.html#webview-changes</a></p>
-<p>Anki 2.1.50+ supports image resizing within the editor natively.</p>
-<h2 id="field-styling"><a class="header" href="#field-styling">Field Styling</a></h2>
-<p>The default styling applies to the whole card. You can also make certain
-fields or part of the card use a different font, color, and so on. This
-is particularly important when studying foreign languages, as Anki will
-sometimes be unable to correctly display characters unless an
-appropriate font has been chosen.</p>
-<p>Say you have an “Expression” field, and you want to give it the OSX Thai
-font “Ayuthaya”. Imagine your template already reads:</p>
-<pre><code>What is {{Expression}}?
+<p>Anki 2.1.50 及以上版本支援在編輯器中調整影像大小。</p>
+<h2 id="欄位樣式-field-styling"><a class="header" href="#欄位樣式-field-styling">欄位樣式 Field Styling</a></h2>
+<p>預設的樣式會套用於整張卡片。你也可以為欄位單獨設定不同字型、顏色或其他。這在學習外文時很重要，比如在學習日文時，如果使用的是中文字型，有些日文寫法不一樣的漢字可能無法正確顯示。</p>
+<p>假設你的卡片中有欄位「短語」，並要在欄位中使用 Windows 的「MS Gothic」字體。假設這是你當前的模板：</p>
+<pre><code>{{短語}}是甚麼意思？
 
-{{Notes}}
+{{備註}}
 </code></pre>
-<p>What we need to do is wrap the text we want to style in some HTML. We
-will put the following in front of the text:</p>
+<p>你需要把要修改樣式的文字包含在 HTML 程式碼內。例如在文字前加入以下程式碼：</p>
 <pre><code>&lt;div class=mystyle1&gt;
 </code></pre>
-<p>And the following behind it:</p>
+<p>然後在文字後加入：</p>
 <pre><code>&lt;/div&gt;
 </code></pre>
-<p>By wrapping the text like the above, we tell Anki to style the wrapped
-text with a custom style called “mystyle1”, which we will create later.</p>
-<p>Thus if we wanted the entire “What is …​?” expression to use the Thai
-font, we would use:</p>
-<pre><code>&lt;div class=mystyle1&gt;What is {{Expression}}?&lt;/div&gt;
+<p>以上程式碼表示，包含的文字要使用自訂樣式 <code>mystyle1</code>，我們稍後再來建立該樣式。</p>
+<p>修改後的模板如下：</p>
+<pre><code>&lt;div class=mystyle1&gt;{{短語}}是甚麼意思？&lt;/div&gt;
 
-{{Notes}}
+{{備註}}
 </code></pre>
-<p>And if we wanted only the expression field itself to use the Thai font,
-we’d use:</p>
-<pre><code>What is &lt;div class=mystyle1&gt;{{Expression}}&lt;/div&gt;?
+<p>但是這樣，中文的部分也會使用日文字體，所以你可以只包含「短語」欄位：</p>
+<pre><code>&lt;div class=mystyle1&gt;{{短語}}&lt;/div&gt;是甚麼意思？
 
-{{Notes}}
+{{備註}}
 </code></pre>
-<p>After we’ve edited the template, we now need to move to the Styling
-section between the templates. Before editing it, it should look
-something like:</p>
+<p>編輯模板後，前往樣式表。未做更動的樣式表應如下：</p>
 <pre><code class="language-css">.card {
   font-family: arial;
   font-size: 20px;
@@ -308,7 +239,7 @@ something like:</p>
   background-color: white;
 }
 </code></pre>
-<p>Add your new style to the bottom, so it looks like:</p>
+<p>你可以把新的樣式放在最下方：</p>
 <pre><code class="language-css">.card {
   font-family: arial;
   font-size: 20px;
@@ -318,27 +249,20 @@ something like:</p>
 }
 
 .mystyle1 {
-  font-family: ayuthaya;
+  font-family: &quot;MS Gothic&quot;;
 }
 </code></pre>
-<p>You can include any styling you want in the style. If you wanted to
-increase the font size too, you’d change the mystyle1 section to look
-like:</p>
+<p>花括號中可以加入任意樣式。要讓字型變大，你可以把樣式修改為這樣：</p>
 <pre><code class="language-css">.mystyle1 {
-  font-family: ayuthaya;
+  font-family: &quot;MS Gothic&quot;;
   font-size: 30px;
 }
 </code></pre>
-<p>It’s also possible to bundle custom fonts with your deck, so you don’t
-need to install them on your computer or mobile device. Please see the
-<a href="#installing-fonts">installing fonts</a> section for more info.</p>
-<h2 id="audio-replay-buttons"><a class="header" href="#audio-replay-buttons">Audio Replay Buttons</a></h2>
-<p>When audio or text to speech is included on your cards, Anki will show
-buttons you can click on to replay the audio.</p>
-<p>If you prefer not to see the buttons, you can hide them in the
-preferences screen.</p>
-<p>You can customize their appearance in your card styling, for example, to
-make them smaller and colored, you could use the following:</p>
+<p>你也可以在牌組中加入自訂字型檔案，這樣你就不需要在電腦或手機上安裝只想要在 Anki 中使用的字型。請參閱〈<a href="#%E5%AE%89%E8%A3%9D%E5%AD%97%E5%9E%8B-installing-fonts">安裝字型</a>〉章節來進一步了解。</p>
+<h2 id="音訊播放按鈕-audio-replay-buttons"><a class="header" href="#音訊播放按鈕-audio-replay-buttons">音訊播放按鈕 Audio Replay Buttons</a></h2>
+<p>當卡片中有音訊或 TTS 時，Anki 會顯示一個播放按鈕。</p>
+<p>若不需要這個按鈕，你可以在偏好設定中停用。</p>
+<p>你可以在卡片樣式表中自訂按鈕外觀。如果你要縮小按鈕並加上顏色，可以加入程式碼：</p>
 <pre><code class="language-css">.replay-button svg {
   width: 20px;
   height: 20px;
@@ -351,185 +275,111 @@ make them smaller and colored, you could use the following:</p>
   fill: green;
 }
 </code></pre>
-<h2 id="text-direction"><a class="header" href="#text-direction">Text Direction</a></h2>
-<p>If you use a language that is written right-to-left, such as Arabic or Hebrew,
-you can add the CSS <code>direction</code> property to the .card section for correct display during review:</p>
+<h2 id="文字方向-text-direction"><a class="header" href="#文字方向-text-direction">文字方向 Text Direction</a></h2>
+<p>如果你使用阿拉伯文或希伯來文等由右至左書寫的文字，你可以在 <code>.card</code> 中加入 <code>direction</code> 屬性：</p>
 <pre><code class="language-css">.card {
   direction: rtl;
 }
 </code></pre>
-<p>This will change the direction of the entire card. You can change the direction
-of only certain fields by wrapping their references in some HTML:</p>
-<pre><code>&lt;div dir="rtl"&gt;{{Front}}&lt;/div&gt;
+<p>這會更改整張卡片的書寫方向。你也可以使用 HTML 標籤來修改單個欄位：</p>
+<pre><code>&lt;div dir=&quot;rtl&quot;&gt;{{正面}}&lt;/div&gt;
 </code></pre>
-<p>To change the direction of fields in the editor, please see
-the <a href="../editing.html#customizing-fields">editing</a> section.</p>
-<h2 id="other-html"><a class="header" href="#other-html">Other HTML</a></h2>
-<p>Your templates can contain arbitrary HTML, which means that all the
-layout possibilities used on internet web pages can also be used on your
-cards. Things like tables, lists, images, links to external pages and so
-on are all supported. With tables for example, you could change the
-layout so that the front and back of a card appear on the left and right
-instead of the top and bottom.</p>
-<p>Covering all of HTML’s features is outside the scope of this manual, but
-there are plenty of good introductory guides to HTML available on the
-web if you’d like to learn more.</p>
-<h2 id="browser-appearance"><a class="header" href="#browser-appearance">Browser Appearance</a></h2>
-<p>If your card templates are complex, it may be difficult to read the
-question and answer columns (called “Front” and “Back”) in the <a href="../browsing.html#cardnote-table">card list</a>. The “browser appearance” option allows you to define a
-custom template to be used only in the browser, so you can include only
-the important fields and change the order if you desire. The syntax is
-the same as in standard card templates.</p>
-<p>When using this option, if the text in the question column is repeated at the beginning of the answer column, Anki will display the text only in the question column. For example, if the question column text is “People in Ladakh speak”, and the answer is “People in Ladakh speak Ladakhi”, the answer column will only display “Ladakhi”, omitting the rest.</p>
-<h2 id="platform-specific-css"><a class="header" href="#platform-specific-css">Platform-Specific CSS</a></h2>
-<p>Anki defines some special CSS classes that allow you to define different
-styling for different platforms. The example below shows how to vary the
-font depending on where you’re reviewing:</p>
+<p>要修改編輯器中的欄位書寫方向，請參閱〈<a href="../editing.html#%E8%87%AA%E8%A8%82%E6%AC%84%E4%BD%8D-customizing-fields">自訂欄位</a>〉章節。</p>
+<h2 id="其他-html-other-html"><a class="header" href="#其他-html-other-html">其他 HTML Other HTML</a></h2>
+<p>模板可以包含任意 HTML 程式碼，因此一般網頁中使用的各種佈局都能被加入卡片中。例如表格、清單、影像、外部連結等。例如你可以使用表格 <code>table</code> 來使卡片正背面分別顯示在左半邊和右半邊。</p>
+<p>因 HTML 功能之多，此使用手冊無法一一涵蓋所有功能，請在網路上自行尋找 HTML 入門教學來進一步了解。</p>
+<h2 id="瀏覽器預覽樣式-browser-appearance"><a class="header" href="#瀏覽器預覽樣式-browser-appearance">瀏覽器預覽樣式 Browser Appearance</a></h2>
+<p>如果你的卡片模板過於複雜，<a href="../browsing.html#%E5%8D%A1%E7%89%87/%E7%AD%86%E8%A8%98%E8%A1%A8%E6%A0%BC-cardnote-table">卡片清單</a>中的問題欄（正面）和答案欄（背面）可能難以閱讀。透過「瀏覽器預覽樣式」，你可以自訂一個僅限瀏覽器中顯示的模板，比如只顯示重要的欄位或者改變顯示順序。「瀏覽器預覽樣式」使用與普通卡片模板相同的語法。</p>
+<p>使用這個選項時，當問題面文字包含在答案面開頭時，答案欄中不會顯示問題。假如問題是「日本在」、答案是「日本在東亞」，則答案欄僅會顯示「東亞」。</p>
+<h2 id="平台特定-css-platform-specific-css"><a class="header" href="#平台特定-css-platform-specific-css">平台特定 CSS Platform-Specific CSS</a></h2>
+<p>Anki 定義了一些特殊的 CSS class，可為不同平台設定不同的樣式。例如，你可以像這樣在不同平台上顯示不同的字型：</p>
 <pre><code class="language-css">/* Windows */
 .win .example {
-  font-family: "Example1";
+  font-family: &quot;字型 1&quot;;
 }
 /* macOS */
 .mac .example {
-  font-family: "Example2";
+  font-family: &quot;字型 2&quot;;
 }
-/* Linux desktops */
+/* Linux 電腦 */
 .linux:not(.android) .example {
-  font-family: "Example3";
+  font-family: &quot;字型 3&quot;;
 }
-/* both Linux desktops, and Android devices */
+/* Linux 電腦和 Android 裝置 */
 .linux .example {
-  font-family: "Example4";
+  font-family: &quot;字型 4&quot;;
 }
-/* both Android and iOS */
+/* Android 和 iOS */
 .mobile .example {
-  font-family: "Example5";
+  font-family: &quot;字型 5&quot;;
 }
 /* iOS */
 .iphone .example,
 .ipad .example {
-  font-family: "Example6";
+  font-family: &quot;字型 6&quot;;
 }
 /* Android */
 .android .example {
-  font-family: "Example7";
+  font-family: &quot;字型 7&quot;;
 }
 </code></pre>
-<p>And in the template:</p>
-<pre><code class="language-html">&lt;div class="example"&gt;{{Field}}&lt;/div&gt;
+<p>然後這樣設定模板：</p>
+<pre><code class="language-html">&lt;div class=&quot;example&quot;&gt;{{欄位}}&lt;/div&gt;
 </code></pre>
-<p>You can also use properties like .gecko, .opera, and .ie to select
-particular browsers when using AnkiWeb. Please see
-<a href="http://rafael.adm.br/css_browser_selector/">http://rafael.adm.br/css_browser_selector/</a> for a full list of options.</p>
-<h2 id="installing-fonts"><a class="header" href="#installing-fonts">Installing Fonts</a></h2>
-<p>You can install fonts directly to Anki. This is useful if you’re using Anki on
-a work or school computer where you don’t have permission to install new fonts,
-or if you’re using Anki on a mobile device.</p>
-<p>Anki supports the most widely used font formats, such as TrueType (.ttf),
-OpenType (.otf), Web Open Font Format (.woff) and others.</p>
-<h3 id="add-font-to-media-folder"><a class="header" href="#add-font-to-media-folder">Add Font to Media Folder</a></h3>
-<p>Once you have downloaded a supported font, such as “Arial.ttf”, you have to add
-it to the media folder.</p>
+<p>如果你使用 AnkiWeb 複習卡片，你還可以使用 <code>.chrome</code>、<code>.gecko</code> 和 <code>.opera</code> 等 class 來在不同的瀏覽器中使用不同樣式。要檢視所有可用的 class，請參閱 <a href="http://rafael.adm.br/css_browser_selector/">http://rafael.adm.br/css_browser_selector/</a>。</p>
+<h2 id="安裝字型-installing-fonts"><a class="header" href="#安裝字型-installing-fonts">安裝字型 Installing Fonts</a></h2>
+<p>如果你在公司/學校電腦上使用 Anki，沒有權限安裝字型，或是使用行動裝置，不便安裝字型，你可以在 Anki 中加入字型檔。</p>
+<p>Anki 僅支援加入 TrueType 格式的字型。TrueType 字型的副檔名為 <code>.ttf</code>，如 <code>Arial.ttf</code>。找到想要的字型檔後，請新增至 Anki 媒體檔資料夾：</p>
 <ol>
 <li>
-<p>Rename the file, adding an underscore at the start, so it becomes
-like “_arial.ttf”. Adding an underscore will tell Anki that this
-file will be used on a template, and should not be deleted when
-checking for unused media.</p>
+<p>重新命名檔案，在開頭加上一條底線，如 <code>_arial.ttf</code>。檔名開頭的底線表示檔案用於模板中，這樣在 Anki 中執行「檢查媒體檔」時就不會被刪除。</p>
 </li>
 <li>
-<p>In your computer’s file browser, go to your <a href="../files.html">Anki Folder</a>,
-and then a folder called “User 1” (or your profile name if you’ve
-renamed/added profiles).</p>
+<p>打開電腦上的檔案瀏覽器，並前往 <a href="../files.html">Anki 資料夾</a>，打開你的設定檔資料夾（預設名稱為「使用者 1」）。</p>
 </li>
 <li>
-<p>Inside the folder, you should see a folder called collection.media.
-Drag the renamed file to that folder.</p>
+<p>將已重新命名的字型檔放入「collection.media」資料夾中。</p>
 </li>
 </ol>
-<h3 id="update-template-to-use-that-font"><a class="header" href="#update-template-to-use-that-font">Update Template to Use That Font</a></h3>
-<p>After the font has been added to the media folder, you need to update the
-template.</p>
+<p>加入後，模板需要被更新：</p>
 <ol>
 <li>
-<p>Click <strong>Add</strong> at the top of the main screen, and then select the
-note type you want to change with the top left button.</p>
+<p>在主畫面上方，按一下「<strong>新增</strong>」按鈕，然後使用左上方的按鈕來選取要修改的筆記類型。</p>
 </li>
 <li>
-<p>Click <strong>Cards</strong>.</p>
+<p>按一下「<strong>卡片</strong>」按鈕.</p>
 </li>
 <li>
-<p>In the styling section, add the following text to the bottom (after
-the last “}” character), replacing “_arial.ttf” with the name of
-the file you copied into your media folder:</p>
+<p>在樣式表底部（原有的最後一個花括號 <code>}</code> 外），加入以下程式碼，並將 <code>_arial.ttf</code> 取代為你剛才加入的字型檔案名稱：</p>
 </li>
 </ol>
 <pre><code class="language-css">@font-face {
   font-family: myfont;
-  src: url("_arial.ttf");
+  src: url(&quot;_arial.ttf&quot;);
 }
 </code></pre>
-<p>Only change the “arial” part, not the “myfont” part.</p>
-<p>After that, you can either change the font for the entire card, or for
-individual fields. To change the font for the entire card, simply locate
-the font-family: line in the .card section and change the font to
-“myfont”. To change the font for only certain fields, please see the
-<a href="#field-styling">Field Styling</a> instructions above.</p>
-<p>Please make sure the filenames match exactly. If the file is called
-arial.TTF and you write arial.ttf in your card templates, it will not
-work.</p>
-<h2 id="night-mode"><a class="header" href="#night-mode">Night Mode</a></h2>
-<p>You can customize the way templates appear when night mode is enabled in
-the preferences screen.</p>
-<p>If you wanted a lighter grey background, you could use
-something like:</p>
+<p><code>_arial.ttf</code> 是字型檔案的名稱，而 <code>myfont</code> 是要在當前樣式表中使用的字體名稱。</p>
+<p>使用上面的程式碼匯入字型後，要讓整張卡片使用新的字型，你可以在 <code>.card</code> 部分中的 <code>font-family:</code> 裡把字型改為 <code>myfont</code> 或你自己設定的名稱。要為欄位單獨自訂字型，請參閱上文中的〈<a href="#%E6%AC%84%E4%BD%8D%E6%A8%A3%E5%BC%8F-field-styling">欄位樣式</a>〉章節。</p>
+<p>注意，字型檔名必須完全一致，如果檔名為 <code>arial.TTF</code>，而你在卡片模板中輸入了 <code>arial.ttf</code>，則將無法正常運作。</p>
+<h2 id="夜間模式-night-mode"><a class="header" href="#夜間模式-night-mode">夜間模式 Night Mode</a></h2>
+<p>你可以為夜間模式下的卡片自訂不同樣式。</p>
+<p>要讓夜間模式下的卡片背景為淺灰色，你可以這麼設定：</p>
 <pre><code class="language-css">.card.nightMode {
   background-color: #555;
 }
 </code></pre>
-<p>If you have a “myclass” style, the following would show the text in
-yellow when night mode is enabled:</p>
+<p>如果你有文字使用了 <code>.myclass</code> 樣式，加入以下程式碼可以讓這些文字僅在夜間模式下顯示為黃色：</p>
 <pre><code class="language-css">.nightMode .myclass {
   color: yellow;
 }
 </code></pre>
-<h2 id="fading-and-scrolling"><a class="header" href="#fading-and-scrolling">Fading and Scrolling</a></h2>
-<p>Anki will automatically scroll to the answer by default. It looks for an
-HTML element with id=answer, and scrolls to that. You can place the id
-on a different element to adjust the scrolling position, or remove the
-id=answer to turn off scrolling.</p>
-<p>The question side of a card fades in by default. If you wish to adjust
-this delay, you can place the following at the top of your front card
-template:</p>
-<pre><code class="language-html">&lt;script&gt;
-  qFade = 100;
-  if (typeof anki !== "undefined") anki.qFade = qFade;
-&lt;/script&gt;
-</code></pre>
-<p>100 (milliseconds) is the default; set to 0 to disable fading.</p>
-<h2 id="javascript"><a class="header" href="#javascript">Javascript</a></h2>
-<p>As Anki cards are treated like webpages, it is possible to embed some
-Javascript on your cards via the card template. For a good reference
-please read <a href="https://forums.ankiweb.net/t/card-templates-user-input-101-buttons-keyboard-shortcuts-etc-guide/13756">this post</a>
-in the forums.</p>
-<p>Because Javascript is an advanced feature and so many things can go
-wrong, <strong>Javascript functionality is provided without any support or
-warranty</strong>. We can not provide any assistance with writing Javascript,
-and can not guarantee any code you have written will continue to work
-without modification in future Anki updates. If you are not comfortable
-addressing any issues you encounter on your own, then please avoid using
-Javascript.</p>
-<p>Each Anki client may implement card display differently, so you will
-need to test the behaviour across platforms. A number of clients are
-implemented by keeping a long running webpage and dynamically updating
-parts of it as cards are reviewed, so your Javascript will need to
-update sections of the document using things like
-document.getElementById() rather than doing things like
-document.write().</p>
-<p>Functions like window.alert may not be available. Anki will write
-javascript errors to the terminal, so you’ll need to <a href="https://addon-docs.ankiweb.net/console-output.html#console-output">view the console</a> to
-see them. To debug issues with JavaScript, you can use Chrome’s
-<a href="https://addon-docs.ankiweb.net/debugging.html#webviews">inspector</a>.</p>
+<h2 id="捲動-scrolling"><a class="header" href="#捲動-scrolling">捲動 Scrolling</a></h2>
+<p>根據預設，Anki 會透過 <code>id=answer</code> 來找到包含答案的 HTML 元素，並在卡片背面自動捲動到這個元素。你可以把 <code>id=answer</code> 移動至其他 HTML 元素上來改變自動捲動的終點，或移除 <code>id=answer</code> 以停用自動捲動。</p>
+<h2 id="javascript"><a class="header" href="#javascript">JavaScript</a></h2>
+<p>因為 Anki 卡片本質上就是網頁，所以你也可以透過模板來在卡片上嵌入 JavaScript。請參閱<a href="https://forums.ankiweb.net/t/card-templates-user-input-101-buttons-keyboard-shortcuts-etc-guide/13756">此論壇貼文</a>來進一步了解。</p>
+<p>JavaScript 是一項進階功能，容易出現錯誤，因此 <strong>Anki 不為 JavaScript 功能提供支援</strong>。我們無法協助你編寫 JavaScript 程式碼，也無法保證當前可用的程式碼在未來不會失效。若無法自行解決相關問題，建議不要使用 JavaScript。</p>
+<p>不同 Anki 用戶端上的卡片顯示效果可能不一，因此你需要在不同平台上進行測試。多數用戶端的卡片是顯示在一個持續動態更新內容的網頁上，所以你的 JavaScript 程式碼需要使用 <code>document.getElementById()</code> 等方法來更新文件內容，而不是類似 <code>document.write()</code> 的方法。</p>
+<p><code>window.alert</code> 這樣的函式可能不可用。Anki 會在終端機寫入 JavaScript 錯誤，你需要在<a href="https://addon-docs.ankiweb.net/console-output.html#console-output">控制台</a>中檢視錯誤訊息。你可以使用 Chrome 的「<a href="https://addon-docs.ankiweb.net/debugging.html#webviews">檢查元素</a>」功能來為 JavaScript 程式碼偵錯。</p>
 
                     </main>
 
@@ -539,7 +389,7 @@ see them. To debug issues with JavaScript, you can use Chrome’s
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../templates/errors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../templates/errors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -553,7 +403,7 @@ see them. To debug issues with JavaScript, you can use Chrome’s
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../templates/errors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../templates/errors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -563,22 +413,21 @@ see them. To debug issues with JavaScript, you can use Chrome’s
 
 
 
-        <script>
+        <script type="text/javascript">
             window.playground_copyable = true;
         </script>
 
 
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
 
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
 
 
-    </div>
     </body>
 </html>
