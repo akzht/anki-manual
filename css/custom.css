@@ -9,6 +9,11 @@ html {
     font-family: Arial, Helvetica, "Source Han Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif !important;
 }
 
+kbd {
+  padding: 5px 5px;
+  vertical-align: text-top;
+}
+
 :root {
   --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", "Source Han Sans HW TC", "Microsoft JhengHei", "PingFang TC", monospace, monospace;
 }
