@@ -1,0 +1,435 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>新手入門 Getting Started - Anki 使用手冊</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="Anki 使用手冊。Anki 是一個閃卡程式，是你學習時的好幫手。">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="css/misc.css">
+        <link rel="stylesheet" href="css/mdbook-admonish.css">
+        <link rel="stylesheet" href="css/fonts.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Anki 使用手冊</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/lghhz/anki-manual/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="新手入門-getting-started-英文"><a class="header" href="#新手入門-getting-started-英文">新手入門 <a href="https://docs.ankiweb.net/getting-started.html">Getting Started <span style="font-size:18px;">(英文)</span></a></a></h1>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%9D--%E5%8D%87%E7%B4%9A-installing--upgrading">安裝 &amp; 升級 Installing &amp; Upgrading</a></li>
+<li><a href="#%E5%BD%B1%E7%89%87%E6%95%99%E5%AD%B8-videos">影片教學 Videos</a></li>
+<li><a href="#%E4%B8%BB%E8%A6%81%E6%A6%82%E5%BF%B5-key-concepts">主要概念 Key Concepts</a>
+<ul>
+<li><a href="#%E5%8D%A1%E7%89%87-cards">卡片 Cards</a>
+<ul>
+<li><a href="#%E5%8D%A1%E7%89%87%E7%8B%80%E6%85%8B">卡片狀態</a></li>
+</ul>
+</li>
+<li><a href="#%E7%89%8C%E7%B5%84-decks">牌組 Decks</a></li>
+<li><a href="#%E7%AD%86%E8%A8%98--%E6%AC%84%E4%BD%8D-notes--fields">筆記 &amp; 欄位 Notes &amp; Fields</a></li>
+<li><a href="#%E5%8D%A1%E7%89%87%E9%A1%9E%E5%9E%8B-card-types">卡片類型 Card Types</a></li>
+<li><a href="#%E7%AD%86%E8%A8%98%E9%A1%9E%E5%9E%8B-note-types">筆記類型 Note Types</a></li>
+<li><a href="#%E9%9B%86%E5%90%88-collection">集合 Collection</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B1%E4%BA%AB%E7%89%8C%E7%B5%84-shared-decks">共享牌組 Shared Decks</a></li>
+</ul>
+<h2 id="安裝--升級-installing--upgrading"><a class="header" href="#安裝--升級-installing--upgrading">安裝 &amp; 升級 Installing &amp; Upgrading</a></h2>
+<p>Anki 家族由 Anki、AnkiMobile、AnkiDroid 和 AnkiWeb 組成，請前往 <a href="https://apps.ankiweb.net">Anki 官方網站</a> 以下載/打開。</p>
+<p>要取得各電腦作業系統上的安裝及升級指引，請參閱：</p>
+<ul>
+<li><a href="./platform/windows/installing.html">Windows</a></li>
+<li><a href="./platform/mac/installing.html">Mac</a></li>
+<li><a href="./platform/linux/installing.html">Linux</a></li>
+</ul>
+<h2 id="影片教學-videos"><a class="header" href="#影片教學-videos">影片教學 Videos</a></h2>
+<p>以下影片可能使用舊版 Anki 演示，但概念是一樣的。</p>
+<ul>
+<li>
+<p><a href="http://www.youtube.com/watch?v=QS2G-k2hQyg&amp;yt:cc=on">共享牌組和複習簡介</a>（英文）</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=YkiM4DPzSVc&amp;list=PLGgmaKOIHykFoomqkBJAyGiDQ2kyiuTao&amp;yt:cc=on">同步</a>（英文）</p>
+</li>
+<li>
+<p><a href="http://www.youtube.com/watch?v=DnbKwHEQ1mA&amp;yt:cc=on">切換卡片順序</a>（英文）</p>
+</li>
+<li>
+<p><a href="http://www.youtube.com/watch?v=F1j1Zx0mXME&amp;yt:cc=on">設計卡片</a>（英文）</p>
+</li>
+<li>
+<p><a href="http://www.youtube.com/watch?v=5tYObQ3ocrw&amp;yt:cc=on">輸入答案</a>（英文）</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=rMlk97ecKUw:cc=on">阿姨我決定要繼續努力了！使用卡片軟體 Anki 學會任何東西 + 輕鬆應付考試！</a> - PAPAYA 電腦教室（中文）</p>
+</li>
+</ul>
+<h2 id="主要概念-key-concepts"><a class="header" href="#主要概念-key-concepts">主要概念 Key Concepts</a></h2>
+<h3 id="卡片-cards"><a class="header" href="#卡片-cards">卡片 Cards</a></h3>
+<p>類似紙製字卡，一張「卡片」包括一組問題和答案。與紙製字卡不同的是，Anki 中的卡片可以在答案面上同時顯示問題。假設你在學習基礎化學，有一張卡片的問題面為：</p>
+<pre><code>Q: 氧氣的化學符號是什麼？
+</code></pre>
+<p>經過思考，你得出的答案是 O，此時按下「顯示回答」按鈕，Anki 將顯示：</p>
+<pre><code>Q: 氧氣的化學符號是什麼？
+A: O
+</code></pre>
+<p>確定你答對之後，你可以評價自己的記憶如何，Anki 將會選擇你下一次複習這張卡片的時機。</p>
+<h4 id="卡片狀態"><a class="header" href="#卡片狀態">卡片狀態</a></h4>
+<div id="types-of-cards" />
+<ul>
+<li>
+<p><strong>新卡片</strong>：下載或建立後從未學習過的卡片。</p>
+</li>
+<li>
+<p><strong>學習中</strong>：近期初次學習，但還未學完的卡片。</p>
+</li>
+<li>
+<p><strong>複習卡</strong>：學完過後，現在需要複習來保持記憶的卡片。複習卡有兩種類型：</p>
+<ul>
+<li><strong>未熟練</strong>：學完後間隔小於 21 天的卡片。</li>
+<li><strong>熟練</strong>：間隔大於 21 天的卡片。</li>
+</ul>
+</li>
+<li>
+<p><strong>重新學習</strong>：複習失敗並因此重新回到學習模式的卡片。</p>
+</li>
+</ul>
+<h3 id="牌組-decks"><a class="header" href="#牌組-decks">牌組 Decks</a></h3>
+<p>一個「牌組」由一組卡片組成。你可以把卡片分類放進不同的牌組中，這樣你就不用每次都學習全部卡片。你還可以對每個牌組分別進行設定，例如調整每天要學習的新卡片數量，或是卡片需要下次出現的時間。</p>
+<p>牌組中可以包含其他牌組，所以你可以分層整理牌組。Anki 使用兩個半形冒號「::」來表示層級。「日文::漢字」表示「漢字」牌組，它是「日文」牌組的一部分。如果你選取了「漢字」牌組，那就只有漢字卡片會出現；如果你選取了「日文」牌組，那所有的日文卡片，包括漢字卡片在內都會出現。</p>
+<p>要分層置放牌組，你可以在牌組層級的名字之間輸入「::」，或者在牌組列表中拖放牌組。在其他牌組下層的牌組（即名字中包含至少一個「::」的牌組）稱作「子牌組」，上層的牌組則稱為「父牌組」。</p>
+<p>Anki 一開始會為你建立一個「預設」牌組；任何不包含於其他牌組的卡片都將被放入預設牌組中。若預設牌組中沒有卡片，同時你建立了其他的牌組，則預設牌組會被隱藏。你也可以對它重新命名，當作普通的牌組使用。</p>
+<p>在牌組清單中，牌組依字母順序顯示。因此，當你的牌組名稱包含數字時，順序可能不盡人意。例如，「牌組 10」會排在「牌組 9」前，因為 1 會排在 9 前面。若要使「牌組 9」排在「牌組 10」之前，你可以將其重新命名為「牌組 09」。</p>
+<p>牌組的理想使用方式是用來較為廣泛地分類卡片，不適合用來細分成「食物動詞」、「第一課」等課題。請參閱〈<a href="editing.html#%E6%81%B0%E7%95%B6%E9%81%8B%E7%94%A8%E7%89%8C%E7%B5%84-using-decks-appropriately">恰當運用牌組</a>〉章節來進一步了解。</p>
+<p>關於牌組順序對卡片顯示順序的影響，請參閱〈<a href="studying.html#%E9%A1%AF%E7%A4%BA%E9%A0%86%E5%BA%8F-display-order">顯示順序</a>〉章節。</p>
+<h3 id="筆記--欄位-notes--fields"><a class="header" href="#筆記--欄位-notes--fields">筆記 &amp; 欄位 Notes &amp; Fields</a></h3>
+<p>做字卡時，一則資訊經常需要製作多張卡片。例如，在學習日文時，你學到「こんにちは」意為「你好」，想要建立一張卡片顯示「こんにちは」，提問它的意思「你好」，然後再建立一張卡片顯示「你好」，提問它的日文「こんにちは」。兩張卡片分別考驗你的認知和輸出能力。</p>
+<p>使用紙製閃卡時，即使它們包含的資訊相同，你還是只能分別做兩張卡片。有一些電腦閃卡程式可以調換正背面，雖然比起紙製要節省時間，但這些程式有兩大缺點：</p>
+<ul>
+<li>
+<p>這些程式無法分開記錄你的認知和輸出能力的表現，卡片無法在最恰當的時機出現，這會導致你遺忘更多內容，或是多花不必要的時間來學習。</p>
+</li>
+<li>
+<p>調換正背面的作法只適用於兩遍內容完全一致的情形。因此你沒有辦法為每張卡片的背面各自加入更多資訊。</p>
+</li>
+</ul>
+<p>這些問題在 Anki 得以解決——你可以把卡片的內容細分為小塊的資訊。然後你可以指定要在每張卡片中各自顯示哪部分資訊，Anki就會為你建立卡片，並且你將來做出的任何修改都會自動更新到卡片中。</p>
+<p>假設我們要學習日文字彙，想在每張卡片的背面加入頁碼，就像這樣：</p>
+<pre><code>Q: こんにちは
+A: 你好
+   第 12 頁
+</code></pre>
+<p>和這樣：</p>
+<pre><code>Q: 你好
+A: こんにちは
+   第 12 頁
+</code></pre>
+<p>兩張卡片中都含有相同的三則資訊：日文單字、中文意思和頁碼。把它們放到一起，像這樣：</p>
+<pre><code>日文：こんにちは
+中文：你好
+頁碼：12
+</code></pre>
+<p>In Anki, this collection of related information is called a <em>note</em> and each piece of information is contained in a <em>field</em>. In this example, the note
+has three fields: "French", "English", and "Page".在 Anki 中把這樣相關的資訊集中到一起，就叫做一則「筆記」，每則資訊叫做一個「欄位」。所以，這一個筆記類型中有三個欄位：日文、中文和頁碼。</p>
+<p>要加入及編輯欄位，請在新增或編輯筆記時按一下「欄位…」按鈕。請參閱〈<a href="editing.html#%E8%87%AA%E8%A8%82%E6%AC%84%E4%BD%8D-customizing-fields">自訂欄位</a>〉章節來進一步了解欄位。</p>
+<h3 id="卡片類型-card-types"><a class="header" href="#卡片類型-card-types">卡片類型 Card Types</a></h3>
+<p>要讓 Anki 依照筆記內容來建立卡片，我們需要提供一張藍圖：每張卡片的正面和背面分別應該顯示的欄位。這張藍圖叫做一個「卡片類型」。每個類型的筆記都可以包含一或更多個卡片類型；新增筆記時，Anki 會依每個卡片類型分別建立一張卡片。</p>
+<p>每個卡片類型都有兩個「模板」，分別為問題面和答案面。在上面日文單字的例子中，我們要建立像這樣的認知測試卡片：</p>
+<pre><code>Q: こんにちは
+A: 你好
+   第 12 頁
+</code></pre>
+<p>要得到這樣的效果，我們可以將問題面和答案面的模板設定成這樣：</p>
+<pre><code>Q: {{日文}}
+A: {{中文}}&lt;br&gt;
+   第 {{Page}} 頁
+</code></pre>
+<p>In card templates, field names are wrapped in double curly brackets, like <code>{{French}}</code> or <code>{{English}}</code>. Anki replaces those with the actual text the fields contain. This is called a <a href="templates/fields.html">"Field replacement"</a>. Text not wrapped in double curly brackets appears the same on each card. For example, we won't need to add "Page #" on every note because the template will add it automatically to every card. The <code>&lt;br&gt;</code> tag is
+a special code that tells Anki to move to the next line. For details, see the <a href="templates/intro.html">templates</a> section.只要用雙花括號包住欄位名稱，Anki 就會把它取代為欄位中的實際內容。而沒有包在雙花括號裡的內容則會保留原樣。（例如，頁碼欄位中的「第 頁」不用每次都手動輸入，它會被自動加入每張卡片。）若要換行，請輸入特殊代碼 &lt;br&gt;；請參閱〈<a href="templates/intro.html">模板</a>〉以取得更多資訊。</p>
+<p>輸出測試卡片的模板也類似：</p>
+<pre><code>Q: {{中文}}
+A: {{日文}}&lt;br&gt;
+   第 {{Page}} 頁
+</code></pre>
+<p>建立卡片類型後，每次新增筆記時，就會同時依照卡片類型來建立卡片。卡片類型使得每張卡片的格式一致，更為輕鬆地加入資訊。而且還能讓 Anki 安排拉大關聯的卡片出現的間隔，當你發現內容有誤時只要修改一次就能更新到所有關聯的卡片上。</p>
+<p>要新增及編輯卡片類型，請在新增或編輯筆記時按一下「卡片…」按鈕。請參閱〈<a href="templates/intro.html">卡片和模板</a>〉來進一步了解卡片類型。</p>
+<h3 id="筆記類型-note-types"><a class="header" href="#筆記類型-note-types">筆記類型 Note Types</a></h3>
+<p>Anki allows you to create different types of notes for different
+material. Each type of note has its own set of fields and card types.
+It's a good idea to create a separate note type for each broad topic
+you're studying. In the previous French example, we might create a note
+type called "French" for that. If we wanted to learn capital cities, we
+could create a note type for that as well, with fields such as
+"Country" and "Capital City".</p>
+<p>Anki comes with some standard
+note types included. These note types are provided to make Anki easier for
+new users, but in the long run it's recommended you create your own note
+types specifically for the content you are learning. The standard note types are:你可以在 Anki 中為不同的材料建立不同的筆記類型。每種筆記類型都有各自的欄位和卡片類型。在新增筆記前，不妨為各類課題各自建立相應的筆記類型。在上面日文單字的例子中，我們可以建立名為「日文」的筆記類型。若要記憶各國首都，可以再另外建立一個筆記類型，加入「國家」和「首都」欄位。</p>
+<p>檢查重複項目時，Anki 只會在同一種筆記類型中比較。因此，如果你已經有了「雪梨」的日文字卡，當你用首都筆記類型加入名為「雪梨」的首都時，也不會提示有重複項目。</p>
+<p>Anki 會在你建立新集合時自動加入一些基本的筆記類型。這些筆記類型降低了新手入門的門檻，但為長遠打算，建議根據自己學習的內容來建立筆記類型。基礎筆記類型有以下幾種：</p>
+<ul>
+<li>
+<p><strong>基本型</strong>
+有「正面」、「背面」兩個欄位，建立一張卡片。「正面」欄位的內容會顯示在卡片正面，「背面」欄位的內容會顯示在卡片背面。</p>
+</li>
+<li>
+<p><strong>基本型（含反向卡片）</strong><br />
+在基本型的基礎上增加了一張方向相反的卡片，即建立兩張卡片：正面→背面，背面→正面。</p>
+</li>
+<li>
+<p><strong>基本型（選擇性反向卡片）</strong>
+建立一張「正面→背面」卡片，並可選擇是否建立「背面→正面」卡片。只要在筆記類型的第三個欄位「加入反向卡片」中輸入任意文字，便會建立一張反向卡片。請參閱〈<a href="templates/intro.html">卡片和模板</a>〉來進一步了解。</p>
+</li>
+<li>
+<p><strong>基本型（輸入答案）</strong>
+在基本型的基礎上，在卡片正面增加了一個文字框，輸入答案後，當你將卡片翻到背面，Anki 就會自動檢查你輸入的答案是否正確。請參閱〈<a href="templates/fields.html#%E6%AA%A2%E6%9F%A5%E7%AD%94%E6%A1%88-checking-your-answer">檢查答案</a>〉章節來進一步了解。</p>
+</li>
+<li>
+<p><strong>克漏字</strong><br />
+使用這個筆記類型，可以輕鬆選取文字並將其轉換為一個填空題空格（如「人類在 […​] 年首次登月」→「人類在 1969 年首次登月」）。請參閱〈<a href="editing.html#%E5%85%8B%E6%BC%8F%E5%AD%97%E7%A9%BA%E6%A0%BC-cloze-deletion">克漏字空格</a>〉章節來進一步了解。</p>
+</li>
+<li>
+<p><strong>影像遮擋</strong>
+可看作是用在影像上的克漏字，對有大量圖片需求的學習內容很有幫助，譬如解剖學、地理等學科。請參閱〈<a href="editing.html#%E5%BD%B1%E5%83%8F%E9%81%AE%E6%93%8B-image-occlusion">影像遮擋</a>〉章節來進一步了解。</p>
+</li>
+</ul>
+<p>要新增自己的筆記類型及修改現有筆記類型，請在 Anki 主視窗選擇「工具」&gt;「管理筆記類型」。</p>
+<p>筆記和筆記類型通用於整個集合，不受限於單個牌組。你可以在同一個牌組中使用多種不同的筆記類型，也可以把同一則筆記建立的多張卡片分別放入不同的牌組中。使用「新增」視窗時，你可以自由選取要使用的筆記類型和牌組。另外，筆記被建立之後仍可<a href="browsing.html">更改筆記類型</a>。</p>
+<h3 id="集合-collection"><a class="header" href="#集合-collection">集合 Collection</a></h3>
+<p>「集合」指儲存在 Anki 中的所有資料——包括你的卡片、筆記、牌組、筆記類型、牌組選項等。</p>
+<h2 id="共享牌組-shared-decks"><a class="header" href="#共享牌組-shared-decks">共享牌組 Shared Decks</a></h2>
+<p>開始使用 Anki 最簡單的方式就是下載別人分享的牌組：</p>
+<ol>
+<li>
+<p>按一下牌組下方的「取得共享牌組」按鈕。</p>
+</li>
+<li>
+<p>找到心儀的牌組後，按一下「Download」按鈕來下載牌組檔。</p>
+</li>
+<li>
+<p>下載完成後，按兩下下載好的牌組檔以將其載入 Anki，或者在 Anki 中選擇「檔案」→「匯入…」。</p>
+</li>
+</ol>
+<p>Note: It’s not currently possible to add shared decks
+directly to your AnkiWeb account. You need to first import them to the
+desktop app, AnkiMobile, or AnkiDroid, then <a href="./syncing.html">synchronize</a> to upload the decks to AnkiWeb.</p>
+<p>建立自己的牌組能使你更好地學習較為複雜的學科。像是語言、科學這種沒有辦法單靠死記硬背來理解的學科——只有提供了解釋和上下文時才能高效學習。而且，輸入內容時你需要判斷哪些是關鍵點，在這過程中你將能更透徹地理解內容。</p>
+<p>如果你在學習一門語言，你可能會想要下載像是「必背 7000 單字」這樣一大堆帶有翻譯的單字卡，但用這種方式學習的效率無異於單靠背誦公式來學物理。要學好語言，你需要教材、老師、多接觸真實對話。</p>
+<pre><code>不要學習未理解的內容。
+Do not learn if you do not understand.
+--SuperMemo
+</code></pre>
+<p>大多數共享牌組的建立者都是在 Anki 之外——透過教材、課堂、看電視劇等途徑學習後，再把學到的內容加入到 Anki 中。由於已經對材料有了一定了解，他們不會費心加入卡片的背景或解釋。如果你下載了這些牌組，缺少了背景和解釋，單純學習這些卡片將很吃力。</p>
+<p>但共享牌組也並非一無是處——學習複雜學科時，雖然不能完全取代外部材料，但你可以對其加以補充。如果你正在使用教材《ABC》，下載別人共享的《ABC》牌組可以為你節省不少時間。而在學習簡單的內容時，像是首都名稱或國旗這種簡單的配對題，單靠共享牌組也足以應對。However, for complex subjects, shared decks should be used as a <em>supplement</em> to external material, not as a <em>replacement</em> for it.但在學習複雜學科時，若不使用外部材料，效果將不盡如人意。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="platform/linux/input-methods.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="getting-help.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="platform/linux/input-methods.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="getting-help.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
