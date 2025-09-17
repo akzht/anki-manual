@@ -1,10 +1,10 @@
-# 卡片資訊、圖表和統計 Card Info, Graphs and Statistics
+# 卡片資訊、圖表和統計資料 Card Info, Graphs and Statistics
 
 <!-- toc -->
 
-## 卡片資訊 Card Info
+## 卡片資訊
 
-要檢視卡片資訊，你可以右鍵按一下卡片，在選單中選取「卡片資訊」，或在複習畫面按下 <kbd>I</kbd> 鍵。
+要檢視卡片資訊，你可以右鍵按一下卡片，在選單中選取「卡片資訊」，或在學習畫面按下 <kbd>I</kbd> 鍵。
 
 ![Card Info](media/card_info.png)
 
@@ -39,7 +39,7 @@ top of the main window, or by pressing <kbd>T</kbd>.
 
 ## Selecting Decks / Collection
 
-### Deck.
+### Deck
 
 By default, the statistics window will show statistics from the currently selected deck and any
 subdecks it may contain, but you can select any deck from your collection by typing its name in the
@@ -52,14 +52,9 @@ for arbitrary searches by adding filters in the search box at the top (2.1.28+).
 
 ### History
 
-By default, Anki 2.1.28+ will show you statistics for the last 12 months.
+By default, Anki shows you statistics for the last 12 months.
 You can change this to all history scope or deck life scope at the top. (The
 "today" section at the top remains of course unaffected by this selection.)
-
-Older versions of Anki will by default show you statistics for
-the previous month. You can change this to a year scope or deck life scope
-at the bottom. (Again, the “today” section at the top is unaffected
-by this selection.)
 
 ### More
 
@@ -79,17 +74,17 @@ by this selection.)
 
 At the top of the statistics window is a brief list of textual
 statistics about the reviews that you have completed today. A “review”
-in this context is 'one answering of a card', so a card might count as
+in this context is "one answering of a card", so a card might count as
 multiple reviews if it needed to be seen multiple times, and a learning
 card answered also counts as a “review.” A couple of the stats whose
 meaning may not be immediately obvious:
 
-**Again Count**\
+### Again Count
 This is the number of reviews that you have failed (i.e., pressed Again
 on). The correct percentage listed afterwards is the number of cards you
-did 'not' fail divided by the total number of cards you studied.
+did "not" fail divided by the total number of cards you studied.
 
-**Learn, Review, Relearn, Filtered**\
+### Learn, Review, Relearn, Filtered
 The number of reviews that were learning cards, review cards, relearning
 cards, or studied in a filtered deck when not due.
 
@@ -106,70 +101,124 @@ bottom of the window.
 
 ## The Graphs
 
-**Future Due**\
+### Future Due
 This graph shows an estimated number of reviews that will be due on a
 given day in the future if you learn no new cards and fail no cards. The
 bars and the left axis show the number of cards due on each day if you
-study all cards each day, while the line and the right axis show the
-number of cards due on that day if you don’t study at all until then.
+study all cards each day, while the gray shaded region and the right axis show
+the number of cards due on that day if you don’t study at all until then.
 Note that the forecast graph does not count reviews that are currently
 overdue, so if you have a large backlog, the overdue cards will not be
 displayed.
 
-**Calendar**
+Daily load is an estimate of the average number of cards to be reviewed daily.
+If you don't have a backlog, daily load should be approximately equal to
+your number of due cards.
+
+It is calculated as follows:
+
+$$
+\frac{1}{I_1} + \frac{1}{I_2} + \frac{1}{I_3} + \dots + \frac{1}{I_n}
+$$
+
+Here, \\(I_n\\) is the interval of
+the n-th card. If the interval is less than one day, the summation term is 1. This
+prevents cards with short intervals from unrealistically skewing the value of daily load.
+
+Example: you have a card with an interval of 10 days and a card with an interval of 50 days.
+Daily load = \\(\frac{1}{10} + \frac{1}{50} = 0.12\\), meaning that, _on average_, you will have 0.12 due cards per day.
+
+### Calendar
 This graph shows past card review activity. Hovering the mouse over a specific item
 allows you to view the number of revisions made that day. Click on a day of the
 week to make that the starting day.
 
-**Reviews**\
+### Reviews
 This graph counts the number of card reviews you have done. The bars may
 correspond to days, weeks, or months, depending on the time period
 you’ve selected at the bottom of the screen. The differently colored
 blocks show how many of the cards you answered on each day were
-[mature](getting-started.md#卡片種類), young, relearning, or learning cards.
+[mature](getting-started.md#card-states), young, relearning, or learning cards.
 There is also a separate group for cards answered in a filtered/cram
-deck while they were not due. The line and the right axis shows the
-cumulative total for each type of review as time progresses across the
+deck while they were not due. The gray shaded region and the right axis shows
+the cumulative total for each type of review as time progresses across the
 graph (so at 0 days, it would display the number for the entire time
 period displayed on the graph).
 
-**Card Counts**\
+### Card Counts
 This pie chart shows what percentage of your deck or collection consists
 of mature, unseen, young/learn, and suspended cards. If you wish to
 calculate a more precise percentage, the key shows the exact number of
 cards in each section, and the total number of cards is displayed to the
 side.
 
-**Review Time**\
+### Review Time
 This graph works exactly like Review Count, except that it deals with
 the amount of time you spent on each card rather than the number of
 cards answered.
 
-**Review Intervals**\
+### Review Intervals
 This graph displays the number of cards that have a given interval (the
-delay between two reviews). The line and the right axis tell you what
-percentage of your cards have an interval of less than or equal to the
+delay between two reviews). The gray shaded region and the right axis tell you
+what percentage of your cards have an interval of less than or equal to the
 time below that point. The time scope has a different effect on this
 graph than other graphs: rather than changing which cards or period of
 studying is included, it limits how far out the intervals are displayed
 to (so 14-month intervals are not displayed at all on a 1-year graph).
 
-**Card Ease**
+### Card Ease
 This graph shows the number of cards that have a specific ease factor.
 Average ease of the selected deck / collection is also displayed here.
 
-**Hourly Breakdown**\
-This graph shows what percentage of total reviews you have passed (i.e.,
-not pressed Again on) during given hours. The larger, darker bars and
-left axis show the success rate; the thinner, lighter bars and right
-axis show the number of reviews you’ve made at that hour (so you know
-how significant the results are).
+### Card Stability
+Only shown if FSRS is enabled. Stability is defined as the amount of time required
+for the probability of recall to decrease from 100% to 90%.
 
-**Answer Buttons**\
+### Card Difficulty
+Only shown if FSRS is enabled. Difficulty determines how quickly a card's interval grows
+after each review.
+
+### Card Retrievability
+Only shown if FSRS is enabled. "Retrievability" is synonymous with "probability of recall".
+
+Estimated total knowledge is the total number of cards you are likely to currently remember,
+calculated by multiplying average retrievability by the number of cards that have been
+reviewed at least once.
+
+### Hourly Breakdown
+This graph shows the percentage of total reviews you have passed during given
+hours.
+1. x-axis (bottom): Time of day (at given hour).
+2. y-axis (right): Amount of cards studied.
+3. secondary y-axis (left): Success rate in percent.
+
+The blue bars thus show you the number of reviews you’ve made at that hour (so
+that you know how significant the results are). The gray shaded region shows
+the percentage of the total reviews you have passed (i.e., not pressed _Again_
+on) at that hour.
+
+### Answer Buttons
 This graph shows how many times you’ve chosen the Again, Hard, Good, or
 Easy button while studying learning/new, young, and
-[mature](getting-started.md#卡片種類) cards. Anki also displays the percentage
+[mature](getting-started.md#card-states) cards. Anki also displays the percentage
 of correct reviews for each type of card.
+
+
+### True Retention Table
+
+This table shows your retention across different cards and different time frames.
+A card is defined as "mature" if its interval is ≥21 days. Only one review per day - the first one - counts.
+Again counts as "Fail"; Hard, Good, and Easy count as "Pass".
+This table can be used to check how well [Anki's spaced repetition algorithm](https://faqs.ankiweb.net/what-spaced-repetition-algorithm.html) is working for you.
+
+If you are using FSRS, your true retention is expected to be close to your [desired retention](deck-options.md#desired-retention).
+Please keep in mind that data for a single day is noisy, so it's better to look at monthly data. If your true retention doesn't match your desired retention very well, here are some general recommendations:
+
+1) Optimize your FSRS parameters.
+2) Use different presets with their own parameters for different material.
+3) Suspend/reformulate [leeches](leeches.md).
+4) Make sure you are [using the answer buttons as intended](studying.md#answer-buttons).
+
 
 ## Manual Analysis
 
@@ -191,19 +240,19 @@ with is called [SQLite Browser](http://sqlitebrowser.org/), which will
 allow you to look around the database as well as export a CSV version of
 tables for import into another program.
 
-The most important table for statistics is the 'revlog' table, which
+The most important table for statistics is the "revlog" table, which
 stores an entry for each review that you conduct. The columns are as
 follows:
 
 **id**\
 The time at which the review was conducted, as the number of
 milliseconds that had passed since midnight UTC on January 1, 1970.
-(This is sometimes known as 'Unix epoch time', especially when in
+(This is sometimes known as "Unix epoch time", especially when in
 straight seconds instead of milliseconds.)
 
 **cid**\
 The ID of the card that was reviewed. You can look up this value in the
-id field of the 'cards' table to get more information about the card,
+id field of the "cards" table to get more information about the card,
 although note that the card could have changed between when the revlog
 entry was recorded and when you are looking it up. It is also the
 millisecond timestamp of the card’s creation time.

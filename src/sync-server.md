@@ -14,12 +14,13 @@ Things to be aware of:
 - Third-party sync servers also exist. No testing is done against them, and
   they tend to take time to catch up when the sync protocol changes, so they
   are not recommended.
-- The messages inside Anki will use the term 'AnkiWeb' even if a custom server
+- The messages inside Anki will use the term "AnkiWeb" even if a custom server
   has been configured, (e.g "Cannot connect to AnkiWeb" when your server is down).
 
 ## Installing/Running
 
 There are various ways you can install and run the server. You can use either:
+
 - the sync server bundled with the desktop version of Anki
 - a separate minimal sync server that doesn't include Anki's GUI dependencies. Python and Rust implementations are available.
 
@@ -31,14 +32,16 @@ On Windows in a cmd.exe session:
 
 ```
 set SYNC_USER1=user:pass
-"\Program Files\anki\anki.exe" --syncserver
+"\Program Files\anki\anki-console" --syncserver
 ```
 
 Or MacOS, in Terminal.app:
 
 ```
-SYNC_USER1=user:pass /Applications/Anki.app/Contents/MacOS/anki --syncserver
+SYNC_USER1=user:pass /Applications/Anki.app/Contents/MacOS/launcher --syncserver
 ```
+
+Replace 'launcher' with 'anki' for old packaged builds prior to 25.07.
 
 Or Linux:
 
@@ -63,10 +66,10 @@ From Anki 2.1.66+, you can alternatively build a Rust implementation of the stan
 Make sure you have Rustup installed.
 
 ```
-cargo install --git https://github.com/ankitects/anki.git --tag 2.1.66 anki-sync-server
+cargo install --locked --git https://github.com/ankitects/anki.git --tag 25.02.5 anki-sync-server
 ```
 
-Replace 2.1.66 with whatever the latest Anki version is.
+Replace 25.02.5 with whatever the latest Anki version is.
 
 Protobuf (protoc) will need to be installed.
 
@@ -81,9 +84,14 @@ SYNC_USER1=user:pass anki-sync-server
 If you've cloned the Anki repo from GitHub, you can install from there:
 
 ```
-./ninja extract:protoc
+./ninja extract:protoc ftl_repo
 cargo install --path rslib/sync
 ```
+
+### With Docker
+
+You can find a user-contributed Dockerfile and some instructions
+[here](https://github.com/ankitects/anki/tree/main/docs/syncserver).
 
 ## Multiple Users
 
@@ -96,7 +104,7 @@ wish to set up multiple accounts.
 Advanced users may wish to use hashed passwords instead of plain text
 passwords. If you wish to do this, you'll need to use a separate tool (such as
 [this one](https://git.sr.ht/~laalsaas/pbkdf2-password-hash)) to generate a
-password hash.  You can then tell the server to expect hashed passwords by
+password hash. You can then tell the server to expect hashed passwords by
 setting the env var PASSWORDS_HASHED to 1 (or any other value).
 
 When hashed passwords are used, SYNC_USER variables are expected to be in
@@ -107,9 +115,12 @@ the PHC Format.
 
 The server needs to store a copy of your collection and media in a folder.
 By default it is ~/.syncserver; you can change this by defining
-a `SYNC_BASE` environmental variable. This must not be the same
-location as your normal Anki data folder, as the server and client
-must store separate copies.
+a `SYNC_BASE` environmental variable.
+
+- This must not be the same location as your normal Anki data folder, as the
+  server and client must store separate copies.
+- You must sync your data to the server, not manually copy files into the
+  server folder.
 
 ## Public Access
 
@@ -133,7 +144,7 @@ network, please go into the iOS settings, locate Anki near the bottom, and
 toggle "Allow Anki to access local network" off and then on again.
 
 Older desktop clients required you to define `SYNC_ENDPOINT` and
-`SYNC_ENDPOINT_MEDIA`.  If using an older client, you'd put it as e.g.
+`SYNC_ENDPOINT_MEDIA`. If using an older client, you'd put it as e.g.
 `http://192.168.1.200:8080/sync/` and `http://192.168.1.200:8080/msync/`
 respectively. AnkiDroid clients before 2.16 require separate configuration for
 the two endpoints.

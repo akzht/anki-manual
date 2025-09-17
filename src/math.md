@@ -25,12 +25,15 @@ To try it out:
 
        \(\sqrt{x}\)
 
-4. If you click the Cards… button, you’ll see a preview of how the
+4. Click the **Cards...** button. You’ll see a preview of how the
    equation will appear when the card is reviewed.
 
+    $$
+    \sqrt{x}
+    $$
 Anki’s MathJax support expects content in TeX format. If you’re not
 familiar with TeX formatting, please see [this cheatsheet](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
-Please note that point 2 does not apply in Anki - Anki uses `\(` and
+Please note that point 1 does not apply in Anki - Anki uses `\(` and
 `\)` for inline equations, and `\[` and `\]` for display equations.
 
 If you want to use newlines in a MathJax expression, please use
@@ -38,11 +41,27 @@ If you want to use newlines in a MathJax expression, please use
 MathJax from working correctly.
 
 Anki includes built in support for mhchem for rendering chemical
-equations. Please see the 'chemical equations' section and the following
+equations. Please see the "chemical equations" section and the following
 sections for more information:
 <https://mhchem.github.io/MathJax-mhchem/>
 
-It is possible to [customize some settings](https://faqs.ankiweb.net/customizing-mathjax.html).
+### Customize MathJax
+
+Anki's bundled MathJax support is loaded before card content, so if you wish to customise MathJax you'll have to do so in a specific way. An example is provided here.
+
+```javascript
+<script>
+MathJax.config.tex['macros'] = {
+    R: '{\\mathbb {R}}',
+};
+if (typeof is_already_run == 'undefined') {
+  is_already_run = true
+  MathJax.startup.getComponents();
+}
+</script>
+```
+
+Note that Anki has special logic for cloze deletions that might not work if you change the standard delimiters for MathJax equations.
 
 ## LaTeX
 
@@ -64,7 +83,7 @@ LaTeX code can contain malicious commands that can read or write non-Anki
 data on your computer. For this reason, recent Anki versions will refuse to
 generate LaTeX images by default.
 
-If you wish to use LaTeX on your own cards, you will need to enable the 'Generate LaTeX images' option in the preferences screen.
+If you wish to use LaTeX on your own cards, you will need to enable the **Generate LaTeX images** option in the preferences screen.
 
 **We strongly recommend you do not enable this option if you use shared decks, or think
 you will import shared decks in the future, as you are potentially giving any shared
@@ -134,9 +153,9 @@ will produce this when the flashcard is viewed:
 
 ![convergence question](math/convergence_question.png)
 
-The formula in the example above is called a 'text formula', because it
+The formula in the example above is called a "text formula", because it
 is displayed right within the non-mathematical text. In contrast, the
-following example shows a 'displayed formula':
+following example shows a "displayed formula":
 
     Does the sum below converge?
 
@@ -144,7 +163,7 @@ following example shows a 'displayed formula':
 
 ![convergence question 2](math/convergence_question_2.png)
 
-'Text formulas' and 'display formulas' are the most common type of LaTeX
+"Text formulas" and "display formulas" are the most common type of LaTeX
 expressions, so Anki provides abbreviated versions of them. Expressions
 of the form:
 

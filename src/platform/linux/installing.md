@@ -4,7 +4,7 @@
 
 ## Requirements
 
-The packaged version requires a recent 64 bit Intel/AMD Linux with glibc, and common
+The packaged version requires a recent 64 bit Intel/AMD Linux with glibc 2.36+, and common
 libraries like libwayland-client and systemd. If you are on a different
 architecture (e.g ARM/AArch64), or a barebones Linux distro, you will not be able to use the
 packaged version, but you may be able to use the [Python wheels](https://betas.ankiweb.net/#via-pypipip)
@@ -27,8 +27,7 @@ Anki's build system only supports glibc, so musl-based distros are not currently
 
 To install Anki:
 
-1. Download Anki from <https://apps.ankiweb.net> to your Downloads folder. See the next section
-   for how to choose between -qt5 and -qt6.
+1. Download Anki from <https://apps.ankiweb.net> to your Downloads folder.
 2. If zstd is not already installed on your system, you'll need to install it (e.g `sudo apt install zstd`).
 3. Open a terminal and run the following commands, replacing the filename as appropriate.
 
@@ -40,26 +39,8 @@ sudo ./install.sh
 
 On some Linux systems, you may need to use `tar xaf --use-compress-program=unzstd`.
 
-4. You can then start Anki by typing 'anki' and hitting enter. If you encounter
+4. You can then start Anki by typing `anki` and hitting <kbd>Enter</kbd>. If you encounter
    any issues, please see the links on the left.
-
-## Qt5 vs. Qt6
-
-Recent Anki versions come in separate Qt5 and Qt6 variants. The Qt6 version
-is recommended for most users.
-
-Advantages of the Qt6 version:
-
-- Compatibility with recent glibc versions (fixes [blank screens on recent distros](./blank-window.md)).
-- Better HiDPI support.
-- Better Wayland support.
-- Various bugfixes, including things like better support for less common languages.
-- Security updates. Support for the Qt5 library was discontinued in Nov 2020,
-  meaning that any security flaws discovered since then will remain unfixed.
-
-Disadvantages of the Qt6 version include:
-
-- Some add-ons currently only work with the Qt5 version.
 
 ## Upgrading
 
@@ -79,6 +60,35 @@ If you wish to downgrade to a previous version, please make sure you
 Some add-ons may not always work with the latest Anki release. If you upgrade to
 the latest Anki version and find an add-on you cannot live without stops working,
 you can download older Anki versions from the [releases page](https://github.com/ankitects/anki/releases).
+
+## System Qt versions
+
+Anki's launcher uses the official PyQt builds by default. This makes it easier to
+install Anki on distros that don't have the relevant Python/Qt versions, but means that
+you may not have access certain Qt features provided by your Linux distro, such as certain
+Qt themes, support for the FCITX input method, etc.
+
+If your Linux distro provides up-to-date Anki packages, you may find using them easiest.
+
+If it doesn't, advanced users may wish to combine Anki's launcher with their system's Qt version.
+To do this, your system needs to have a Python version Anki supports (soon to be 3.11+),
+and suitable PyQt libraries (6.2+).
+
+WARNING: This is an experimental feature, and your system's Qt may fix some bugs while
+introducing others.
+
+1. Install Python and the relevant PyQt packages. On Ubuntu:
+
+   > sudo apt install python3-pyqt6.qtwebengine
+
+1. If you previously used the launcher, `rm -rf ~/.local/share/AnkiProgramFiles`.
+
+1. Untar the launcher, and cd to its folder.
+
+1. Run `touch system_qt` to create a system_qt file in that folder.
+
+1. Install Anki via ./anki or ./install.sh. In the list of installed packages,
+   you should not see any mention of PyQt6.
 
 ## Problems
 

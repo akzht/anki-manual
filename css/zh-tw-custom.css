@@ -1,0 +1,49 @@
+/* inter */
+@import url("../fonts/inter/inter.css");
+
+/* genyo gothic tw */
+@import url("../fonts/genyo-gothic-tw/css/genyo-gothic-tw.css");
+
+/* roboto condensed */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* fira code */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+
+
+:root {
+    --mono-font: "Fira Code", "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", "GenYoGothic2 TW", "Source Han Sans TC", "Microsoft JhengHei UI", "PingFang TC", monospace;
+}
+
+html,
+.menu-title {
+    font-family: Inter, Arial, "Helvetica Neue", "GenYoGothic2 TW", "Source Han Sans TC", "Microsoft JhengHei UI", "PingFang TC", sans-serif;
+    font-feature-settings: "palt" 1;
+    text-autospace: normal;
+    font-display: block;
+}
+
+.menu-title {
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.chapter-item {
+    font-family: "Roboto Condensed", "Arial Nova Condensed", "Arial Nova Cond", "GenYoGothic2 TW", "Source Han Sans TC", "Microsoft JhengHei UI", "PingFang TC", sans-serif;
+}
+
+.original-link {
+    font-size: 18px;
+}
+
+kbd {
+    font-size: 15px;
+    padding: 5px 5px;
+    margin: 1px 0px;
+    vertical-align: bottom;
+}

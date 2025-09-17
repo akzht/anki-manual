@@ -1,22 +1,22 @@
-# 偏好設定 [Preferences <span style="font-size:18px;">(英文)</span>](https://docs.ankiweb.net/preferences.html)
+# 偏好設定 [Preferences<span class="original-link">（原文）</span>](https://docs.ankiweb.net/preferences.html)
 
 <!-- toc -->
 
-你可以在 Windows/Linux 版本中的「工具」選單或 Mac 上的「Anki」選單中找到偏好設定。
+你可以在Windows/Linux版本中的「工具」選單或Mac上的「Anki」選單中找到偏好設定。
 
-## 外觀 Appearance
+## 外觀
 
-### 一般 General
+### 一般
 
 **語言**\
-更改顯示語言。要幫 Anki 改進翻譯，請前往 <https://translating.ankiweb.net/>
+更改顯示語言。要幫Anki改進翻譯，請前往 <https://translating.ankiweb.net/>
 
 ### 使用者介面User Interface
 
 **佈景主題**\
-Anki 介面使用深色（夜間）模式時，卡片會變為黑底白字。你可能需要修改部分卡片模板才能使這個功能正確運作，請參閱〈[夜間模式](templates/styling.md#夜間模式-night-mode)〉章節來進一步了解。
+Anki介面使用深色（夜間）模式時，卡片會變為黑底白字。你可能需要修改部分卡片模板才能使這個功能正確運作。進一步了解[夜間模式](templates/styling.md#夜間模式-night-mode)。
 
-2.1.50 及以上版本還可以選擇跟隨系統設定來自動切換深色/淺色模式。
+2.1.50或以上版本還可以選擇跟隨系統設定來自動切換深色/淺色模式。
 
 **使用者介面大小**\
 若介面顯示元素過大或過小，可以嘗試調整這項設定。
@@ -25,25 +25,25 @@ Anki 介面使用深色（夜間）模式時，卡片會變為黑底白字。你
 將視窗大小和位置重設為預設。
 
 **視訊驅動程式**\
-Anki 的函式庫需要透過視訊驅動程式以繪製螢幕上的圖形。由於各種軟硬體的設定不盡相同，各個驅動程式在你的機器的運作效果可能不一。ANGLE 和 OpenGL 效能比軟體較佳，但在某些系統上可能無法正常運作。在 Mac 上，通常應使用 OpenGL 選項。
+Anki的函式庫需要透過視訊驅動程式以繪製螢幕上的圖形。由於各種軟硬體的設定不盡相同，各個驅動程式在你的機器的運作效果可能不一。軟體加速通常較慢，但其他選項在部分系統上可能無法正常運作。
 
-注意：如果你正在使用 2.1.50+ (Qt6) 版本，請前往[這個頁面](./platform/windows/display-issues.md#qt6)。
+注意：如果你正在使用Windows版本Anki，請前往[這個頁面](./platform/windows/display-issues.md)來進一步了解。
 
-### 減少干擾 Distractions
+### 減少干擾
 
 這些選項可以移除複習時畫面中不必要的干擾：
 
 - 複習時隱藏頂部列和底部列。
 - 極簡模式：使介面更加緊湊/簡約。
 - 減少動態效果：停用部分過場效果和動畫。
-- 切換本機樣式/Anki 佈景主題。（僅限 Mac/Linux）
+- 切換本機樣式/Anki佈景主題。（僅限Mac/Linux）
 
-## 複習 Review
+## 複習
 
-### 排程器 Scheduler
+### 排程器
 
 **次日始於**\
-控制 Anki 從何時開始顯示下一天的卡片。使用預設的「4 時」時，在半夜 12 點左右學習時就不會跟第二天的卡片混到一起。如果你熬夜到很晚或者很早起床，你可以將這個選項設定在你平常的睡眠時間範圍內。Controls when Anki should start showing the next day’s cards. The default
+控制Anki從何時開始顯示下一天的卡片。使用預設的「4時」時，在半夜12點左右學習時就不會跟第二天的卡片混到一起。如果你熬夜到很晚或者很早起床，你可以將這個選項設定在你平常的睡眠時間範圍內。Controls when Anki should start showing the next day’s cards. The default
 setting of 4AM ensures that if you’re studying around midnight, you won’t have
 two days' worth of cards shown to you in one session. If you stay up very late
 or wake up very early, you may want to adjust this to a time you’re usually
@@ -68,7 +68,7 @@ cards you’ve managed to study during the prescribed time limit.
 ### Review
 
 **Show play buttons on cards with audio**\
-Whether a clickable (re)play button will be shown in the review screen
+Whether a clickable (re)play button will be shown in the study screen
 for cards with audio.
 
 **Interrupt current audio when answering**\
@@ -82,7 +82,7 @@ Disable this option to hide the card count at the bottom of the screen.
 Useful to know how far in the future your cards are being pushed.
 
 **Spacebar (or enter) also answers card**\
-Defines whether a press on the space bar (or the enter key) also answers cards.
+Defines whether a press on <kbd>Space</kbd> or <kbd>Enter</kbd> answers cards.
 
 ## Editing
 
@@ -108,7 +108,7 @@ note type (and opens the add window to the last-used note type when you choose
 Add). This may be more convenient if you always use a single note type for each
 deck.
 
-The last used deck/notetype is updated when you add a card. If you change the deck
+The last used deck/note type is updated when you add a card. If you change the deck
 and close the add window without adding a card, it won't be saved.
 
 ### Browsing
@@ -119,11 +119,6 @@ with "deck:current").
 
 **Ignore accents in search (slower)**\
 When enabled, simple text searches automatically [ignore accents](./searching.md#ignoring-accentscombining-characters).
-
-### Import/Export
-
-**Legacy import/export handling**\
-If enabled, legacy (pre 2.1.55) import / export code will be used. It is recommended to deactivate this option.
 
 ## Syncing
 

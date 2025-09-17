@@ -1,10 +1,10 @@
 [book]
 authors = ["Ankitects Pty Ltd and contributors"]
-description = "Anki 使用手冊。Anki 是一個閃卡程式，是你學習時的好幫手。"
+description = "Anki使用手冊。Anki是一個閃卡程式，是你學習時的好幫手。"
 language = "zh-tw"
 multilingual = false
 src = "src"
-title = "Anki 使用手冊"
+title = "Anki使用手冊（beta）"
 
 [build]
 create-missing = true
@@ -13,10 +13,15 @@ create-missing = true
 command = "mdbook-toc"
 renderer = ["html"]
 
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.3" # do not edit: managed by `mdbook-admonish install`
+
 [output.html]
-git-repository-url = "https://github.com/anki-manual-zh-tw/anki-manual/"
+git-repository-url = "https://github.com/lghhz/anki-manual/"
 cname = "lghhz.github.io/anki-manual"
-additional-css = ["css/kbd.css", "css/misc.css", "css/fonts.css"]
+additional-css = ["css/misc.css", "css/mdbook-admonish.css", "css/zh-tw-custom.css"]
+mathjax-support = true
 
 [output.linkcheck]
 optional = true
@@ -30,6 +35,7 @@ exclude = [
   'https://github.com/open-spaced-repetition/fsrs4anki#add-on-compatibility',
   'support.google.com',
   'wikiwiki.jp',
+  'web.archive.org',
 ]
 
 [output.html.fold]

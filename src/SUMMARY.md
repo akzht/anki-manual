@@ -2,8 +2,8 @@
 
 [介紹 Introduction](intro.md)
 
-- [Background](background.md)
-- [平台說明 Platform Notes](platform/intro.md)
+<!-- - [Background](background.md) -->
+<!-- - [平台說明 Platform Notes](platform/intro.md)
   - [Windows](platform/windows/intro.md)
     - [Install & Upgrade](platform/windows/installing.md)
     - [Installation Issues](platform/windows/installation-issues.md)
@@ -23,39 +23,39 @@
     - [Linux Distro Packages](platform/linux/distro-packages.md)
     - [Incorrect GTK Theme](platform/linux/gtk-theme.md)
     - [Wayland](platform/linux/wayland.md)
-    - [Input Methods](platform/linux/input-methods.md)
+    - [Input Methods](platform/linux/input-methods.md) -->
 - [新手入門 Getting Started](getting-started.md)
-- [取得協助 Getting Help](getting-help.md)
+<!-- - [取得協助 Getting Help](getting-help.md) -->
 - [學習 Studying](studying.md)
 - [新增/編輯 Adding/Editing](editing.md)
 - [卡片模板 Card Templates](templates/intro.md)
   - [欄位取代 Field Replacements](templates/fields.md)
   - [產生卡片 Card Generation](templates/generation.md)
   - [樣式與 HTML Styling & HTML](templates/styling.md)
-  - [Checks and Errors](templates/errors.md)
-- [Preferences](preferences.md)
-- [Deck Options](deck-options.md)
-- [Syncing with AnkiWeb](syncing.md)
-- [設定檔 Profiles](profiles.md)
-- [Browsing](browsing.md)
+  <!-- - [Checks and Errors](templates/errors.md) -->
+<!-- - [偏好設定 Preferences](preferences.md) -->
+- [牌組選項 Deck Options](deck-options.md)
+<!--- [Syncing with AnkiWeb](syncing.md)
+- [設定檔 Profiles](profiles.md) -->
+<!-- - [Browsing](browsing.md)
 - [Filtered Decks](filtered-decks.md)
-- [Searching](searching.md)
+- [搜尋 Searching](searching.md)
 - [Importing](importing/intro.md)
   - [Text Files](importing/text-files.md)
   - [Packaged Decks](importing/packaged-decks.md)
 - [Exporting](exporting.md)
 - [Backups](backups.md)
-- [Managing Files](files.md)
-- [Statistics](stats.md)
-- [Media](media.md)
+- [管理檔案 Managing Files](files.md)
+- [統計資料 Statistics](stats.md)
+- [媒體檔 Media](media.md)
 - [Math & Symbols](math.md)
-- [Leeches](leeches.md)
+- [Leeches](leeches.md) -->
 - [附加元件 Add-ons](addons.md)
-- [Troubleshooting](troubleshooting.md)
+<!-- - [Troubleshooting](troubleshooting.md)
 - [Sync Server](sync-server.md)
 - [Miscellaneous](misc.md)
-- [詞彙對照表 Glossary](glossary.md)
+- [詞彙對照表 Glossary](glossary.md) -->
 
-[Contributing](contrib.md)
-[常見問題 FAQs](faqs.md)
-[Resources](resources.md)
+<!-- [Contributing](contrib.md) -->
+[常見問答集 FAQs](faqs.md)
+<!-- [Resources](resources.md) -->

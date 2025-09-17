@@ -2,11 +2,11 @@
 
 <!-- toc -->
 
-在 Anki 中，瀏覽畫面和篩選牌組使用相同的方法進行搜尋。同樣的方法也可以用來調整 FSRS 最佳化範圍。
+在Anki中，瀏覽畫面和篩選牌組使用相同的方法進行搜尋。同樣的方法也可以用來調整FSRS最佳化範圍。
 
-## 簡單搜尋 Simple searches
+## 簡單搜尋
 
-在搜尋方塊中輸入文字後，Anki 將尋找所有筆記欄位，並顯示符合的卡片。搜尋結果不包含標籤。（請見[後文](#tags-decks-cards-and-notes)來了解如何搜尋標籤）以下是一些搜尋條件範例：
+在搜尋方塊中輸入文字後，Anki將尋找所有筆記欄位，並顯示符合的卡片。搜尋結果不包含標籤。（請見[後文](#tags-decks-cards-and-notes)來了解如何搜尋標籤）以下是一些搜尋條件範例：
 
 `dog`\
 搜尋「dog」——也會符合類似「doggy」和「underdog」的字。
@@ -42,7 +42,7 @@
 尋找包含「d, &lt;零或多個字元&gt;, g」的筆記，如「dg」、「dog」、「dung」等。
 
 `w:dog`\
-搜尋單字「dog」，而不是 d, o, g 三個字元——即「dog」會符合搜尋條件，但「doggy」、「underdog」不會。僅限 Anki 2.1.24+、AnkiMobile 2.1.61+ 或 AnkiDroid 2.17+ 版本。文字格式可能改變單字邊界，例如，搜尋 `w:exam` 時將會符合「**exam**ple」，因為「exam」包含在粗體格式中。
+搜尋單字「dog」，而不是d, o, g三個字元——即「dog」會符合搜尋條件，但「doggy」、「underdog」不會。僅限Anki 2.1.24+、AnkiMobile 2.1.61+ 或AnkiDroid 2.17+ 版本。文字格式可能改變單字邊界，例如搜尋`w:exam`時將會符合「**exam**ple」，因為「exam」包含在粗體格式中。
 
 `w:dog*`\
 符合「dog」和「doggy」，但不符合「underdog」。
@@ -54,13 +54,13 @@
 
 - 搜尋條件應以空白分隔。
 
-- 輸入多個搜尋條件時，Anki 將尋找符合所有條件的筆記——默認在每個條件之間加入 `and`。在 Anki 2.1.24+、AnkiMobile 2.1.60+ 及 AnkiDroid 2.17+ 版本中，你也可以輸入這條 `and`（`dog and cat` 等於 `dog cat`），但在較早版本中，`and` 會被視為一個正常的單字進行搜尋。
+- 輸入多個搜尋條件時，Anki將尋找符合所有條件的筆記—會自動在每個條件之間加入`and`。在Anki 2.1.24+、AnkiMobile 2.1.60+ 及AnkiDroid 2.17+ 版本中你也可以輸入這條`and`（`dog and cat`於`dog cat`），但在較早版本中，`and`會被視為一個正常的單字進行搜尋。
 
-- 如果僅需筆記符合一個條件，你可以使用 `or`。
+- 如果僅需筆記符合一個條件你可以使用`or`。
 
 - 你可以在搜尋條件前加入一個半形連字號 (`-`) 來搜尋不符合這個條件的筆記。
 
-- 你可以用半形括號來對搜尋條件分組。這一做法在混用 `and` 和 `or` 時尤為重要，例如，上文範例中的 `dog (cat or mouse)` 將符合「dog cat」或「dog mouse」，若去掉括號，搜尋條件將變成「dog and cat」或「mouse」。
+- 你可以用半形括號來對搜尋條件分組。這一做法在混用`and`和`or`時尤為重要，例如上文範例中的`dog (cat or mouse)`將符合「dog cat」或「dog mouse」，若去掉括號，搜尋條件將變成「dog and cat」或「mouse」。
 
 - Anki is only able to search within formatting in the [sort field](editing.md#自訂欄位-customizing-fields) you’ve configured. For example, if you add
   "**exa**mple" to one of your fields, with the "exa" part in bold, this will not be matched when
@@ -73,7 +73,7 @@
   in a standard search, but can be made case insensitive by searching on a word
   boundary or regular expression (`w:`, `re:`).
 
-## 限制欄位 Limiting to a field
+## 限制欄位
 
 You can also ask Anki to match only if a particular field contains some
 text. Unlike the previous search examples, searching in fields requires an exact
@@ -91,7 +91,7 @@ mandatory: see [later in this section](#matching-special-characters).
 find notes with Front field containing dog somewhere
 
 `front:`\
-`正面:`  
+`正面:`\
 尋找「正面」欄位為空白的筆記
 
 `正面:_*`\
@@ -101,9 +101,9 @@ find notes with Front field containing dog somewhere
 尋找擁有「正面」欄位的筆記，無論是否空白
 
 `正*:text`\
-在名稱開頭為「正」的欄位中尋找筆記。僅支援在 Anki 2.1.24+ 或 AnkiMobile 2.1.60+ 版本上使用。
+在名稱開頭為「正」的欄位中尋找筆記。僅支援在Anki 2.1.24+ 或AnkiMobile 2.1.60+ 版本上使用。
 
-## 標籤、牌組、卡片和筆記 Tags, decks, cards and notes
+## 標籤、牌組、卡片和筆記
 
 `tag:animal`\
 finds notes with the tag "animal", or subtags like "animal::mammal".
@@ -115,15 +115,18 @@ finds notes with no tags.
 finds notes with tags starting with "ani".
 
 `deck:french`\
-find cards in a deck called "French", or its subdecks like "French::Vocab".
+find cards in a top-level deck called "French", or its subdecks like "French::Words". It will not match subdecks with that name, such as "Languages::French".
+
+`deck:french::words`\
+find cards in the "French::Words" subdeck.
 
 `deck:french -deck:french::*`\
 finds cards in "French", but not its subdecks.
 
-`deck:"french vocab"`\
+`deck:"french words"`\
 searching when the deck name has a space.
 
-`"deck:french vocab"`\
+`"deck:french words"`\
 same as earlier.
 
 `deck:filtered`\
@@ -220,8 +223,14 @@ reviews (both due and not due) and lapsed cards.
 cards that have been [automatically](leeches.md) or manually suspended.
 
 `is:buried`\
-cards that have been buried, either [automatically](studying.md#關聯卡片和推遲-siblings-and-burying) or
-manually
+cards that have been either [automatically](studying.md#siblings-and-burying) or
+manually buried.
+
+`is:buried-sibling`\
+cards that have been buried automatically.
+
+`is:buried-manually`\
+cards that have been manually buried.
 
 Cards that have [lapsed](deck-options.md#遺忘-lapses) fall into several of the previous categories, so it may
 be useful to combine different search terms to get more precise results:
@@ -275,7 +284,7 @@ all cards due in the future, including tomorrow.
 `prop:due<=-1`\
 all  overdue cards.
 
-`prop:due>-1 prop:due<1`\
+`prop:due>=-1 prop:due<=1`\
 cards due yesterday, today and tomorrow.
 
 `prop:reps<10`\
@@ -286,12 +295,6 @@ cards that been lapsed more than 3 times.
 
 `prop:ease!=2.5`\
 cards easier or harder than default ease.
-
-`prop:cdn:d>5`\
-cards with the value of `d` in custom data (usually refers to difficulty in FSRS) greater than 5 (requires Anki 2.1.64+).
-
-`prop:cds:v=reschedule`\
-cards with the string `v` in custom data equal to `reschedule` (requires Anki 23.10+).
 
 The following searches require Anki 23.10+ and FSRS enabled:
 
@@ -341,6 +344,17 @@ cards answered Easy (4) in the last 31 days.
 
 Anki 2.1.39+ supports rating searches over 31 days.
 
+Note that, to search for cards answered at a particular day, `rated:n -rated:(n-1)` might not work every time. Use the following instead:
+
+`prop:rated=0`\
+cards answered today.
+
+`prop:rated=-1`\
+cards answered one day ago.
+
+`prop:rated=-7`\
+cards answered 7 days ago.
+
 ### First Answered
 
 Requires Anki 2.1.45+.
@@ -373,7 +387,7 @@ you need to tell Anki not to treat them specially. This is called "escaping a ch
   `_` will match any single character, but `\_` matches only an actual underscore.
 
 - `\`\
-  Because a backlash is used to remove the special meaning from other characters,
+  Because a backslash is used to remove the special meaning from other characters,
   it too is treated specially. If you need to search for an actual backslash,
   use `\\` instead of `\`.
 
@@ -422,3 +436,30 @@ all cards with card ids 123, 456, or 789.
 Note and card IDs can be found in the [card info](stats.md) dialog in the
 browser. These searches may also be helpful when doing add-on
 development or otherwise working closely with the database.
+
+## Custom Data
+
+Anki allows small amounts of custom data to be stored on cards, enabling
+advanced use cases such as custom schedulers. One of the notable applications
+of this feature was in earlier implementations of FSRS. In Anki 23.10+, there
+are some ways to search it:
+
+`has-cd:v`\
+cards having the property `v` in custom data.
+
+`prop:cdn:d>5`\
+cards with the value of `d` in custom data (usually refers to difficulty in FSRS) greater than 5.
+
+`prop:cds:v=reschedule`\
+cards with the string `v` in custom data equal to `reschedule`.
+
+## Other Searches
+
+`prop:due=1 is:learn`\
+interday learning cards due for tomorrow.
+
+`prop:due=0 is:learn -introduced:1`\
+interday learning cards due today.
+
+`prop:resched=0`\
+cards rescheduled today, either using **Set due date** or **Reschedule cards on change**.
