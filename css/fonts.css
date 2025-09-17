@@ -29,5 +29,5 @@ unicode-range: U+2014;
 /* source-han-sans-hw-tc - traditional chinese */
 @font-face {
 font-family: "Source Han Sans HW TC";
-src: url('../src/fonts/SourceHanSansHWTC-VF.ttf.woff2') format('woff2');
+src: url('../fonts/SourceHanSansHWTC-VF.ttf.woff2') format('woff2');
 }
