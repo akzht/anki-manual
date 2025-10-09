@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../css/misc.css">
         <link rel="stylesheet" href="../css/mdbook-admonish.css">
-        <link rel="stylesheet" href="../css/custom.css">
+        <link rel="stylesheet" href="../css/zh-tw-custom.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -186,8 +186,8 @@
 <li><a href="#%E5%B9%B3%E5%8F%B0%E7%89%B9%E5%AE%9A-css-platform-specific-css">平台特定 CSS Platform-Specific CSS</a></li>
 <li><a href="#%E5%AE%89%E8%A3%9D%E5%AD%97%E5%9E%8B-installing-fonts">安裝字型 Installing Fonts</a>
 <ul>
-<li><a href="#add-font-to-media-folder">Add Font to Media Folder</a></li>
-<li><a href="#update-template-to-use-that-font">Update Template to Use That Font</a></li>
+<li><a href="#%E5%B0%87%E5%AD%97%E5%9E%8B%E6%AA%94%E5%8A%A0%E5%85%A5%E5%AA%92%E9%AB%94%E6%AA%94%E8%B3%87%E6%96%99%E5%A4%BE-add-font-to-media-folder">將字型檔加入媒體檔資料夾 Add Font to Media Folder</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E6%A8%A1%E6%9D%BF-update-template-to-use-that-font">更新模板 Update Template to Use That Font</a></li>
 </ul>
 </li>
 <li><a href="#%E5%A4%9C%E9%96%93%E6%A8%A1%E5%BC%8F-night-mode">夜間模式 Night Mode</a></li>
@@ -204,7 +204,7 @@
 <p><strong>text-align</strong><br />
 文字對齊。如 <code>center</code> 置中、<code>left</code> 左對齊或 <code>right</code> 右對齊。</p>
 <p><strong>color</strong><br />
-文字的顏色。基本的顏色可以直接使用英文單字表示，如 <code>blue</code> 或 <code>red</code>。你也可以使用 HTML 色碼來使用更多顏色。要進一步了解，請前往 <a href="https://htmlcolorcodes.com/zh/">HTML 顏色代碼</a>網站。</p>
+文字的顏色。基本的顏色可以直接使用英文單字表示，如 <code>blue</code> 或 <code>red</code>。你也可以使用 HTML 色碼來使用更多顏色。進一步了解 <a href="https://htmlcolorcodes.com/zh/">HTML 顏色代碼</a>。</p>
 <p><strong>background-color</strong><br />
 卡片的背景顏色。</p>
 <p>樣式表中可以加入任意 CSS 程式碼。例如，進階使用者可以為卡片背景加入圖片或漸變色。如果你想修改卡片上某一區域的樣式但不知道從何下手，可以透過網路上的資源來自學 CSS 程式碼。</p>
@@ -236,7 +236,7 @@
 </code></pre>
 <p>你可以透過 Chrome 來以互動方式探索卡片樣式：</p>
 <p><a href="https://addon-docs.ankiweb.net/porting2.0.html#webview-changes">https://addon-docs.ankiweb.net/porting2.0.html#webview-changes</a></p>
-<p>Anki 2.1.50 及以上版本支援在編輯器中調整影像大小。</p>
+<p>Anki 2.1.50 或以上版本支援在編輯器中調整影像大小。</p>
 <h2 id="欄位樣式-field-styling"><a class="header" href="#欄位樣式-field-styling">欄位樣式 Field Styling</a></h2>
 <p>預設的樣式會套用於整張卡片。你也可以為欄位單獨設定不同字型、顏色或其他。這在學習外文時很重要，比如在學習日文時，如果使用的是中文字型，有些日文寫法不一樣的漢字可能無法正確顯示。</p>
 <p>假設你的卡片中有欄位「短語」，並要在欄位中使用 Windows 的「MS Gothic」字體。假設這是你當前的模板：</p>
@@ -289,7 +289,7 @@
   font-size: 30px;
 }
 </code></pre>
-<p>你也可以在牌組中加入自訂字型檔案，這樣你就不需要在電腦或手機上安裝只想要在 Anki 中使用的字型。請參閱〈<a href="#%E5%AE%89%E8%A3%9D%E5%AD%97%E5%9E%8B-installing-fonts">安裝字型</a>〉章節來進一步了解。</p>
+<p>你也可以在牌組中加入自訂字型檔案，這樣你就不需要在電腦或手機上安裝只想要在 Anki 中使用的字型。進一步了解<a href="#%E5%AE%89%E8%A3%9D%E5%AD%97%E5%9E%8B-installing-fonts">字型安裝</a>。</p>
 <h2 id="音訊播放按鈕-audio-replay-buttons"><a class="header" href="#音訊播放按鈕-audio-replay-buttons">音訊播放按鈕 Audio Replay Buttons</a></h2>
 <p>當卡片中有音訊或 TTS 時，Anki 會顯示一個播放按鈕。</p>
 <p>若不需要這個按鈕，你可以在偏好設定中停用。</p>
@@ -323,7 +323,7 @@
 <p>如果你的卡片模板過於複雜，<a href="../browsing.html#%E5%8D%A1%E7%89%87/%E7%AD%86%E8%A8%98%E8%A1%A8%E6%A0%BC-cardnote-table">卡片清單</a>中的問題欄（正面）和答案欄（背面）可能難以閱讀。透過「瀏覽器預覽樣式」，你可以自訂一個僅限瀏覽器中顯示的模板，比如只顯示重要的欄位或者改變顯示順序。「瀏覽器預覽樣式」使用與普通卡片模板相同的語法。</p>
 <p>使用這個選項時，當問題面文字包含在答案面開頭時，答案欄中不會顯示問題。假如問題是「日本在」、答案是「日本在東亞」，則答案欄僅會顯示「東亞」。</p>
 <h2 id="平台特定-css-platform-specific-css"><a class="header" href="#平台特定-css-platform-specific-css">平台特定 CSS Platform-Specific CSS</a></h2>
-<p>Anki 定義了一些特殊的 CSS class，可為不同平台設定不同的樣式。例如，你可以像這樣在不同平台上顯示不同的字型：</p>
+<p>Anki 定義了一些特殊的 CSS 類別，可為不同平台分別設定樣式。例如，你可以像這樣在不同平台上顯示不同的字型：</p>
 <pre><code class="language-css">/* Windows */
 .win .example {
   font-family: "字型 1";
@@ -357,13 +357,12 @@
 <p>然後這樣設定模板：</p>
 <pre><code class="language-html">&lt;div class="example"&gt;{{欄位}}&lt;/div&gt;
 </code></pre>
-<p>如果你使用 AnkiWeb 複習卡片，你還可以使用 <code>.chrome</code>、<code>.gecko</code> 和 <code>.opera</code> 等 class 來在不同的瀏覽器中使用不同樣式。要檢視所有可用的 class，請參閱 <a href="http://rafael.adm.br/css_browser_selector/">http://rafael.adm.br/css_browser_selector/</a>。</p>
+<p>若使用 AnkiWeb 複習，你還可以使用 <code>.chrome</code>、<code>.gecko</code> 和 <code>.opera</code> 等類別來在不同的瀏覽器中使用不同樣式。進一步了解<a href="http://rafael.adm.br/css_browser_selector/">所有可用類別</a>。</p>
 <h2 id="安裝字型-installing-fonts"><a class="header" href="#安裝字型-installing-fonts">安裝字型 Installing Fonts</a></h2>
 <p>如果你在公司/學校電腦上使用 Anki，沒有權限安裝字型，或是使用行動裝置，不便安裝字型，你可以在 Anki 中加入字型檔。</p>
 <p>Anki 支援大多數字型格式，如 TrueType (.ttf)、OpenType (.otf)、Web 開放字型格式 (.woff) 等。</p>
-<h3 id="add-font-to-media-folder"><a class="header" href="#add-font-to-media-folder">Add Font to Media Folder</a></h3>
-<p>Once you have downloaded a supported font, such as "Arial.ttf", you have to add
-it to the media folder.</p>
+<h3 id="將字型檔加入媒體檔資料夾-add-font-to-media-folder"><a class="header" href="#將字型檔加入媒體檔資料夾-add-font-to-media-folder">將字型檔加入媒體檔資料夾 Add Font to Media Folder</a></h3>
+<p>下載 Anki 支援的字型檔之後，你需要將檔案加入媒體檔資料夾。</p>
 <ol>
 <li>
 <p>重新命名檔案，在開頭加上一條底線，如 <code>_arial.ttf</code>。檔名開頭的底線表示檔案用於模板中，這樣在 Anki 中執行「檢查媒體檔」時就不會被刪除。</p>
@@ -375,7 +374,7 @@ it to the media folder.</p>
 <p>將已重新命名的字型檔放入「collection.media」資料夾中。</p>
 </li>
 </ol>
-<h3 id="update-template-to-use-that-font"><a class="header" href="#update-template-to-use-that-font">Update Template to Use That Font</a></h3>
+<h3 id="更新模板-update-template-to-use-that-font"><a class="header" href="#更新模板-update-template-to-use-that-font">更新模板 Update Template to Use That Font</a></h3>
 <p>字型檔加入媒體檔資料夾後，請更新模板：</p>
 <ol>
 <li>
@@ -385,7 +384,7 @@ it to the media folder.</p>
 <p>按一下「<strong>卡片</strong>」按鈕.</p>
 </li>
 <li>
-<p>在樣式表底部（原有的最後一個花括號 <code>}</code> 外），加入以下程式碼，並將 <code>_arial.ttf</code> 取代為你剛才加入的字型檔案名稱：</p>
+<p>在樣式表底部（原有的最後一個花括號 <code>}</code> 外），加入以下程式碼，請將 <code>_arial.ttf</code> 取代為你剛才加入的字型檔案名稱：</p>
 </li>
 </ol>
 <pre><code class="language-css">@font-face {
@@ -393,7 +392,7 @@ it to the media folder.</p>
   src: url("_arial.ttf");
 }
 </code></pre>
-<p><code>_arial.ttf</code> 是字型檔案的名稱，而 <code>myfont</code> 是要在當前樣式表中使用的字體名稱。</p>
+<p><code>_arial.ttf</code> 是字型檔的名稱，而 <code>myfont</code> 是要在樣式表中使用的字型名稱。</p>
 <p>使用上面的程式碼匯入字型後，要讓整張卡片使用新的字型，你可以在 <code>.card</code> 部分中的 <code>font-family:</code> 裡把字型改為 <code>myfont</code> 或你自己設定的名稱。要為欄位單獨自訂字型，請參閱上文中的〈<a href="#%E6%AC%84%E4%BD%8D%E6%A8%A3%E5%BC%8F-field-styling">欄位樣式</a>〉章節。</p>
 <p>注意，字型檔名必須完全一致，如果檔名為 <code>arial.TTF</code>，而你在卡片模板中輸入了 <code>arial.ttf</code>，則將無法正常運作。</p>
 <h2 id="夜間模式-night-mode"><a class="header" href="#夜間模式-night-mode">夜間模式 Night Mode</a></h2>
@@ -403,7 +402,7 @@ it to the media folder.</p>
   background-color: #555;
 }
 </code></pre>
-<p>如果你有文字使用了 <code>.myclass</code> 樣式，加入以下程式碼可以讓這些文字僅在夜間模式下顯示為黃色：</p>
+<p>如果你有文字使用了 <code>.myclass</code> 類別，加入以下程式碼可以讓這些文字僅在夜間模式下顯示為黃色：</p>
 <pre><code class="language-css">.nightMode .myclass {
   color: yellow;
 }
@@ -412,8 +411,8 @@ it to the media folder.</p>
 <p>根據預設，Anki 會透過 <code>id=answer</code> 來找到包含答案的 HTML 元素，並在卡片背面自動捲動到這個元素。你可以把 <code>id=answer</code> 移動至其他 HTML 元素上來改變自動捲動的終點，或移除 <code>id=answer</code> 以停用自動捲動。</p>
 <h2 id="javascript"><a class="header" href="#javascript">JavaScript</a></h2>
 <p>因為 Anki 卡片本質上就是網頁，所以你也可以透過模板來在卡片上嵌入 JavaScript。請參閱<a href="https://forums.ankiweb.net/t/card-templates-user-input-101-buttons-keyboard-shortcuts-etc-guide/13756">此論壇貼文</a>來進一步了解。</p>
-<p>JavaScript 是一項進階功能，容易出現錯誤，因此 <strong>Anki 不為 JavaScript 功能提供支援</strong>。我們無法協助你編寫 JavaScript 程式碼，也無法保證當前可用的程式碼在未來不會失效。若無法自行解決相關問題，建議不要使用 JavaScript。</p>
-<p>不同 Anki 用戶端上的卡片顯示效果可能不一，因此你需要在不同平台上進行測試。多數用戶端的卡片是顯示在一個持續動態更新內容的網頁上，所以你的 JavaScript 程式碼需要使用 <code>document.getElementById()</code> 等方法來更新文件內容，而不是類似 <code>document.write()</code> 的方法。</p>
+<p>JavaScript 是一項進階功能，容易發生問題，因此 <strong>Anki 不為 JavaScript 功能提供支援</strong>。我們無法協助你編寫 JavaScript 程式碼，也無法保證當前可用的程式碼在未來不會失效。若無法自行解決相關問題，建議不要使用 JavaScript。</p>
+<p>不同 Anki 用戶端上的卡片顯示效果可能不一，因此你需要在不同平台上進行測試。多數用戶端的卡片是顯示在一個持續動態更新內容的網頁上，所以你的 JavaScript 程式碼需要使用 <code>document.getElementById()</code> 等方法來更新文件內容，而不是 <code>document.write()</code> 等方法。</p>
 <p><code>window.alert</code> 這樣的函式可能不可用。Anki 會在終端機寫入 JavaScript 錯誤，你需要在<a href="https://addon-docs.ankiweb.net/console-output.html#console-output">控制台</a>中檢視錯誤訊息。你可以使用 Chrome 的「<a href="https://addon-docs.ankiweb.net/debugging.html#webviews">檢查元素</a>」功能來為 JavaScript 程式碼偵錯。</p>
 
                     </main>
@@ -424,7 +423,7 @@ it to the media folder.</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../templates/errors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../addons.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -438,7 +437,7 @@ it to the media folder.</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../templates/errors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../addons.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

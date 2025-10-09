@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../css/misc.css">
         <link rel="stylesheet" href="../css/mdbook-admonish.css">
-        <link rel="stylesheet" href="../css/custom.css">
+        <link rel="stylesheet" href="../css/zh-tw-custom.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -182,7 +182,7 @@
 <li><a href="#%E9%9D%9C%E6%85%8B%E6%96%87%E5%AD%97%E5%92%8C%E5%A4%9A%E5%80%8B%E6%AC%84%E4%BD%8D%E6%96%87%E5%AD%97%E8%BD%89%E8%AA%9E%E9%9F%B3-text-to-speech-for-multiple-fields-and-static-text">靜態文字和多個欄位文字轉語音 Text to Speech for multiple fields and static text</a></li>
 <li><a href="#%E7%89%B9%E6%AE%8A%E6%AC%84%E4%BD%8D-special-fields">特殊欄位 Special Fields</a></li>
 <li><a href="#%E6%8F%90%E7%A4%BA%E6%AC%84%E4%BD%8D-hint-fields">提示欄位 Hint Fields</a></li>
-<li><a href="#%E8%BE%AD%E5%85%B8%E9%80%A3%E7%B5%90-dictionary-links">辭典連結 Dictionary Links</a></li>
+<li><a href="#%E5%AD%97%E5%85%B8%E9%80%A3%E7%B5%90-dictionary-links">字典連結 Dictionary Links</a></li>
 <li><a href="#%E6%B8%85%E9%99%A4-html-%E6%A8%99%E7%B1%A4-html-stripping">清除 HTML 標籤 HTML Stripping</a></li>
 <li><a href="#%E5%BE%9E%E5%8F%B3%E8%87%B3%E5%B7%A6%E6%9B%B8%E5%AF%AB-right-to-left-text">從右至左書寫 Right To Left Text</a></li>
 <li><a href="#%E6%B3%A8%E9%9F%B3-ruby-characters">注音 Ruby Characters</a>
@@ -215,7 +215,7 @@
 {{背面}}
 </code></pre>
 <p>這樣表示，顯示正面的內容，然後顯示一條分隔線，最後顯示「背面」欄位。</p>
-<p>「id=answer」表示問題和答案的界線。當你在一張較長的卡片上點選「顯示答案」時，Anki 會自動滾動至答案部分（在螢幕較小的行動裝置上相當實用）。如無需答案前的橫線，可改用段落或 div 等其他 HTML 元素。</p>
+<p>「id=answer」表示問題和答案的界線。當你在一張較長的卡片上按一下「顯示答案」時，Anki 會自動滾動至答案部分（在螢幕較小的行動裝置上相當實用）。如無需答案前的橫線，可改用段落或 div 等其他 HTML 元素。</p>
 <h2 id="換行-newlines"><a class="header" href="#換行-newlines">換行 Newlines</a></h2>
 <p>因為卡片模板跟網頁一樣，所以換行時需要使用特殊的指令。如果你的模板如下：</p>
 <pre><code>一
@@ -306,29 +306,29 @@
 <p>目前無法使用音訊作為提示——沒有按下「hint」連結也會照樣播放音訊。</p>
 <p>要自訂提示的樣式或行為，你將需要自己建置一種提示欄位。我們無法幫你學習 HTML 和 CSS 語言，但你可以參考以下程式碼：</p>
 <pre><code>{{#背面}}
-﻿&lt;a class=hint href="#"
+&lt;a class=hint href="#"
 onclick="this.style.display='none';document.getElementById('hint4753594160').style.display='inline-block';return false;"&gt;
 顯示背面&lt;/a&gt;&lt;div id="hint4753594160" class=hint style="display: none"&gt;{{背面}}&lt;/div&gt;
 {{/背面}}
 </code></pre>
-<h2 id="辭典連結-dictionary-links"><a class="header" href="#辭典連結-dictionary-links">辭典連結 Dictionary Links</a></h2>
-<p>你可以利用欄位取代來建立辭典連結。假設你在學習語言，你常用的線上辭典可使用 URL 進行搜尋：</p>
+<h2 id="字典連結-dictionary-links"><a class="header" href="#字典連結-dictionary-links">字典連結 Dictionary Links</a></h2>
+<p>你可以利用欄位取代來建立字典連結。假設你在學習語言，你常用的線上字典可使用 URL 進行搜尋：</p>
 <pre><code>http://example.com/search?q=單字
 </code></pre>
 <p>你可以新增一個這樣的連結：</p>
 <pre><code>{{單字}}
 
-&lt;a href="http://example.com/search?q={{單字}}"&gt;檢索辭典&lt;/a&gt;
+&lt;a href="http://example.com/search?q={{單字}}"&gt;檢索字典&lt;/a&gt;
 </code></pre>
-<p>複習使用這個模板的卡片時，只需按一下「檢索辭典」連結即可搜尋該卡片對應的單字。請繼續閱讀下一部分來了解潛在的問題。</p>
+<p>複習使用這個模板的卡片時，只需按一下「檢索字典」連結即可搜尋該卡片對應的單字。請繼續閱讀下一部分來了解潛在的問題。</p>
 <h2 id="清除-html-標籤-html-stripping"><a class="header" href="#清除-html-標籤-html-stripping">清除 HTML 標籤 HTML Stripping</a></h2>
-<p>跟模板一樣，欄位也是使用 HTML 碼來儲存內容的。在上面的辭典連結中，若「單字」欄位內容為「word」且不包含格式，則 HTML 原始碼仍為「word」。但如果你加入了格式，則會同時加入 HTML 原始碼，若「word」加上了粗體，HTML 原始碼將會是「&lt;b&gt;myword&lt;/b&gt;」。</p>
-<p>因此，在辭典連結或類似的情形中可能會出現問題。依上述例子，辭典連結可能會變成：</p>
-<pre><code>&lt;a href="http://example.com/search?q=&lt;b&gt;word&lt;/b&gt;"&gt;檢索辭典&lt;/a&gt;
+<p>跟模板一樣，欄位也是使用 HTML 碼來儲存內容的。在上面的字典連結中，若「單字」欄位內容為「word」且不包含格式，則 HTML 原始碼仍為「word」。但如果你加入了格式，則會同時加入 HTML 原始碼，若「word」加上了粗體，HTML 原始碼會是「&lt;b&gt;myword&lt;/b&gt;」。</p>
+<p>因此，在字典連結或類似的情形中可能會出現問題。依上述例子，字典連結可能會變成：</p>
+<pre><code>&lt;a href="http://example.com/search?q=&lt;b&gt;word&lt;/b&gt;"&gt;檢索字典&lt;/a&gt;
 </code></pre>
-<p>因為多出了「&lt;b&gt;」等無關字元，在辭典中很可能搜尋不到任何結果。</p>
+<p>因為多出了「&lt;b&gt;」等無關字元，在字典中可能找不到任何結果。</p>
 <p>為了解決這一問題，Anki 提供了在取代時清除欄位格式的功能。只要在欄位名稱前輸入「text:」，Anki 就會清除所有格式。依以下格式設定連結，即便欄位文字存在格式也能正常搜尋：</p>
-<pre><code>&lt;a href="http://example.com/search?q={{text:單字}}"&gt;檢索辭典&lt;/a&gt;
+<pre><code>&lt;a href="http://example.com/search?q={{text:單字}}"&gt;檢索字典&lt;/a&gt;
 </code></pre>
 <h2 id="從右至左書寫-right-to-left-text"><a class="header" href="#從右至左書寫-right-to-left-text">從右至左書寫 Right To Left Text</a></h2>
 <p>如果你在學習的語言是從右至左書寫，你需要像這樣調整模板：</p>
@@ -351,7 +351,7 @@ onclick="this.style.display='none';document.getElementById('hint4753594160').sty
 <tr><td><code>世[よ]の中[なか]</code></td><td><ruby><rb>世</rb><rt>よ</rt></ruby><ruby><rb>の中</rb><rt>なか</rt></ruby>（錯誤用法）</td></tr>
 </tbody></table>
 </div>
-<p>注意第 2 個例子中的「獺」和第 4 個例子中的「中」前面都有一個半形空格。這是為了表示注音應顯示在空格後的文字上方。如未加入空格，則會像第 3 和第 5 個例子中那樣，「ㄊ」可能會跑到「水」上面，而「な」可能會顯示在「の」上面。</p>
+<p>注意第 2 個例子中的「獺」和第 4 個例子中的「中」前面都有一個半形空格，這樣表示注音應顯示在空格後的文字上方。如未加入空格，則會像第 3 和第 5 個例子中那樣，「ㄊ」可能會跑到「水」上面，而「な」可能會顯示在「の」上面。</p>
 <h3 id="其他注音篩選器-additional-ruby-character-filters"><a class="header" href="#其他注音篩選器-additional-ruby-character-filters">其他注音篩選器 Additional Ruby Character Filters</a></h3>
 <p>除了振假名篩選器 <code>furigana</code>，你還可以選擇只顯示注音或原文。使用假名篩選器 <code>kana</code> 時將只顯示注音，使用漢字篩選器 <code>kanji</code> 則會移除注音。</p>
 <!-- prettier-ignore -->
@@ -362,7 +362,7 @@ onclick="this.style.display='none';document.getElementById('hint4753594160').sty
 </tbody></table>
 </div>
 <h2 id="媒體檔與-latex-方程式-media--latex"><a class="header" href="#媒體檔與-latex-方程式-media--latex">媒體檔與 LaTeX 方程式 Media &amp; LaTeX</a></h2>
-<p>因執行速度所限，Anki 不會掃描模板有無引用媒體檔。因此在模板上直接加入媒體會導致一些後果。</p>
+<p>為保證執行速度，Anki 不會檢查模板有無引用媒體檔。因此在模板上直接加入媒體會導致一些問題。</p>
 <h3 id="靜態音檔影像-static-soundsimages"><a class="header" href="#靜態音檔影像-static-soundsimages">靜態音檔/影像 Static Sounds/Images</a></h3>
 <p>要在每張卡片上都加入同樣的音檔或影像：</p>
 <ol>
@@ -384,7 +384,7 @@ onclick="this.style.display='none';document.getElementById('hint4753594160').sty
 
 [latex]{{欄位一}}[/latex]
 </code></pre>
-<p>請將媒體引用放入欄位內容。請參閱〈<a href="../importing/text-files.html#%E5%8C%AF%E5%85%A5%E5%AA%92%E9%AB%94%E6%AA%94-importing-media">匯入媒體檔</a>〉章節來進一步了解。</p>
+<p>請將媒體引用放入欄位內容。請參閱〈<a href="../importing/text-files.html#%E5%8C%AF%E5%85%A5%E5%AA%92%E9%AB%94%E6%AA%94-importing-media">匯入媒體檔</a>〉來進一步了解。</p>
 <h2 id="檢查答案-checking-your-answer"><a class="header" href="#檢查答案-checking-your-answer">檢查答案 Checking Your Answer</a></h2>
 <p>要檢查你的答案，最簡單的方式是使用「基本型（輸入答案）」筆記類型。</p>
 <p>若要修改已有筆記類型，假設你的模板如下：</p>
@@ -410,8 +410,8 @@ onclick="this.style.display='none';document.getElementById('hint4753594160').sty
 <p>加入的程式碼會影響答案檢查結果的 HTML 原始碼：</p>
 <pre><code>&lt;code id=typeans&gt;...&lt;/code&gt;
 </code></pre>
-<p>進階使用者還可以使用 CSS class「typeGood」、「typeBad」和「typeMissed」來覆蓋預設的檢查結果文字顏色。AnkiMobile 支援「typeGood」和「typeBad」兩個 class，但不支援「typeMissed」。</p>
-<p>要覆蓋文字框的字型大小但不更改「欄位」對話框中的設定，你可以使用 <code>!important</code> 來覆蓋預設的行內 (inline) 樣式：</p>
+<p>進階使用者還可以使用 CSS 類別「typeGood」、「typeBad」和「typeMissed」來覆蓋預設的檢查結果文字顏色。AnkiMobile 支援「typeGood」和「typeBad」兩個類別，但不支援「typeMissed」。</p>
+<p>要覆蓋文字框的字型大小但不更改「欄位」對話框中的設定，你可以使用 <code>!important</code> 來覆蓋預設的行內樣式：</p>
 <pre><code>#typeans { font-size: 50px !important; }
 </code></pre>
 <p>克漏字卡片也可以輸入答案。請在卡片正背面模板中都加入 <code>{{type:cloze:文字}}</code>，像這樣：</p>
