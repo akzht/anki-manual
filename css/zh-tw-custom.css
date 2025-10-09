@@ -15,9 +15,10 @@
     --mono-font: "Fira Code", "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", "GenYoGothic2 TW", monospace;
 }
 
-html {
+html,
+menu-title {
     font-family: Inter, Arial, "Helvetica Neue", "GenYoGothic2 TW", sans-serif;
-    font-feature-settings: "kern" 1;
+    font-feature-settings: "palt" 1;
 }
 
 h1,
