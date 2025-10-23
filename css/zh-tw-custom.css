@@ -12,13 +12,18 @@
 
 
 :root {
-    --mono-font: "Fira Code", "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", "GenYoGothic2 TW", monospace;
+    --mono-font: "Fira Code", "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", "GenYoGothic2 TW", "Source Han Sans TC", "Microsoft JhengHei UI", "PingFang TC", monospace;
 }
 
 html,
-menu-title {
-    font-family: Inter, Arial, "Helvetica Neue", "GenYoGothic2 TW", sans-serif;
+.menu-title {
+    font-family: Inter, Arial, "Helvetica Neue", "GenYoGothic2 TW", "Source Han Sans TC", "Microsoft JhengHei UI", "PingFang TC", sans-serif;
     font-feature-settings: "palt" 1;
+    text-autospace: normal;
+}
+
+.menu-title {
+    font-weight: 300;
 }
 
 h1,
@@ -28,7 +33,7 @@ h4,
 h5,
 h6,
 .chapter-item {
-    font-family: "Roboto Condensed", "Arial Nova Condensed", "Arial Nova Cond", "GenYoGothic2 TW", sans-serif;
+    font-family: "Roboto Condensed", "Arial Nova Condensed", "Arial Nova Cond", "GenYoGothic2 TW", "Source Han Sans TC", "Microsoft JhengHei UI", "PingFang TC", sans-serif;
 }
 
 .original-link {

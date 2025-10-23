@@ -1,0 +1,788 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>牌組選項 Deck Options - Anki使用手冊</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="Anki使用手冊。Anki是一個閃卡程式，是你學習時的好幫手。">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="css/misc.css">
+        <link rel="stylesheet" href="css/mdbook-admonish.css">
+        <link rel="stylesheet" href="css/zh-tw-custom.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Anki使用手冊</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/lghhz/anki-manual/" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="牌組選項-deck-options英文"><a class="header" href="#牌組選項-deck-options英文">牌組選項 <a href="https://docs.ankiweb.net/deck-options.html">Deck Options<span class="original-link">（英文）</span></a></a></h1>
+<ul>
+<li><a href="#%E9%A0%90%E8%A8%AD%E7%B5%84-presets">預設組 Presets</a></li>
+<li><a href="#%E5%AD%90%E7%89%8C%E7%B5%84-subdecks">子牌組 Subdecks</a></li>
+<li><a href="#%E6%AF%8F%E6%97%A5%E4%B8%8A%E9%99%90-daily-limits">每日上限 Daily Limits</a>
+<ul>
+<li><a href="#%E6%AF%8F%E6%97%A5%E6%96%B0%E5%8D%A1%E7%89%87%E5%BC%B5%E6%95%B8">每日新卡片張數</a></li>
+<li><a href="#%E6%AF%8F%E6%97%A5%E8%A4%87%E7%BF%92%E4%B8%8A%E9%99%90">每日複習上限</a></li>
+<li><a href="#%E5%88%86%E7%89%8C%E7%B5%84%E8%A8%AD%E5%AE%9A%E4%B8%8A%E9%99%90">分牌組設定上限</a></li>
+<li><a href="#%E6%96%B0%E5%8D%A1%E7%89%87%E4%B8%8D%E5%8F%97%E8%A4%87%E7%BF%92%E4%B8%8A%E9%99%90%E5%BD%B1%E9%9F%BF">新卡片不受複習上限影響</a></li>
+<li><a href="#%E5%A5%97%E7%94%A8%E9%A0%82%E5%B1%A4%E7%89%8C%E7%B5%84%E4%B8%8A%E9%99%90">套用頂層牌組上限</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%B0%E5%8D%A1%E7%89%87-new-cards">新卡片 New Cards</a>
+<ul>
+<li><a href="#%E5%AD%B8%E7%BF%92%E9%9A%8E%E6%AE%B5">學習階段</a>
+<ul>
+<li><a href="#%E8%B7%A8%E5%A4%A9%E7%95%8C%E7%B7%9A">跨天界線</a></li>
+</ul>
+</li>
+<li><a href="#%E7%95%A2%E6%A5%AD%E9%96%93%E9%9A%94">畢業間隔</a></li>
+<li><a href="#%E7%B0%A1%E5%96%AE%E9%96%93%E9%9A%94">「簡單」間隔</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E9%A0%86%E5%BA%8F">插入順序</a></li>
+</ul>
+</li>
+<li><a href="#%E9%81%BA%E5%BF%98-lapses">遺忘 Lapses</a>
+<ul>
+<li><a href="#%E9%87%8D%E6%96%B0%E5%AD%B8%E7%BF%92%E9%9A%8E%E6%AE%B5">重新學習階段</a></li>
+<li><a href="#%E6%9C%80%E7%9F%AD%E9%96%93%E9%9A%94">最短間隔</a></li>
+<li><a href="#%E4%BD%8E%E6%95%88%E5%8D%A1">低效卡</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A1%AF%E7%A4%BA%E9%A0%86%E5%BA%8F-display-order">顯示順序 Display Order</a>
+<ul>
+<li><a href="#%E6%96%B0%E5%8D%A1%E7%89%87%E6%94%B6%E9%9B%86%E9%A0%86%E5%BA%8F">新卡片收集順序</a></li>
+<li><a href="#%E6%96%B0%E5%8D%A1%E7%89%87%E6%8E%92%E5%BA%8F%E9%A0%86%E5%BA%8F">新卡片排序順序</a></li>
+<li><a href="#%E6%96%B0%E5%8D%A1%E7%89%87%E8%A4%87%E7%BF%92%E5%8D%A1%E9%A0%86%E5%BA%8F">新卡片/複習卡順序</a></li>
+<li><a href="#%E8%B7%A8%E5%A4%A9%E5%AD%B8%E7%BF%92%E8%A4%87%E7%BF%92%E5%8D%A1%E9%A0%86%E5%BA%8F">跨天學習/複習卡順序</a></li>
+<li><a href="#%E8%A4%87%E7%BF%92%E5%8D%A1%E6%8E%92%E5%BA%8F%E9%A0%86%E5%BA%8F">複習卡排序順序</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A8%E9%81%B2-burying">推遲 Burying</a></li>
+<li><a href="#audio">Audio</a></li>
+<li><a href="#timers">Timers</a>
+<ul>
+<li><a href="#internal-timer">Internal Timer</a></li>
+<li><a href="#on-screen-timer">On-screen Timer</a></li>
+</ul>
+</li>
+<li><a href="#auto-advance">Auto Advance</a></li>
+<li><a href="#easy-days">Easy Days</a></li>
+<li><a href="#fsrs">FSRS</a>
+<ul>
+<li><a href="#a-short-guide">A Short Guide</a></li>
+<li><a href="#desired-retention">Desired Retention</a></li>
+<li><a href="#fsrs-parameters">FSRS Parameters</a></li>
+<li><a href="#reschedule-cards-on-change">Reschedule Cards on Change</a></li>
+<li><a href="#compute-minimum-recommended-retention">Compute Minimum Recommended Retention</a></li>
+<li><a href="#the-simulator">The Simulator</a>
+<ul>
+<li><a href="#learning-and-relearning-steps">Learning and Relearning Steps</a></li>
+<li><a href="#add-on-compatibility">Add-On Compatibility</a></li>
+<li><a href="#more">More</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%80%B2%E9%9A%8E%E9%81%B8%E9%A0%85-advanced">進階選項 Advanced</a>
+<ul>
+<li><a href="#maximum-interval">Maximum Interval</a></li>
+<li><a href="#historical-retention">Historical Retention</a></li>
+<li><a href="#ignore-cards-reviewed-before">Ignore Cards Reviewed Before</a></li>
+<li><a href="#%E8%B5%B7%E5%A7%8B%E8%BC%95%E9%AC%86%E5%BA%A6">起始輕鬆度</a></li>
+<li><a href="#easy-bonus">Easy Bonus</a></li>
+<li><a href="#interval-modifier">Interval Modifier</a></li>
+<li><a href="#%E5%9B%B0%E9%9B%A3%E9%96%93%E9%9A%94-hard-interval">「困難」間隔 Hard Interval</a></li>
+<li><a href="#new-interval">New Interval</a></li>
+<li><a href="#custom-scheduling">Custom Scheduling</a></li>
+</ul>
+</li>
+</ul>
+<p>牌組選項主要用於控制卡片排程。建議先使用預設選項，熟悉Anki幾週過後再進行調整。更改選項前請先了解清楚各選項的作用，設定錯誤可能會使學習效率下降。</p>
+<p>在電腦上，你可以透過以下方式來打開牌組選項：</p>
+<ul>
+<li>在「牌組」畫面中按一下齒輪圖示。</li>
+<li>在「牌組」畫面中選擇一個牌組，然後按一下底部的「<strong>選項</strong>」按鈕。</li>
+<li>在複習時選擇「<strong>更多</strong>」&gt;「<strong>選項</strong>」。</li>
+<li>在複習時按下 <kbd>O</kbd> 鍵。</li>
+</ul>
+<h2 id="預設組-presets"><a class="header" href="#預設組-presets">預設組 Presets</a></h2>
+<p>牌組選項儲存在「預設組」中，多個牌組可共用一個預設組，所以你可以同時更新多個牌組的設定。新建立的牌組會使用一個叫「預設」的預設組。</p>
+<p>若要修改單一牌組設定，請按一下牌組選項視窗右上角的箭頭圖示。你可以執行以下動作：</p>
+<ul>
+<li><strong>儲存</strong>：儲存在牌組選項中所做的所有更動。</li>
+<li><strong>新增預設組</strong>：為當前牌組新增一個預設組，選項為預設值。</li>
+<li><strong>複製</strong>：複製當前預設組。</li>
+<li><strong>重新命名</strong>：更改當前預設組的名稱。</li>
+<li><strong>移除</strong>：刪除當前預設組。刪除預設組後，下次同步時會<a href="./syncing.html#conflicts">單向同步</a>。</li>
+<li><strong>儲存至所有子牌組</strong>：將預設組套用到當前牌組下的所有子牌組。</li>
+</ul>
+<p>牌組選項不會即時套用到過往作答。例如，當你更改了卡片答錯後的延遲時間後，更改選項前答錯的卡片仍然會保留先前延遲。</p>
+<h2 id="子牌組-subdecks"><a class="header" href="#子牌組-subdecks">子牌組 Subdecks</a></h2>
+<p>牌組有子牌組時，各子牌組可以使用不同的預設組。顯示卡片時，Anki會檢查卡片所在的子牌組，並使用相應選項。但有兩種情況例外：</p>
+<ul>
+<li>子牌組的<strong>每日新卡片張數</strong>和<strong>每日複習次數</strong><a href="#daily-limits"><strong>上限</strong></a>會影響從各子牌組收集的卡片數量。但在學習時，實際會出現的卡片數量上限仍為所選牌組所設定的上限。</li>
+<li>「<a href="#display-order">顯示順序</a>」選項使用所選牌組設定，而不是卡片所屬牌組的設定。</li>
+</ul>
+<p>舉例來說，如果你有如下牌組：</p>
+<pre><code>- 牌組A（預設組1）
+  - 牌組A::子牌組B（預設組2）
+</code></pre>
+<p>兩個預設組除以下兩處不同：</p>
+<ul>
+<li>預設組1：
+<ul>
+<li><strong>學習階段</strong>：<code>1m 10m</code></li>
+<li><strong>新卡片/複習卡順序</strong>：<code>與複習卡混合</code></li>
+</ul>
+</li>
+<li>預設組2：
+<ul>
+<li><strong>學習階段</strong>：<code>20m 2h</code></li>
+<li><strong>新卡片/複習卡順序</strong>：<code>先顯示複習卡</code></li>
+</ul>
+</li>
+</ul>
+<p>其他選項完全相同。</p>
+<p>選取「子牌組B」學習時：</p>
+<ul>
+<li>新卡片的學習階段：<code>20m 2h</code>（套用「預設組2」）。</li>
+<li>先顯示複習卡，再顯示新卡片（套用「預設組2」）。</li>
+</ul>
+<p>選取「子牌組A」學習時：</p>
+<ul>
+<li>「牌組A」中的新卡片的學習階段：<code>1m 10m</code>（套用「預設組1」）。</li>
+<li>「子牌組B」中的新卡片的學習階段：<code>20m 2h</code>（套用「預設組2」）。</li>
+<li>新卡片與複習卡混合在一起（套用「預設組1」）。</li>
+</ul>
+<h2 id="每日上限-daily-limits"><a class="header" href="#每日上限-daily-limits">每日上限 Daily Limits</a></h2>
+<h3 id="每日新卡片張數"><a class="header" href="#每日新卡片張數">每日新卡片張數</a></h3>
+<p>調整每天新學習的卡片張數上限。若當天沒有學習學習，或學習張數少於上限時，下一天的卡片張數仍為所設上限——Anki不會讓你學習更多卡片來補齊上一天的進度。</p>
+<p>學習有子牌組的牌組時，從各子牌組抽取的卡片張數上限會依各子牌組的設定來決定；而本次學習時將顯示的卡片張數上限將依所選牌組所設上限決定。</p>
+<p>如果你使用的是較早版本，請參閱<a href="https://faqs.ankiweb.net/the-anki-2.1-scheduler.html">此常見問答集</a>。</p>
+<p>學習新卡片會增加你近期內的每日複習次數。新學的內容需要重複多次複習，隨著複習間的間隔逐漸延長，複習量才會跟著逐漸減少。舉例來說，如果你每天都學習20張新卡片，每日複習上限應保持在200張卡片左右。若要減少複習量，你可以先減少每天學習的新卡片張數，等到複習量較少時再恢復原先的上限。有些剛開始使用Anki的人會連續學習好幾百張卡片，從而導致複習量過於繁重。</p>
+<h3 id="每日複習上限"><a class="header" href="#每日複習上限">每日複習上限</a></h3>
+<p>調整每天學習的複習卡張數上限。當天達到上限後，無論有無需要複習的卡片，Anki都不會再顯示更多複習卡。若平時學習習慣不變，在偶爾有太多卡片到期、有幾天沒使用Anki等情況下可以透過此設定來減緩總複習量。如果達到上限後仍有需要複習的卡片，「恭喜」畫面中會顯示提示訊息，若有時間則可適當提高上限。</p>
+<p>學習有子牌組的牌組時，複習上限的運作方式與新卡片上限類似。</p>
+<p><a href="./preferences.html#scheduler">跨天</a>的學習中卡片也會被算入複習上限。</p>
+<h3 id="分牌組設定上限"><a class="header" href="#分牌組設定上限">分牌組設定上限</a></h3>
+<p>多個牌組使用相同預設組時，你可以為各個牌組分別設定上限，無需另外建立多個預設組。</p>
+<p>每日上限有3個選項：</p>
+<ul>
+<li><strong>預設組</strong>：套用於使用此預設組的所有牌組。</li>
+<li><strong>當前牌組</strong>：僅套用於當前牌組。</li>
+<li><strong>僅限今天</strong>：僅限當日且僅套用於當前牌組。</li>
+</ul>
+<h3 id="新卡片不受複習上限影響"><a class="header" href="#新卡片不受複習上限影響">新卡片不受複習上限影響</a></h3>
+<p>根據預設，新卡片也會計入複習上限，因此當複習卡達到上限時，新卡片也不會再顯示。啟用此選項後，新卡片將不再計入複習上限。</p>
+<p>當有複習卡積壓時，不建議在趕上進度前開始學習新卡片，火上加油。</p>
+<h3 id="套用頂層牌組上限"><a class="header" href="#套用頂層牌組上限">套用頂層牌組上限</a></h3>
+<p>根據預設，學習子牌組時不會套用上層牌組的每日上限。你可以將母牌組上限設定為10張卡片/天，子牌組設定為20張卡片/天。母牌組學到上限之後仍可選取子牌組繼續學習。</p>
+<p>啟用此選項後，選取子牌組開始學習時，Anki會套用頂層牌組的每日上限。若依上述範例設定，在子牌組中最多只能學習10張卡片/天。</p>
+<p>如果經常單獨學習子牌組，此選項可確保你在學習各子牌組時不超過總上限。</p>
+<h2 id="新卡片-new-cards"><a class="header" href="#新卡片-new-cards">新卡片 New Cards</a></h2>
+<p>這些選項僅影響新卡片和<a href="getting-started.html#card-states">學習中卡片</a>。卡片「畢業」後（完成所有學習階段後），即不再適用於這些選項。</p>
+<h3 id="學習階段"><a class="header" href="#學習階段">學習階段</a></h3>
+<p>控制學習次數和間隔時長。必須填入一或多段時長，並以空格分隔。在複習時，每次按下「<strong>良好</strong>」將使卡片前進到下一階段，每次按下「<strong>重來</strong>」則會使卡片回到第一階段。</p>
+<p>舉例來說當學習階段設定為<code>1m 10m 1d</code>時：</p>
+<ul>
+<li>按下「<strong>重來</strong>」後，卡片會回到第1個階段，1分鐘（<code>1m</code>）後再次出現。</li>
+<li>在新卡片上（或卡片按下「重來」經過1分鐘後）按下「<strong>良好</strong>」後，卡片將前進到下一個階段，10分鐘（<code>10m</code>）後再次出現。</li>
+<li>經過第2階段的10分鐘過後，按下「<strong>良好</strong>」，卡片將在1天（<code>1d</code>）後出現。</li>
+<li>第二天按下「<strong>良好</strong>」，卡片畢業，成為「複習卡」。卡片下一次顯示前的延遲由「畢業間隔」選項控制。</li>
+</ul>
+<p>在不同的學習階段按下「<strong>困難</strong>」會有不同效果。</p>
+<ul>
+<li>卡片處於第1階段時，「<strong>困難</strong>按鈕上的延遲時長為<code>6分</code>——第1和第2階段（<code>1m</code>和<code>10m</code>）的平均值。
+<ul>
+<li>例外：若僅有1個學習階段，「<strong>困難</strong>」延遲將為這一學習階段的1.5倍，但最多只能比學習階段多出1天。</li>
+</ul>
+</li>
+<li>卡片處於其他學習階段時，按下「<strong>困難</strong>」按鈕會重複當前學習階段的時長。</li>
+</ul>
+<p>沒有可學習的內容時，根據預設，Anki會提前顯示20分鐘以內的學習中卡片。若要關閉此功能或調整提前學習的時間長度上限，請參閱《<a href="preferences.html">偏好設定</a>》。</p>
+<h4 id="跨天界線"><a class="header" href="#跨天界線">跨天界線</a></h4>
+<p>Anki對較短的階段與<a href="./preferences.html#review">跨天</a>的階段有不同處理方式。對於較短的階段，卡片會在延遲時間過後立即顯示，先於複習卡與新卡片，讓你能儘早回答卡片。當階段跨天時，延遲時長會被轉換為天數。舉例來說，若次日始於5小時後，而當前階段的延遲為6小時，這一延遲會被轉換為1天。</p>
+<h3 id="畢業間隔"><a class="header" href="#畢業間隔">畢業間隔</a></h3>
+<p>「畢業間隔」是學習中的卡片畢業後的第一個間隔，即卡片在最後一個學習階段按下「良好」後，會在「畢業間隔」所設天數後出現。請參閱<a href="deck-options.html#%E5%AD%B8%E7%BF%92%E9%9A%8E%E6%AE%B5">前文中的範例</a>。</p>
+<h3 id="簡單間隔"><a class="header" href="#簡單間隔">「簡單」間隔</a></h3>
+<p>按下「簡單」後，卡片下一次出現前的間隔。</p>
+<p>無論在哪個學習階段，為學習中的卡片按下「<strong>簡單</strong>」按鈕後，卡片都會直接晉級為複習卡，使用此選項所設延遲時間。「簡單」間隔通常應比畢業間隔稍長幾天，最短不應少於畢業間隔。</p>
+<h3 id="插入順序"><a class="header" href="#插入順序">插入順序</a></h3>
+<p>新增卡片時，卡片插入牌組中的順序，可選隨機或循序。更改此選項後，Anki 會對使用當前預設組的所有牌組重新排序。</p>
+<p>在較新版本中，此選項應設定為<code>循序</code>，透過<a href="deck-options.html#%E9%A1%AF%E7%A4%BA%E9%A0%86%E5%BA%8F-display-order">顯示順序</a>來調整新卡片順序。</p>
+<h2 id="遺忘-lapses"><a class="header" href="#遺忘-lapses">遺忘 Lapses</a></h2>
+<p>「遺忘」指為複習卡按下「<strong>重來</strong>」按鈕。這些選項影響遺忘的卡片。</p>
+<h3 id="重新學習階段"><a class="header" href="#重新學習階段">重新學習階段</a></h3>
+<p>卡片遺忘後的學習階段。複習卡回答失敗（即按下「<strong>重來</strong>」）後會進入「重新學習階段」，通過所有階段後方可重新晉級為複習卡。</p>
+<p>留空時，卡片不會進入重新學習階段，根據預設會將下一次間隔改為1天。</p>
+<h3 id="最短間隔"><a class="header" href="#最短間隔">最短間隔</a></h3>
+<p>卡片通過重新學習階段後的最短間隔。預設值為1天，即卡片重學完過後將在1天後出現。</p>
+<h3 id="低效卡"><a class="header" href="#低效卡">低效卡</a></h3>
+<p>控制對低效卡的處理方式。進一步了解<a href="leeches.html">低效卡</a>。</p>
+<h2 id="顯示順序-display-order"><a class="header" href="#顯示順序-display-order">顯示順序 Display Order</a></h2>
+<p>學習時，此章節中的選項會採用所選牌組中的設定，而不是卡片所屬牌組中的設定。</p>
+<p>這些選項僅在<a href="https://faqs.ankiweb.net/the-2021-scheduler.html">v3排程器</a>中可用。</p>
+<p>在《<a href="studying.html#%E9%A1%AF%E7%A4%BA%E9%A0%86%E5%BA%8F-display-order">學習</a>》章節中進一步了解顯示順序。</p>
+<h3 id="新卡片收集順序"><a class="header" href="#新卡片收集順序">新卡片收集順序</a></h3>
+<p>從牌組中收集（抽取）新卡片的順序。有以下選項：</p>
+<ul>
+<li>
+<p><strong>牌組順序</strong>：依子牌組順序，由上至下收集卡片。子牌組中的卡片依遞增順序收集。若所選牌組已達每日上限，收集卡片時可能不會檢查到順序較低的牌組。此選項在較大的集合中速度最快，並讓你能夠優先學習順序較高的子牌組。</p>
+<p>牌組/子牌組總是依字母順序排序，因此你可以在牌組名稱開頭加上序號（如「001」）來控制順序。另外，<code>_</code>和<code>~</code>分別會排在字母數字前後，可以用來將牌組置於最前/最後。</p>
+<p>卡片順序一開始由「插入順序」選項決定，但你也可以另外對卡片<a href="./browsing.html#cards">重新排序</a>。</p>
+</li>
+<li>
+<p><strong>牌組→隨機筆記</strong>：依子牌組順序，由上至下，在各子牌組中隨機選取筆記，然後收集卡片。</p>
+</li>
+<li>
+<p><strong>順序遞增</strong>：依遞增順序（到期序號 #）收集卡片，通常為舊卡片優先。</p>
+</li>
+<li>
+<p><strong>順序遞減</strong>：依遞減順序（到期序號 #）收集卡片，通常為新卡片優先。</p>
+</li>
+<li>
+<p><strong>隨機筆記</strong>：隨機選取筆記，然後收集卡片。</p>
+</li>
+<li>
+<p><strong>隨機卡片</strong>：依隨機順序收集卡片。</p>
+</li>
+</ul>
+<h3 id="新卡片排序順序"><a class="header" href="#新卡片排序順序">新卡片排序順序</a></h3>
+<p>控制收集後應如何對新卡片排序。有以下選項：</p>
+<ul>
+<li>
+<p><strong>卡片類型→收集順序</strong>：依卡片類型的序號順序來顯示卡片。卡片類型序號相同的卡片依收集順序顯示。當停用推遲關聯卡片時，所有「正面→背面」卡片都會在所有「背面→正面」卡片之前顯示。若要在單次學習中顯示同一則筆記的所有卡片，此選項可以幫你拉開關聯卡片間的距離。</p>
+</li>
+<li>
+<p><strong>收集順序</strong>：依收集順序顯示卡片。當停用推遲關聯卡片時，此選項通常會讓同一則筆記的所有卡片連續出現。</p>
+</li>
+<li>
+<p><strong>卡片類型→隨機</strong>：依卡片類型的序號順序來顯示卡片，但卡片類型序號相同的卡片會依隨機順序顯示。使用此選項可以在隨機顯示卡片的同時確保關聯卡片不會連續出現。</p>
+</li>
+<li>
+<p><strong>隨機筆記→卡片類型</strong>：隨機挑選筆記，然後依卡片類型序號順序顯示所有關聯卡片。</p>
+</li>
+<li>
+<p><strong>隨機</strong>：完全隨機顯示收集的卡片。</p>
+</li>
+</ul>
+<h3 id="新卡片複習卡順序"><a class="header" href="#新卡片複習卡順序">新卡片/複習卡順序</a></h3>
+<p>新卡片與複習卡顯示的先後順序，也可以混合顯示。</p>
+<h3 id="跨天學習複習卡順序"><a class="header" href="#跨天學習複習卡順序">跨天學習/複習卡順序</a></h3>
+<p>跨天學習時，（重新）學習中的卡片與複習卡顯示的先後順序，也可以混合顯示。學習中的卡片通常比複習卡較難，因此有些人可能偏好最後學習這些卡片（先學完簡單的內容），而有些人則可能想先學完這些卡片（能留有更多時間來複習遺忘的卡片）。</p>
+<h3 id="複習卡排序順序"><a class="header" href="#複習卡排序順序">複習卡排序順序</a></h3>
+<p>控制複習卡的排序順序。有以下選項：</p>
+<ul>
+<li><strong>到期日期→隨機</strong>：預設順序，會先複習等待較久的卡片。進度沒有或僅有稍微落後時建議使用此選項。過久未使用 Anki 後或複習進度落後過多時，建議暫時使用其他選項。</li>
+<li><strong>到期日期→牌組順序</strong>：等待較久的卡片順序較高，然後依子牌組順序排序。</li>
+<li><strong>牌組順序→到期日期</strong>：依子牌組順序排序。一般不建議使用此順序，每次複習時卡片順序都相同可能會導致透過聯想得出答案，影響實際記憶效果。</li>
+<li><strong>間隔遞增</strong>：先顯示間隔較短的卡片。</li>
+<li><strong>間隔遞減</strong>：先顯示間隔較長的卡片。</li>
+<li><strong>輕鬆度遞增</strong>：先顯示較難的卡片。</li>
+<li><strong>輕鬆度遞減</strong>：先顯示較簡單的卡片。</li>
+</ul>
+<h2 id="推遲-burying"><a class="header" href="#推遲-burying">推遲 Burying</a></h2>
+<p>Anki 收集卡片的順序為當天學習卡片→跨天學習卡片→複習卡→新卡片。這個順序影響推遲卡片的處理方式：</p>
+<ul>
+<li>啟用所有推遲選項時，會顯示關聯卡片中順序最前的卡片。例如，複習卡會優先於新卡片顯示。</li>
+<li>學習關聯卡片中順序較後的卡片後，較前的卡片不會被推遲。舉例來說，停用「推遲關聯的新卡片」時，學習新卡片後，跨天學習卡片和複習卡不會被推遲，因此關聯的複習卡和新卡片可能會在同一次學習時出現。</li>
+</ul>
+<p>有以下選項：</p>
+<ul>
+<li><strong>推遲關聯的新卡片</strong>：Whether other new cards of the same note (e.g. reverse cards, adjacent cloze deletions) will be delayed until the next day.</li>
+<li><strong>推遲關聯的複習卡</strong>：Whether other review cards of the same note will be delayed until the next day.</li>
+<li><strong>推遲關聯的跨天學習卡片</strong>：Whether other learning cards of the same note that crossed a day boundary will be delayed until the next day.</li>
+</ul>
+<p>For more info about burying cards, please see <a href="./studying.html#%E9%97%9C%E8%81%AF%E5%8D%A1%E7%89%87%E5%92%8C%E6%8E%A8%E9%81%B2-siblings-and-burying">this section</a> of the manual.</p>
+<h2 id="audio"><a class="header" href="#audio">Audio</a></h2>
+<ul>
+<li>
+<p><strong>Don't play audio automatically</strong>: By default, Anki automatically plays any audio you have on
+cards. If you turn on this option Anki will not play audio until you press the replay audio key, <kbd>R</kbd> or <kbd>F5</kbd>.</p>
+</li>
+<li>
+<p><strong>Skip question when replaying answer</strong>: Controls whether audio from
+the question side is played when you use replay action on the answer side. Note that, Anki <a href="./templates/fields.html#special-fields">does not automatically play</a> audio from the <code>{{FrontSide}}</code> field. This option does not influence the behaviour of automatic play.</p>
+</li>
+</ul>
+<h2 id="timers"><a class="header" href="#timers">Timers</a></h2>
+<p><a id="timer"></a></p>
+<p>Anki monitors how long it takes you to answer each card, so that it
+can show you how long was spent studying each day. The time taken does
+not influence scheduling.</p>
+<h3 id="internal-timer"><a class="header" href="#internal-timer">Internal Timer</a></h3>
+<ul>
+<li>Maximum answer seconds: The default limit is 60 seconds. If you take
+longer than that, Anki assumes you have walked away from your computer
+or have been distracted, and caps the recorded time at 60 seconds, so
+that you don’t end up with inaccurate statistics.</li>
+<li>This internal timer runs from when the question is shown until you press a button to grade your answer. If you consistently
+spend longer than 60 seconds on a card,
+you may want to consider either raising
+this limit, or even better, making your cards simpler.</li>
+</ul>
+<h3 id="on-screen-timer"><a class="header" href="#on-screen-timer">On-screen Timer</a></h3>
+<ul>
+<li>Show on-screen timer: On the Study screen, show a timer that counts the time
+you're taking to study each card. (This timer will stop when it reaches the Maximum answer seconds set for the internal timer.)</li>
+<li>Stop on-screen timer on answer: Whether the on-screen timer should continue running from when you show
+the answer until you press a button to grade your answer. This option does not impact the time that is recorded for your statistics.</li>
+</ul>
+<h2 id="auto-advance"><a class="header" href="#auto-advance">Auto Advance</a></h2>
+<p>Requires Anki 23.12 or later. Auto Advance allows you to automatically take some actions after a certain amount of time has passed. To use it, you must first set a non-zero
+time in <strong>Seconds to show question for</strong> and/or <strong>Seconds to show answer for</strong>. Then, in the
+study screen, use the Auto Advance action from the <strong>More</strong> button to start advancing.</p>
+<h2 id="easy-days"><a class="header" href="#easy-days">Easy Days</a></h2>
+<p>If you want to spend less time on Anki on some days of the week, such as Sundays, this feature can help you do that.
+After the interval is calculated, it will be adjusted by a small amount to change the due date.
+Note that setting all days to "Reduced" or "Minimum" will result in the same workload as setting all days to "Normal".
+This feature works with both FSRS and the legacy SM-2 algorithm.
+Changing your Easy Days configuration doesn't retroactively change existing intervals and will only affect future intervals. Simply put, you will not see immediate changes in the number of due cards.</p>
+<h2 id="fsrs"><a class="header" href="#fsrs">FSRS</a></h2>
+<p>The <a href="https://github.com/open-spaced-repetition/fsrs4anki/wiki/ABC-of-FSRS">Free Spaced Repetition Scheduler (FSRS)</a> is an alternative to Anki's legacy
+SuperMemo 2 (SM-2) algorithm. By more accurately determining how much information you are likely
+to forget, it can help you remember more material in the same amount of time.</p>
+<p>When you turn on FSRS, some new options
+become available, and SM-2 specific options, such as <strong>Graduating interval</strong>,
+<strong>Easy bonus</strong>, etc. are hidden. This option is shared by all presets.</p>
+<p><strong>Before Enabling</strong></p>
+<ul>
+<li>Please ensure all of your Anki clients support FSRS. Anki 23.10, AnkiMobile 23.10,
+and AnkiWeb all support it. AnkiDroid supports it in 2.17+. If
+one of your clients doesn't support it, things will not work correctly.</li>
+<li>If you previously used the "custom scheduling" version of FSRS, please make
+sure you clear out the custom scheduling section before enabling FSRS.</li>
+</ul>
+<h3 id="a-short-guide"><a class="header" href="#a-short-guide">A Short Guide</a></h3>
+<ul>
+<li>Enable FSRS under the "FSRS" section, at the bottom of the deck options page. FSRS can only be enabled globally; you cannot enable it for some presets and disable it for others.</li>
+<li>Ensure that all your learning and re-learning steps are shorter than 1d and can be completed on the same day. 23h is not recommended even though it's less than one day because you won't be able to finish this step on the same day as your first review. Steps such as 10m or 30m are good.</li>
+<li>Click the "Optimize" button under the "FSRS parameters" field. If you see a message that says "The FSRS parameters currently appear to be optimal", that's fine.</li>
+<li>Choose a value of desired retention: the proportion of cards recalled successfully when they are due. <strong>This is the most important setting in FSRS. Higher retention leads to shorter intervals and more reviews per day.</strong> The default is 90%, which offers a good balance of retention and workload. Above 90% the workload increases very quickly, and above 97% the workload can be overwhelming. You can use <a href="#compute-minimum-recommended-retention">"Compute minimum recommended retention"</a> to help you choose the value of desired retention.
+Parameters and desired retention are preset-specific, you can make multiple presets with different parameters and desired retention.</li>
+</ul>
+<p>FSRS can adapt to almost any habit, except for one: pressing "Hard" instead of "Again" when you forget the information. When you press "Hard", FSRS assumes you have recalled the information correctly (though with hesitation and a lot of mental effort). If you press "Hard" when you have failed to recall the information, all intervals will be unreasonably high. So, if you have this habit, please change it and use "Again" when you forget the information.</p>
+<p>Regarding add-on compatibility, as a general rule of thumb, if an add-on affects intervals and scheduling in some way, it shouldn't be used with FSRS.</p>
+<h3 id="desired-retention"><a class="header" href="#desired-retention">Desired Retention</a></h3>
+<p>Desired retention controls how likely you are to remember cards when they are scheduled for a review.
+The default value of <code>0.90</code> will schedule cards so you have a 90% chance of remembering
+them when they come up for review again. This should normally translate to remembering around 90% cards when they are reviewed, and only failing around 10%.</p>
+<p>Here is a graph that shows how adjusting this value will affect your workload:</p>
+<p><img src="./media/FSRS_retention.png" alt="graph showing an exponential increase in workload as desired retention nears one." /></p>
+<p>The exact shape of the graph is different for everyone. However, there are two patterns that hold true for all:</p>
+<ul>
+<li>
+<p>As desired retention approaches 1.0, the workload increases drastically.
+Imagine you have a card with a 90% chance of remembering it after 100 days. If your desired retention is <code>0.90</code>, you'll review the card again in 100 days. But if your desired retention is <code>0.95</code>, you'll need to review it after 46 days instead.
+This means that the intervals of your cards almost halve at <code>0.95</code> desired retention and you need to review cards twice as frequently compared to <code>0.90</code> desired retention.
+At <code>0.97</code>, the interval will be 27 days (you'll have to review your cards 3.7x as frequently).
+At <code>0.99</code>, the interval will be only 9 days (you'll have to review your cards more than 10x more frequently than with the defaults).</p>
+</li>
+<li>
+<p>As desired retention decreases, you'll forget a greater percentage of your
+cards, and those cards will need to be reviewed again. Eventually, you'll
+get to a point where the forgotten cards contribute more to your workload
+than you gain from the longer delays. Also, keep in mind that forgetting
+material frequently is demotivating.</p>
+</li>
+</ul>
+<p>For these reasons, we suggest you be conservative when adjusting this
+number, and recommend you keep it lower than <code>0.97</code> and higher than the <a href="#compute-minimum-recommended-retention">minimum recommended retention</a>.</p>
+<h3 id="fsrs-parameters"><a class="header" href="#fsrs-parameters">FSRS Parameters</a></h3>
+<p>FSRS parameters affect how cards are scheduled. Do not change the parameters manually or copy them from someone else.</p>
+<p><strong>Optimize FSRS Parameters</strong></p>
+<p>The FSRS optimizer uses machine learning to learn your memory patterns and find parameters that best fit your review history. To do this, the optimizer requires several reviews to fine-tune the parameters.</p>
+<p>When you click the <strong>Optimize</strong> button, FSRS will analyze your review history, and generate parameters that are optimal for your memory and the content you're studying. If you have decks that vary wildly in subjective difficulty, it
+is recommended to assign them separate presets, as the parameters for easier
+decks will be different from harder decks. There is no need to optimize your
+parameters frequently: once every month is sufficient.</p>
+<p>By default, parameters are calculated from the review history of all
+decks using the current preset. You can optionally <a href="./searching.html">adjust the search</a>
+before optimizing the parameters, if you'd like to change which cards
+are used for optimization.</p>
+<p>You can also optimize the parameters for all of your presets at once by clicking on <strong>Optimize All Presets</strong>.</p>
+<p><strong>Evaluate FSRS Parameters</strong></p>
+<p>You can use the <strong>Evaluate</strong> button to see metrics that show how well the parameters fit your review history. Smaller numbers
+indicate a better fit to your review history.</p>
+<p>Log loss doesn't have an intuitive interpretation. RMSE (bins) can be
+interpreted as the average difference between the predicted probability
+of recalling a card (R) and the actual
+probability measured from your review history. For example, RMSE=5% means that, on average, FSRS
+is off by 5% when predicting R. You don't need to understand these metrics to use FSRS.</p>
+<p>Note that log loss and RMSE (bins) are not perfectly correlated,
+so two decks may have similar RMSE values but very different log-loss values, or the other way around.</p>
+<p>By default, log loss and RMSE (bins) are calculated from all decks using the current preset. You can optionally <a href="./searching.html">adjust the search</a> before evaluating the parameters, if you'd like to change which cards are used for evaluation.</p>
+<h3 id="reschedule-cards-on-change"><a class="header" href="#reschedule-cards-on-change">Reschedule Cards on Change</a></h3>
+<p>This option controls whether the due dates of cards will be changed when you enable FSRS, change desired retention, or change the parameters. The default is not to reschedule cards: future reviews will use the new scheduling, but there will be no immediate change to your workload. If rescheduling is enabled, the due dates of cards will be changed. Depending on your desired retention, it will often result in a large number of cards becoming due, so <strong>this option is not recommended</strong> when first switching from SM-2.</p>
+<p>Use this option sparingly, as it will add a review entry to each of your cards, and increase the size of your collection.</p>
+<p>If you're first switching from SM-2 and still wish to use this option, we recommend you first create a backup, enable FSRS with rescheduling, and then if needed, you can undo or restore from the backup.</p>
+<h3 id="compute-minimum-recommended-retention"><a class="header" href="#compute-minimum-recommended-retention">Compute Minimum Recommended Retention</a></h3>
+<p>Compute minimum recommended retention (CMRR) attempts to find the desired retention value that leads to the most material learned, in the least amount of time. The calculated number can serve as a reference when deciding what to set your desired retention to. You may wish to choose a higher desired retention, if you’re willing to trade more study time for a greater retention rate. However, setting your desired retention lower than the minimum is not recommended, as you'll spend more time studying than necessary, due to increased forgetting.</p>
+<h3 id="the-simulator"><a class="header" href="#the-simulator">The Simulator</a></h3>
+<p>You can use the simulator to get an estimate of your workload,
+either in reviews per day or in minutes of studying per day.</p>
+<ul>
+<li><strong>Days to simulate</strong> controls the duration of the simulated study history.</li>
+<li><strong>Additional new cards to simulate</strong> controls whether the simulator should
+simulate more cards than this preset already has. For example, if you currently have 100 cards under this preset,
+and you set <strong>Additional new cards to simulate</strong> to 50, the simulator will simulate a total of 150 cards.
+This can be useful if you plan to create more new cards in the future.</li>
+<li><strong>New cards/day</strong> and <strong>Maximum reviews/day</strong> control how many new cards will be learned each day and
+the maximum number of reviews per day.</li>
+<li><strong>Maximum interval</strong> controls the maximum interval length (in days).</li>
+</ul>
+<p>To make the simulation as realistic as possible, the simulator takes into account the real memory states (difficulty, stability, retrievability) of your cards.
+It also uses your FSRS parameters and the value of desired retention, therefore changing them will affect the simulation.</p>
+<h4 id="learning-and-relearning-steps"><a class="header" href="#learning-and-relearning-steps">Learning and Relearning Steps</a></h4>
+<p>(Re)learning steps of 1 day or greater are not recommended when using FSRS. The main
+reason they were popular with the legacy SM-2 algorithm is because repeatedly
+failing a card after it has graduated from the learning phase could reduce
+its ease a lot, leading to what some people called "ease hell". This is not
+a problem that FSRS suffers from. By keeping your learning steps under a
+day, you will allow FSRS to schedule cards at times it has calculated are
+optimal for your material and memory. Another reason not to use longer
+learning steps is because FSRS may end up scheduling the first review for a
+shorter time than your last learning step, leading to the <strong>Hard</strong> button
+showing a longer time than <strong>Good</strong>.</p>
+<p>We also recommend you keep the number of learning steps to a minimum. Evidence
+shows that repeating a card multiple times in a single day does not significantly
+contribute to long-term memory, so your time is
+better spent on other cards or a shorter study session.</p>
+<p>In the latest version of Anki you can let FSRS control short-term scheduling by leaving the (re)learning steps field empty. This is an experimental feature.
+Note that just because FSRS-5 <em>can</em> give you intervals shorter than one day doesn't necessarily mean that it <em>will</em>. Your <strong>Again</strong> interval can be one day long, or even longer.</p>
+<h4 id="add-on-compatibility"><a class="header" href="#add-on-compatibility">Add-On Compatibility</a></h4>
+<p>Some add-ons can cause conflicts with FSRS. As a general rule of thumb,
+if an add-on affects a card's intervals, it shouldn't be used with FSRS.
+A list of commonly used add-ons and their FSRS compatibility can be found in <a href="https://github.com/open-spaced-repetition/fsrs4anki#add-on-compatibility">Add-on Compatibility</a>.</p>
+<h4 id="more"><a class="header" href="#more">More</a></h4>
+<p>Several frequently asked questions about FSRS have been answered in <a href="https://faqs.ankiweb.net/frequently-asked-questions-about-fsrs.html">its FAQ</a>.</p>
+<p>For more info on FSRS, please check:</p>
+<ul>
+<li><a href="https://github.com/open-spaced-repetition/fsrs4anki/wiki">FSRS4Anki Wiki</a></li>
+<li><a href="https://github.com/open-spaced-repetition/fsrs4anki">FSRS4Anki on Github</a></li>
+</ul>
+<h2 id="進階選項-advanced"><a class="header" href="#進階選項-advanced">進階選項 Advanced</a></h2>
+<h3 id="maximum-interval"><a class="header" href="#maximum-interval">Maximum Interval</a></h3>
+<p>Allows you to place an upper limit on the time Anki
+will wait to reshow a card. The default is 100 years; you can decrease
+this to a smaller number if you’re willing to trade extra study time for
+higher retention.
+The maximum number of days a review card will wait before it's shown again. When reviews have reached the limit, <strong>Hard</strong>, <strong>Good</strong> and <strong>Easy</strong> will all give the same delay. The shorter you set this, the greater your workload will be. The default is 100 years; you can decrease this to a smaller number if you’re willing to trade extra study time for higher retention.</p>
+<h3 id="historical-retention"><a class="header" href="#historical-retention">Historical Retention</a></h3>
+<p>This setting is hidden unless FSRS is turned on.</p>
+<p>When some of your review history is missing, FSRS needs to fill in the gaps. By default, it will assume that when you did those old reviews, you remembered 90% of the material. If your old retention was appreciably higher or lower than 90%, adjusting this option will allow FSRS to better approximate the missing reviews.</p>
+<p>Your review history may be incomplete for two reasons:</p>
+<ul>
+<li>Because you're using the <strong>Ignore cards reviewed before</strong> option.</li>
+<li>Because you previously deleted review logs to free up space, or imported material from a different SRS program.</li>
+</ul>
+<p>The latter is quite rare, so unless you're using the former option, you probably don't need to adjust this setting.</p>
+<h3 id="ignore-cards-reviewed-before"><a class="header" href="#ignore-cards-reviewed-before">Ignore Cards Reviewed Before</a></h3>
+<p>If set, cards reviewed before the provided date will be ignored when optimizing FSRS parameters. This can be useful if you imported someone else's scheduling data, or have changed the way you use the answer buttons.</p>
+<h3 id="起始輕鬆度"><a class="header" href="#起始輕鬆度">起始輕鬆度</a></h3>
+<p>Controls the ease that cards start out with. It is
+set when a card graduates from learning for the first time. It defaults
+to 2.50, meaning that once you have finished learning a card, answering
+<strong>Good</strong> on subsequent reviews will increase the delay by approximately
+2.5x (e.g. if the last delay was 10 days, the next delay would be around 25
+days). Based upon how you rate the card in subsequent reviews, the
+ease may increase or decrease from its starting value.</p>
+<h3 id="easy-bonus"><a class="header" href="#easy-bonus">Easy Bonus</a></h3>
+<p>An extra multiplier applied to the interval when a review card is answered
+<strong>Easy</strong>. With the default value of 1.30, <strong>Easy</strong> will give an interval that is
+1.3 times the Good interval (e.g. if the Good interval was 10 days, the Easy
+interval would be around 13 days).</p>
+<h3 id="interval-modifier"><a class="header" href="#interval-modifier">Interval Modifier</a></h3>
+<p>An extra multiplier that is applied to all reviews. At its default of 1.00 it
+does nothing. If you set it to 0.80, intervals will be generated at
+80% of their normal size (so a 10 day interval would become 8 days).
+You can thus use the multiplier to to make your reviews less or more frequent.</p>
+<p>For moderately difficult material, the average user should find they
+remember approximately 90% of mature cards when they come up for review. You
+can find out your own performance by opening the graphs/statistics for a
+deck and looking at the Answer Buttons graph - mature retention is the
+correct% on the right side of the graph. If you haven’t been studying for
+long, you may not have any mature cards yet. As performance with new
+cards and younger cards can vary considerably, it’s a good idea to wait
+until you have a reasonable amount of mature reviews before you start
+drawing conclusions about your retention rate.</p>
+<p>On the SuperMemo website, they suggest that you can find an appropriate
+multiplier for a desired retention rate. Their formula boils down to:</p>
+<pre><code>log(desired retention%) / log(current retention%)
+</code></pre>
+<p>Imagine we have a current retention rate of 85% and we want to increase
+it to 90%. We’d calculate the modifier as:</p>
+<pre><code>log(90%) / log(85%) = 0.65
+</code></pre>
+<p>You can use <a href="https://www.google.com/search?q=log(90%25)+%2F+log(85%25)">Google to calculate this</a>.</p>
+<p>If you enter the resulting 65% into the interval modifier, you should
+find over time that your retention moves closer to your desired
+retention.</p>
+<p>One important thing to note however is that the trade-off between time
+spent studying and retention is not linear: we can see here that to
+increase our retention by 5 percentage points, we would have to study 35%
+more frequently. If the material you are learning is very important then
+it may be worth the extra effort – that is, of course, something you will need to
+decide for yourself. If you are simply worried that you are forgetting too
+much, then you may find investing more time at the initial learning stage, or using mnemonics will give you more gain for less effort.</p>
+<p>One final thing to note is that Anki forces a new interval to be at
+least 1 day longer than it was previously, so that you do not get stuck
+reviewing with the same interval forever. If your goal is to repeat a
+card once a day for multiple days, you can do that by setting more
+learning mode steps, instead of by adjusting this modifier.</p>
+<h3 id="困難間隔-hard-interval"><a class="header" href="#困難間隔-hard-interval">「困難」間隔 Hard Interval</a></h3>
+<p>The multiplier applied when you use the <strong>Hard</strong> button. The percentage is relative
+to the previous interval, e.g. with a default of 1.20, a card with a 10-day interval
+will be given 12 days.</p>
+<h3 id="new-interval"><a class="header" href="#new-interval">New Interval</a></h3>
+<p>The multiplier applied when you use the <strong>Again</strong> button on a review card. The
+default 0.00 means that a review card's delay is reset to zero when you forget it
+(which then becomes 1 day after the <a href="#minimum-interval">minimum interval</a> is
+applied).</p>
+<p>If changed from the default, it is possible for forgotten cards to preserve part
+of their previous delay. For example, if a card had a 100 day interval, and you set
+the <strong>New Interval</strong> to 0.20, the new interval would be 20 days.</p>
+<p>While preserving part of the interval may seem to make sense, SuperMemo has observed</p>
+<!-- that preserving part of the delay can actually [be counter-productive](https://supermemo.guru/wiki/Post-lapse_stability). For this reason, we recommend you leave it on the default setting. -->
+<p>that preserving part of the delay can actually be counter-productive. For this reason, we recommend you leave it on the default setting.</p>
+<h3 id="custom-scheduling"><a class="header" href="#custom-scheduling">Custom Scheduling</a></h3>
+<p>You can have more control over Anki's scheduling of cards by using your own JavaScript in the custom scheduling field. This is a global option, so code entered here applies to every preset.</p>
+<p>Here is an example custom scheduling script. Note that, for Qt5 versions of Anki, the code needs to be transpiled.</p>
+<pre><code class="language-javascript">// print the existing states
+console.log(
+  JSON.stringify(states, null, 4)
+);
+
+// load the debugger if the web inspector is open
+debugger;
+
+// if the hard button is a learning step, make it
+// a 123 minute delay
+if (states.hard.normal?.learning) {
+  states.hard.normal.learning.scheduledSecs = 123 * 60;
+}
+
+// apply the same change in a rescheduling filtered deck
+if (states.hard.filtered?.rescheduling?.originalState?.learning) {
+  states.hard.filtered.rescheduling.originalState.learning.scheduledSecs =
+    123 * 60;
+}
+
+// increase ease factor by 0.2 when Easy used on a review
+if (states.good.normal?.review) {
+  states.easy.normal.review.easeFactor =
+    states.good.normal.review.easeFactor + 0.2;
+}
+</code></pre>
+<p>You can also see <a href="https://github.com/open-spaced-repetition/fsrs4anki/blob/main/fsrs4anki_scheduler.js">FSRS custom scheduling code</a> as an example.</p>
+<p>The various scheduling states of cards are described in <a href="https://github.com/ankitects/anki/blob/main/proto/anki/scheduler.proto">SchedulingStates</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="templates/styling.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="addons.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="templates/styling.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="addons.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
