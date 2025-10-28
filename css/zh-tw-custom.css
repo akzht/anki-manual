@@ -20,6 +20,7 @@ html,
     font-family: Inter, Arial, "Helvetica Neue", "GenYoGothic2 TW", "Source Han Sans TC", "Microsoft JhengHei UI", "PingFang TC", sans-serif;
     font-feature-settings: "palt" 1;
     text-autospace: normal;
+    font-display: block;
 }
 
 .menu-title {

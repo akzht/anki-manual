@@ -176,18 +176,18 @@
                     <main>
                         <h1 id="產生卡片-card-generation英文"><a class="header" href="#產生卡片-card-generation英文">產生卡片 <a href="https://docs.ankiweb.net/templates/generation.html">Card Generation<span class="original-link">（英文）</span></a></a></h1>
 <ul>
-<li><a href="#%E5%8F%8D%E5%90%91%E5%8D%A1%E7%89%87-reverse-cards">反向卡片 Reverse Cards</a></li>
-<li><a href="#%E7%94%A2%E7%94%9F%E8%88%87%E5%88%AA%E9%99%A4%E5%8D%A1%E7%89%87-card-generation--deletion">產生與刪除卡片 Card Generation &amp; Deletion</a></li>
-<li><a href="#%E9%81%B8%E6%93%87%E6%80%A7%E7%94%A2%E7%94%9F%E5%8D%A1%E7%89%87-selective-card-generation">選擇性產生卡片 Selective Card Generation</a></li>
-<li><a href="#%E6%A2%9D%E4%BB%B6%E5%BC%8F%E5%8F%96%E4%BB%A3-conditional-replacement">條件式取代 Conditional Replacement</a></li>
-<li><a href="#%E8%83%8C%E9%9D%A2%E7%A9%BA%E7%99%BD-blank-back-sides">背面空白 Blank Back Sides</a></li>
-<li><a href="#%E6%96%B0%E5%A2%9E%E7%A9%BA%E7%99%BD%E7%AD%86%E8%A8%98-adding-empty-notes">新增空白筆記 Adding Empty Notes</a></li>
-<li><a href="#%E5%85%8B%E6%BC%8F%E5%AD%97%E6%A8%A1%E6%9D%BF-cloze-templates">克漏字模板 Cloze Templates</a></li>
+<li><a href="#%E5%8F%8D%E5%90%91%E5%8D%A1%E7%89%87">反向卡片</a></li>
+<li><a href="#%E7%94%A2%E7%94%9F%E8%88%87%E5%88%AA%E9%99%A4%E5%8D%A1%E7%89%87">產生與刪除卡片</a></li>
+<li><a href="#%E9%81%B8%E6%93%87%E6%80%A7%E7%94%A2%E7%94%9F%E5%8D%A1%E7%89%87">選擇性產生卡片</a></li>
+<li><a href="#%E6%A2%9D%E4%BB%B6%E5%BC%8F%E5%8F%96%E4%BB%A3">條件式取代</a></li>
+<li><a href="#%E8%83%8C%E9%9D%A2%E7%A9%BA%E7%99%BD">背面空白</a></li>
+<li><a href="#%E6%96%B0%E5%A2%9E%E7%A9%BA%E7%99%BD%E7%AD%86%E8%A8%98">新增空白筆記</a></li>
+<li><a href="#%E5%85%8B%E6%BC%8F%E5%AD%97%E6%A8%A1%E6%9D%BF">克漏字模板</a></li>
 </ul>
-<h2 id="反向卡片-reverse-cards"><a class="header" href="#反向卡片-reverse-cards">反向卡片 Reverse Cards</a></h2>
+<h2 id="反向卡片"><a class="header" href="#反向卡片">反向卡片</a></h2>
 <p>使用內建的「基本型（含反向卡片）」筆記類型，Anki會建立兩張正背面相反的卡片（即「正面→背面」和「背面→正面」）。</p>
 <p>若僅部分筆記需要反向卡片，你可以使用「基本型（選擇性反向卡片）」筆記類型。若你僅在正面和背面欄位中輸入了文字，則Anki只會為你建立一張「正面→背面」卡片。需要反向卡片時，只要在「加入反向卡片」欄位中輸入任意文字（如「1」），Anki就會再建立一張反向卡片。「加入反向卡片」欄位中的文字不會出現在卡片中。</p>
-<h2 id="產生與刪除卡片-card-generation--deletion"><a class="header" href="#產生與刪除卡片-card-generation--deletion">產生與刪除卡片 Card Generation &amp; Deletion</a></h2>
+<h2 id="產生與刪除卡片"><a class="header" href="#產生與刪除卡片">產生與刪除卡片</a></h2>
 <p>當卡片正面沒有內容時，Anki不會建立這些卡片。若有一則筆記的「我的欄位」欄位為空，且有一個卡片類型的正面模板僅為<code>{{我的欄位}}</code>，則這則筆記不會產生這個類型的卡片。</p>
 <p>編輯已有筆記時，若你新增的內容使部分卡片的正面不再是空白，則Anki會自動為你建立這些卡片。但反過來，如果你移除了一些內容後，有些卡片正面變成空白的，則Anki不會自動刪除這些卡片，以防因不小心刪除欄位內容而造成資料遺失。要移除空白卡片，請在主視窗中前往「工具」→「空白卡片」。若有空白卡片，則彈出的視窗中會列出所有空白卡片清單，並可選擇刪除。</p>
 <p>囿於卡片產生機制，你無法手動刪除單張卡片，否則每次編輯筆記時，刪掉的卡片都會被重新建立。要刪除不需要的卡片，你應該把卡片正面模板中的相關「條件式取代」欄位留空，然後執行「空白卡片」工具。</p>
@@ -195,9 +195,9 @@
 <pre><code>{{國家}}在哪個洲？
 </code></pre>
 <p>但只要「國家」為空就不會產生卡片。</p>
-<h2 id="選擇性產生卡片-selective-card-generation"><a class="header" href="#選擇性產生卡片-selective-card-generation">選擇性產生卡片 Selective Card Generation</a></h2>
+<h2 id="選擇性產生卡片"><a class="header" href="#選擇性產生卡片">選擇性產生卡片</a></h2>
 <p>你可以使用「基本型（選擇性反向卡片）」筆記類型來為重點卡片多加一張卡片。要自己建立這樣的筆記類型，請先新增一個欄位。然後在卡片模板中，你可以設定依欄位有無內容來確定是否要建立卡片。請繼續閱讀〈條件式取代〉章節來進一步了解如何設定。</p>
-<h2 id="條件式取代-conditional-replacement"><a class="header" href="#條件式取代-conditional-replacement">條件式取代 Conditional Replacement</a></h2>
+<h2 id="條件式取代"><a class="header" href="#條件式取代">條件式取代</a></h2>
 <p>你可以依欄位有無內容為條件，決定要不要為卡片加入文字、欄位或HTML碼。例如：</p>
 <pre><code>這句話永遠會被顯示
 
@@ -249,7 +249,7 @@
 {{/原文}}
 {{備註}}
 </code></pre>
-<h2 id="背面空白-blank-back-sides"><a class="header" href="#背面空白-blank-back-sides">背面空白 Blank Back Sides</a></h2>
+<h2 id="背面空白"><a class="header" href="#背面空白">背面空白</a></h2>
 <p>產生卡片時只會檢查卡面正面。假設你的卡片正面為：</p>
 <pre><code>{{欄位一}}
 </code></pre>
@@ -263,7 +263,7 @@
 {{/欄位二}}
 </code></pre>
 <p>這樣，只有當「欄位一」和「欄位二」都不為空時，才會產生卡片。</p>
-<h2 id="新增空白筆記-adding-empty-notes"><a class="header" href="#新增空白筆記-adding-empty-notes">新增空白筆記 Adding Empty Notes</a></h2>
+<h2 id="新增空白筆記"><a class="header" href="#新增空白筆記">新增空白筆記</a></h2>
 <p>在Anki 2.1.28+ 和AnkiMobile 2.0.64+ 版本中，若新增筆記時沒有產生任何卡片，則Anki會使用第一個模板來建立一張空白卡片。這樣是為了在內容不完整時也能先新增筆記，等到日後完善筆記內容或修改模板後，方可使卡片生效。若不想要保留空白筆記，請執行「空白卡片」功能以移除。
 When you add a new note in Anki, if the card
 templates and note fields combine to produce no cards, a blank card will be
@@ -271,7 +271,7 @@ created using the first template. This allows you to add material even if it's
 incomplete, and modify it or the template later to make it valid. If you don't
 wish to keep an empty note, you can remove it with the Empty Cards function.
 在版本較舊的Anki中，當筆記不會產生卡片時，筆記將無法被新增/匯入。</p>
-<h2 id="克漏字模板-cloze-templates"><a class="header" href="#克漏字模板-cloze-templates">克漏字模板 Cloze Templates</a></h2>
+<h2 id="克漏字模板"><a class="header" href="#克漏字模板">克漏字模板</a></h2>
 <p>請參閱〈<a href="../editing.html#%E5%85%8B%E6%BC%8F%E5%AD%97%E7%A9%BA%E6%A0%BC-cloze-deletion">克漏字空格</a>〉章節來了解背景資訊。</p>
 <p>普通的筆記類型可以自訂卡片類型的數量，但在克漏字筆記類型中，筆記中所有空格都共用同一個卡片類型。</p>
 <p>在上面的章節中，我們談到普通卡片產生的條件是問題面中指定的欄位不為空。但克漏字筆記類型的規則不同：</p>
