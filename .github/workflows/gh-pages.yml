@@ -1,5 +1,5 @@
 env:
-  cname: lghhz.github.io/anki-manual
+  cname: akzht.github.io/anki-manual
 
 name: github pages
 
@@ -13,7 +13,7 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
@@ -41,7 +41,7 @@ jobs:
   check:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable

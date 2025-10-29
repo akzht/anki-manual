@@ -89,7 +89,7 @@ syncing in order to use the full sync option without first downloading
 the changes. Similarly, if you are experiencing problems with Anki, you
 might need to (or might be instructed to) disable add-ons temporarily to
 see if one might be causing the problem. To do both of these things at the same time, you can
-open Anki in safe mode by holding down the <kbd>Shift</kbd> key while starting Anki. Keep holding <kbd>Shift</kbd> down until the on-screen message informs you that Anki has started in safe mode.
+open Anki in safe mode by holding down the <kbd>Shift</kbd> key while starting Anki. Keep holding <kbd>Shift</kbd> down until the on-screen message informs you that Anki has started in safe mode. If you're on Linux and that didn't work, run 'anki --safemode'.
 
 It is possible to specify a custom folder location during startup. This
 is an advanced feature that is primarily intended to be used with
@@ -160,7 +160,7 @@ as FAT32. Please format the drive as NTFS to ensure media syncs
 correctly.FAT32格式的隨身碟可能無法同步媒體檔。請將隨身碟格式化為NTFS以確保能正常同步。
 
 1. Download the latest Anki launcher, and install it in a custom location:
-   `E:\Anki\Launcher`.
+   `E:\Anki\Launcher`. Not `E:\Anki\Launcher\Anki`.
 2. When the launcher appears, close it without installing.
 3. Put the following in a file `E:\Anki\Anki.bat`:
 

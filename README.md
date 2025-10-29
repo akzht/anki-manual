@@ -1,6 +1,6 @@
 # Anki Manual
 
-此repository為《[Anki使用手冊](https://lghhz.github.io/anki-manual/)》的原始碼。
+此repository為《[Anki使用手冊](https://akzht.github.io/anki-manual/)》的原始碼。
 
 ## License 
 
