@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>樣式與 HTML Styling &amp; HTML - Anki使用手冊</title>
+        <title>樣式與 HTML Styling &amp; HTML - Anki使用手冊（beta）</title>
 
 
         <!-- Custom HTML head -->
@@ -139,7 +139,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Anki使用手冊</h1>
+                    <h1 class="menu-title">Anki使用手冊（beta）</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -411,7 +411,7 @@
 <p>根據預設，Ank會透過<code>id=answer</code>來找到包含答案的HTML元素，並在卡片背面自動捲動到這個元素你可以把<code>id=answer</code>移動至其他HTML元素上來改變自動捲動的終點或移除<code>id=answer</code>以停用自動捲動。</p>
 <h2 id="javascript"><a class="header" href="#javascript">JavaScript</a></h2>
 <p>因為Anki卡片本質上就是網頁，所以你也可以透過模板來在卡片上嵌入JavaScript。請參閱<a href="https://forums.ankiweb.net/t/card-templates-user-input-101-buttons-keyboard-shortcuts-etc-guide/13756">此論壇貼文</a>來進一步了解。</p>
-<p>JavaScript是一項進階功能，容易發生問題，因此 <strong>Anki不為JavaScript功能提供支援</strong>。我們無法協助你編寫JavaScript程式碼，也無法保證當前可用的程式碼在未來不會失效。若無法自行解決相關問題，建議不要使用JavaScript。</p>
+<p>JavaScript是一項進階功能，容易發生問題，因此<strong>Anki不為JavaScript功能提供支援</strong>。我們無法協助你編寫JavaScript程式碼，不保證當前可用的程式碼在未來不會失效。若無法自行解決相關問題，建議不要使用JavaScript。</p>
 <p>不同Anki用戶端上的卡片顯示效果可能不一，因此你需要在不同平台上進行測試。多數用戶端的卡片是顯示在一個持續動態更新內容的網頁上，所以你的JavaScrip程式碼需要使用<code>document.getElementById()</code>等方法來更新文件內容而不是<code>document.write()</code>等方法。</p>
 <p><code>window.alert</code>這樣的函式可能不可用。Anki會在終端機寫入JavaScript錯誤，你需要在<a href="https://addon-docs.ankiweb.net/console-output.html#console-output">控制台</a>中檢視錯誤訊息。你可以使用Chrome的「<a href="https://addon-docs.ankiweb.net/debugging.html#webviews">檢查元素</a>」功能來為JavaScript程式碼偵錯。</p>
 

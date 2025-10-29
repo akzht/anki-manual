@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>欄位取代 Field Replacements - Anki使用手冊</title>
+        <title>欄位取代 Field Replacements - Anki使用手冊（beta）</title>
 
 
         <!-- Custom HTML head -->
@@ -139,7 +139,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Anki使用手冊</h1>
+                    <h1 class="menu-title">Anki使用手冊（beta）</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
@@ -184,7 +184,7 @@
 <li><a href="#%E6%8F%90%E7%A4%BA%E6%AC%84%E4%BD%8D">提示欄位</a></li>
 <li><a href="#%E5%AD%97%E5%85%B8%E9%80%A3%E7%B5%90">字典連結</a></li>
 <li><a href="#%E6%B8%85%E9%99%A4html%E6%A8%99%E7%B1%A4">清除HTML標籤</a></li>
-<li><a href="#%E5%BE%9E%E5%8F%B3%E8%87%B3%E5%B7%A6%E6%9B%B8%E5%AF%AB">從右至左書寫</a></li>
+<li><a href="#%E5%BE%9E%E5%8F%B3%E8%87%B3%E5%B7%A6%E6%9B%B8%E5%AF%ABrtl">從右至左書寫（RTL）</a></li>
 <li><a href="#%E6%B3%A8%E9%9F%B3">注音</a>
 <ul>
 <li><a href="#%E5%85%B6%E4%BB%96%E6%B3%A8%E9%9F%B3%E7%AF%A9%E9%81%B8%E5%99%A8">其他注音篩選器</a></li>
@@ -192,7 +192,7 @@
 </li>
 <li><a href="#%E5%AA%92%E9%AB%94%E6%AA%94%E8%88%87latex%E6%96%B9%E7%A8%8B%E5%BC%8F">媒體檔與LaTeX方程式</a>
 <ul>
-<li><a href="#%E9%9D%9C%E6%85%8B%E9%9F%B3%E6%AA%94%E5%BD%B1%E5%83%8F-static-soundsimages">靜態音檔/影像 Static Sounds/Images</a></li>
+<li><a href="#%E9%9D%9C%E6%85%8B%E9%9F%B3%E6%AA%94%E5%BD%B1%E5%83%8F">靜態音檔/影像</a></li>
 <li><a href="#%E5%BC%95%E7%94%A8%E6%AC%84%E4%BD%8D">引用欄位</a></li>
 </ul>
 </li>
@@ -330,7 +330,7 @@ onclick="this.style.display='none';document.getElementById('hint4753594160').sty
 <p>為了解決這一問題，Anki提供了在取代時清除欄位格式的功能。只要在欄位名稱前輸入「text:」，Anki就會清除所有格式。依以下格式設定連結，即便欄位文字存在格式也能正常搜尋：</p>
 <pre><code>&lt;a href="http://example.com/search?q={{text:單字}}"&gt;檢索字典&lt;/a&gt;
 </code></pre>
-<h2 id="從右至左書寫"><a class="header" href="#從右至左書寫">從右至左書寫</a></h2>
+<h2 id="從右至左書寫rtl"><a class="header" href="#從右至左書寫rtl">從右至左書寫（RTL）</a></h2>
 <p>如果你在學習的語言是從右至左書寫，你需要像這樣調整模板：</p>
 <pre><code>&lt;div dir=rtl&gt;{{有RTL文字的欄位}}&lt;/div&gt;
 </code></pre>
@@ -363,7 +363,7 @@ onclick="this.style.display='none';document.getElementById('hint4753594160').sty
 </div>
 <h2 id="媒體檔與latex方程式"><a class="header" href="#媒體檔與latex方程式">媒體檔與LaTeX方程式</a></h2>
 <p>為保證執行速度，Anki不會檢查模板有無引用媒體檔。因此在模板上直接加入媒體會導致一些問題。</p>
-<h3 id="靜態音檔影像-static-soundsimages"><a class="header" href="#靜態音檔影像-static-soundsimages">靜態音檔/影像 Static Sounds/Images</a></h3>
+<h3 id="靜態音檔影像"><a class="header" href="#靜態音檔影像">靜態音檔/影像</a></h3>
 <p>要在每張卡片上都加入同樣的音檔或影像：</p>
 <ol>
 <li>
