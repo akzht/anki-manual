@@ -174,7 +174,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="牌組選項-deck-options英文"><a class="header" href="#牌組選項-deck-options英文">牌組選項 <a href="https://docs.ankiweb.net/deck-options.html">Deck Options<span class="original-link">（英文）</span></a></a></h1>
+                        <h1 id="牌組選項-deck-options"><a class="header" href="#牌組選項-deck-options">牌組選項 Deck Options</a></h1>
 <ul>
 <li><a href="#%E9%A0%90%E8%A8%AD%E7%B5%84">預設組</a></li>
 <li><a href="#%E5%AD%90%E7%89%8C%E7%B5%84">子牌組</a></li>
@@ -227,11 +227,11 @@
 <li><a href="#%E6%94%BE%E9%AC%86%E6%97%A5">放鬆日</a></li>
 <li><a href="#fsrs">FSRS</a>
 <ul>
-<li><a href="#%E7%B0%A1%E7%9F%AD%E6%95%99%E5%AD%B8">簡短教學</a></li>
+<li><a href="#a-short-guide">A Short Guide</a></li>
 <li><a href="#desired-retention">Desired Retention</a></li>
-<li><a href="#fsrs-parameters">FSRS Parameters</a></li>
+<li><a href="#fsrs%E5%8F%83%E6%95%B8">FSRS參數</a></li>
 <li><a href="#reschedule-cards-on-change">Reschedule Cards on Change</a></li>
-<li><a href="#compute-minimum-recommended-retention">Compute Minimum Recommended Retention</a></li>
+<li><a href="#%E8%A8%88%E7%AE%97%E7%95%99%E5%AD%98%E6%AF%94%E7%8E%87%E6%8E%A8%E8%96%A6%E6%9C%80%E5%B0%8F%E5%80%BC">計算留存比率推薦最小值</a></li>
 <li><a href="#the-simulator">The Simulator</a>
 <ul>
 <li><a href="#learning-and-relearning-steps">Learning and Relearning Steps</a></li>
@@ -483,57 +483,46 @@
 <p>啟用FSRS後，還會新增一些新選項；SM-2專用的選項則會隱藏，如「<strong>畢業間隔</strong>」、「<strong>『簡單』間隔</strong>」等選項。「FSRS」選項會套用於所有預設組。</p>
 <p><strong>啟用前請注意：</strong></p>
 <ul>
-<li>請檢查你正在使用的所有Anki用戶端，確保你所有裝置上安裝的Anki版本都支援FSRS，否則無法正常運作。Anki 23.10、AnkiMobile 23.10、AnkiDroid 2.17以及AnkiWeb都支援FSRS。</li>
-<li>若你使用了「自訂排程」版FSRS，請先清除「自訂排程」內容再啟用FSRS。</li>
+<li>Please ensure all of your Anki clients support FSRS. Anki 23.10, AnkiMobile 23.10,
+and AnkiWeb all support it. AnkiDroid supports it in 2.17+. If
+one of your clients doesn't support it, things will not work correctly.</li>
+<li>If you previously used the "custom scheduling" version of FSRS, please make
+sure you clear out the custom scheduling section before enabling FSRS.</li>
 </ul>
-<h3 id="簡短教學"><a class="header" href="#簡短教學">簡短教學</a></h3>
+<h3 id="a-short-guide"><a class="header" href="#a-short-guide">A Short Guide</a></h3>
 <ul>
-<li>在牌組選項下的「FSRS」部分中啟用「FSRS」選項。「FSRS」僅能一次套用於整個集合中，無法單獨在一個預設組中停用。</li>
-<li>確保「學習階段」和「重新學習階段」全部短於1天，且1張卡片能在1天內完成所有階段。不建議設定23小時等過長間隔，即使間隔短於1天，否則一般不太可能在一天內完成所有階段。</li>
-<li>按一下「最佳化」按鈕以取得最佳FSRS參數。如果顯示「當前FSRS參數已為最佳」則無須再進行最佳化。</li>
-<li>選擇「期望留存比率」數值：「留存比率」（retention）是指當一組卡片到期時，記得的卡片數量與卡片總數之間的比率。<strong>​此選項是「FSRS」中最重要的設定。留存比率越高，間隔就越短，從而增加每日複習量。​</strong>預設值為90%，能在留存比率和工作量之間保持平衡。若設定超過90%，你的工作量會急遽增加；超過97%時，工作量將使你不堪重負。你可以使用「<a href="#compute-minimum-recommended-retention">期望留存比率模擬器</a>」（「幫我選擇」按鈕）來幫你決定「期望留存比率」數值。你可為不同預設組分別設定「FRSR參數」和「期望留存比率」。</li>
+<li>Enable FSRS under the "FSRS" section, at the bottom of the deck options page. FSRS can only be enabled globally; you cannot enable it for some presets and disable it for others.</li>
+<li>Ensure that all your learning and re-learning steps are shorter than 1d and can be completed on the same day. 23h is not recommended even though it's less than one day because you won't be able to finish this step on the same day as your first review. Steps such as 10m or 30m are good.</li>
+<li>Click the "Optimize" button under the "FSRS parameters" field. If you see a message that says "The FSRS parameters currently appear to be optimal", that's fine.</li>
+<li>Choose a value of desired retention: the proportion of cards recalled successfully when they are due. <strong>This is the most important setting in FSRS. Higher retention leads to shorter intervals and more reviews per day.</strong> The default is 90%, which offers a good balance of retention and workload. Above 90% the workload increases very quickly, and above 97% the workload can be overwhelming. You can use <a href="#compute-minimum-recommended-retention">"Compute minimum recommended retention"</a> to help you choose the value of desired retention.
+Parameters and desired retention are preset-specific, you can make multiple presets with different parameters and desired retention.</li>
 </ul>
-<p>對大多數學習習慣，FSRS都能良好地進行調整——除非你在遺忘時按下的按鈕是「困難」，而不是「重來」。按下「重來」時，FSRS會認為你回答正確，只是回答時用腦、耗時較多。回答錯誤時按下「困難」會導致間隔不合常理的長。因此，如果這是你的學習習慣，請改變按鈕用法，在遺忘時按下「重來」。</p>
-<p>為保證附加元件相容性，如果附加元件會影響間隔或排程，則通常不應與FSRS一同使用。</p>
+<p>FSRS can adapt to almost any habit, except for one: pressing "Hard" instead of "Again" when you forget the information. When you press "Hard", FSRS assumes you have recalled the information correctly (though with hesitation and a lot of mental effort). If you press "Hard" when you have failed to recall the information, all intervals will be unreasonably high. So, if you have this habit, please change it and use "Again" when you forget the information.</p>
+<p>Regarding add-on compatibility, as a general rule of thumb, if an add-on affects intervals and scheduling in some way, it shouldn't be used with FSRS.</p>
 <h3 id="desired-retention"><a class="header" href="#desired-retention">Desired Retention</a></h3>
 <p>Desired retention controls how likely you are to remember cards when they are scheduled for a review.
 The default value of <code>0.90</code> will schedule cards so you have a 90% chance of remembering
 them when they come up for review again. This should normally translate to remembering around 90% cards when they are reviewed, and only failing around 10%.</p>
 <p>Here is a graph that shows how adjusting this value will affect your workload:</p>
 <p><img src="./media/FSRS_retention.png" alt="graph showing an exponential increase in workload as desired retention nears one." /></p>
-<p>The exact shape of the graph is different for everyone. However, there are two patterns that hold true for all:</p>
+<p>實際增長曲線因人而異，但有兩點不變：</p>
 <ul>
 <li>
-<p>As desired retention approaches 1.0, the workload increases drastically.
-Imagine you have a card with a 90% chance of remembering it after 100 days. If your desired retention is <code>0.90</code>, you'll review the card again in 100 days. But if your desired retention is <code>0.95</code>, you'll need to review it after 46 days instead.
-This means that the intervals of your cards almost halve at <code>0.95</code> desired retention and you need to review cards twice as frequently compared to <code>0.90</code> desired retention.
-At <code>0.97</code>, the interval will be 27 days (you'll have to review your cards 3.7x as frequently).
-At <code>0.99</code>, the interval will be only 9 days (you'll have to review your cards more than 10x more frequently than with the defaults).</p>
+<p>隨著「期望留存比率」數值趨近於1，工作量會急遽增加。舉例來說，如果你有一張卡片在100天後能記住的機率是90%，若期望留存比率為<code>0.90</code>，則卡片會在100天後到期。但當期望留存比率為<code>0.95</code>時，則卡片在46天後就會到期。也就是說，數值設定為<code>0.95</code>時，卡片間隔不到<code>0.90</code>的一半，複習量翻倍。設定為<code>0.97</code>時，間隔為27天（3.7倍）；設定為<code>0.99</code>時，間隔僅為9天（10倍）。</p>
 </li>
 <li>
-<p>As desired retention decreases, you'll forget a greater percentage of your
-cards, and those cards will need to be reviewed again. Eventually, you'll
-get to a point where the forgotten cards contribute more to your workload
-than you gain from the longer delays. Also, keep in mind that forgetting
-material frequently is demotivating.</p>
+<p>隨著「期望留存比率」數值減少，遺忘的卡片數量會增加，這也就意味著卡片需要再一次複習。數值減少到一定程度後，較長的間隔所減輕的工作量將遠不及於遺忘的卡片帶來的重新複習量。而且，遺忘內容還可能會使你的學習動機下降。</p>
 </li>
 </ul>
-<p>For these reasons, we suggest you be conservative when adjusting this
-number, and recommend you keep it lower than <code>0.97</code> and higher than the <a href="#compute-minimum-recommended-retention">minimum recommended retention</a>.</p>
-<h3 id="fsrs-parameters"><a class="header" href="#fsrs-parameters">FSRS Parameters</a></h3>
-<p>FSRS parameters affect how cards are scheduled. Do not change the parameters manually or copy them from someone else.</p>
-<p><strong>Optimize FSRS Parameters</strong></p>
-<p>The FSRS optimizer uses machine learning to learn your memory patterns and find parameters that best fit your review history. To do this, the optimizer requires several reviews to fine-tune the parameters.</p>
-<p>When you click the <strong>Optimize</strong> button, FSRS will analyze your review history, and generate parameters that are optimal for your memory and the content you're studying. If you have decks that vary wildly in subjective difficulty, it
-is recommended to assign them separate presets, as the parameters for easier
-decks will be different from harder decks. There is no need to optimize your
-parameters frequently: once every month is sufficient.</p>
-<p>By default, parameters are calculated from the review history of all
-decks using the current preset. You can optionally <a href="./searching.html">adjust the search</a>
-before optimizing the parameters, if you'd like to change which cards
-are used for optimization.</p>
-<p>You can also optimize the parameters for all of your presets at once by clicking on <strong>Optimize All Presets</strong>.</p>
-<p><strong>Evaluate FSRS Parameters</strong></p>
+<p>出於這些原因，建議保守調整「期望留存比率」數值，最好不要超過<code>0.97</code>，但應高於<a href="#%E8%A8%88%E7%AE%97%E7%95%99%E5%AD%98%E6%AF%94%E7%8E%87%E6%8E%A8%E8%96%A6%E6%9C%80%E5%B0%8F%E5%80%BC">留存比率推薦最小值</a>。</p>
+<h3 id="fsrs參數"><a class="header" href="#fsrs參數">FSRS參數</a></h3>
+<p>FSRS參數影響卡片排程。請勿手動更改或複製別人的數值。</p>
+<p><strong>最佳化FSRS參數</strong></p>
+<p>使用機器學習，根據你的記憶情況和複習歷程來計算出最佳參數。需要一定的複習次數才能最佳化參數。</p>
+<p>按一下「<strong>最佳化</strong>」按鈕後，FSRS會分析你的複習歷程，產生對你的記憶和學習內容最佳的參數。若有牌組難度差距過大，請為這些牌組設定不同的預設組。參數無需頻繁最佳化，一個月一次即可。</p>
+<p>根據預設，最佳化參數時會計算所有使用當前預設組的牌組的複習歷程。在計算參數前，你可以透過<a href="./searching.html">調整搜尋條件</a>來更改要用於最佳化參數的卡片。</p>
+<p>你還可以使用「<strong>最佳化所有預設組</strong>」按鈕來一次對所有預設組中的參數最佳化。</p>
+<p><strong>評估FSRS參數</strong></p>
 <p>You can use the <strong>Evaluate</strong> button to see metrics that show how well the parameters fit your review history. Smaller numbers
 indicate a better fit to your review history.</p>
 <p>Log loss doesn't have an intuitive interpretation. RMSE (bins) can be
@@ -548,7 +537,7 @@ so two decks may have similar RMSE values but very different log-loss values, or
 <p>This option controls whether the due dates of cards will be changed when you enable FSRS, change desired retention, or change the parameters. The default is not to reschedule cards: future reviews will use the new scheduling, but there will be no immediate change to your workload. If rescheduling is enabled, the due dates of cards will be changed. Depending on your desired retention, it will often result in a large number of cards becoming due, so <strong>this option is not recommended</strong> when first switching from SM-2.</p>
 <p>Use this option sparingly, as it will add a review entry to each of your cards, and increase the size of your collection.</p>
 <p>If you're first switching from SM-2 and still wish to use this option, we recommend you first create a backup, enable FSRS with rescheduling, and then if needed, you can undo or restore from the backup.</p>
-<h3 id="compute-minimum-recommended-retention"><a class="header" href="#compute-minimum-recommended-retention">Compute Minimum Recommended Retention</a></h3>
+<h3 id="計算留存比率推薦最小值"><a class="header" href="#計算留存比率推薦最小值">計算留存比率推薦最小值</a></h3>
 <p>Compute minimum recommended retention (CMRR) attempts to find the desired retention value that leads to the most material learned, in the least amount of time. The calculated number can serve as a reference when deciding what to set your desired retention to. You may wish to choose a higher desired retention, if you’re willing to trade more study time for a greater retention rate. However, setting your desired retention lower than the minimum is not recommended, as you'll spend more time studying than necessary, due to increased forgetting.</p>
 <h3 id="the-simulator"><a class="header" href="#the-simulator">The Simulator</a></h3>
 <p>You can use the simulator to get an estimate of your workload,
